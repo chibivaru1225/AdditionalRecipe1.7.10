@@ -19,7 +19,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 		modid        = AdditionalRecipe.MODID,
 		name         = AdditionalRecipe.MODNAME,
 		version      = AdditionalRecipe.VERSION,
-		dependencies = "after:AppliedEnergistics;"
+		dependencies = "after:appliedenergistics2;"
 				+ "after:MineFactoryReloaded;"
 				+ "after:ThermalExpansion;"
 				+ "after:BuildCraftCore;"
@@ -51,6 +51,10 @@ public class AdditionalRecipe
 		cheaperExchangeIgnition = (CheaperExchangeIgnition)(new CheaperExchangeIgnition()).setUnlocalizedName("cheaperexchangeignition").setCreativeTab(CreativeTabs.tabTools);
 
 		GameRegistry.registerItem(cheaperExchangeIgnition, "CheaperExchangeIgnition");
+
+		//ItemStack PureCertus = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 10);
+
+		//if()
 	}
 
 	@Mod.EventHandler
