@@ -12,8 +12,6 @@ import cpw.mods.fml.common.Mod.Metadata;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(
 		modid        = AdditionalRecipe.MODID,
@@ -37,7 +35,7 @@ public class AdditionalRecipe
 	@Metadata(MODID)
 	public static ModMetadata meta;
 
-	HashMap<String,Item> ARItems;
+	public static HashMap<String,Item> ARItems;
 
 	//@Mod.Instance("AdditionalRecipe")
 	//public static AdditionalRecipe instance;
@@ -50,7 +48,7 @@ public class AdditionalRecipe
 
 		cheaperExchangeIgnition = (CheaperExchangeIgnition)(new CheaperExchangeIgnition()).setUnlocalizedName("cheaperexchangeignition").setCreativeTab(CreativeTabs.tabTools);
 
-		GameRegistry.registerItem(cheaperExchangeIgnition, "CheaperExchangeIgnition");
+		//GameRegistry.registerItem(cheaperExchangeIgnition, "CheaperExchangeIgnition");
 
 		//ItemStack PureCertus = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 10);
 
@@ -62,6 +60,8 @@ public class AdditionalRecipe
 	{
 		FMLCommonHandler.instance().bus().register(cheaperExchangeIgnition);
 
-		LanguageRegistry.addName(cheaperExchangeIgnition, "CheaperExchangeIgnition");
+		//LanguageRegistry.addName(cheaperExchangeIgnition, "CheaperExchangeIgnition");
 	}
+
+
 }
