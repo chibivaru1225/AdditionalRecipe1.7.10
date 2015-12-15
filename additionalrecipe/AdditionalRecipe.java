@@ -12,6 +12,7 @@ import cpw.mods.fml.common.Mod.Metadata;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(
 		modid        = AdditionalRecipe.MODID,
@@ -48,7 +49,7 @@ public class AdditionalRecipe
 
 		cheaperExchangeIgnition = (CheaperExchangeIgnition)(new CheaperExchangeIgnition()).setUnlocalizedName("cheaperexchangeignition").setCreativeTab(CreativeTabs.tabTools);
 
-		//GameRegistry.registerItem(cheaperExchangeIgnition, "CheaperExchangeIgnition");
+		GameRegistry.registerItem(cheaperExchangeIgnition, "CheaperExchangeIgnition");
 
 		//ItemStack PureCertus = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 10);
 
