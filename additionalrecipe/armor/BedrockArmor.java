@@ -23,7 +23,15 @@ public class BedrockArmor extends ItemArmor
 	//layer名を登録しています。
 	//この場合はsample_layer_1.png、sample_layer_2.pngを登録しています。
 	//上で指定したフォルダに入れてください。
-
+	@Override
+	public String getArmorTexture(ItemStack itemStack, Entity entity, int slot, String type)
+	{
+		if (this.armorType == 2)
+		{
+			return "additionalrecipe:textures/armor/bedrock_2.png";
+		}
+		return "additionalrecipe:textures/armor/bedrock_1.png";
+	}
 	private void setTextureName(String type,int armorPart)
 	{
 		//head,body,boots

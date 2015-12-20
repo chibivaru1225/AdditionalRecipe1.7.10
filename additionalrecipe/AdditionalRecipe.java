@@ -1,23 +1,35 @@
 package chibivaru.additionalrecipe;
 
+import static chibivaru.additionalrecipe.common.ARConfiguration.*;
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
 
 import java.util.HashMap;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.EnumHelper;
 import chibivaru.additionalrecipe.common.ARConfiguration;
 import chibivaru.additionalrecipe.common.ARCreativeTab;
 import chibivaru.additionalrecipe.common.ARLogger;
 import chibivaru.additionalrecipe.common.ARModInfo;
+import chibivaru.additionalrecipe.event.ARAddChestGenHooks;
+import chibivaru.additionalrecipe.event.ARFlyingEventHooks;
+import chibivaru.additionalrecipe.event.ARNoFallDamageEventHooks;
+import chibivaru.additionalrecipe.event.AngelusArmorLivingEventHooks;
+import chibivaru.additionalrecipe.event.BedrockArmorLivingEventHooks;
+import chibivaru.additionalrecipe.event.CirceForceEventHooks;
+import chibivaru.additionalrecipe.recipe.RecipeHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Metadata;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.common.util.EnumHelper;
 
 @Mod(
 		modid        = AdditionalRecipe.MODID,
@@ -38,6 +50,9 @@ public class AdditionalRecipe
 	public static final String MODNAME = "AdditionalRecipe";
 	public static final String VERSION = "0.01";
 
+	public static final String CONSOLE = "[AdditionalRecipe]:";
+	public static final String ADDID = " added ID ";
+
 	public static final CreativeTabs ARTabs = new ARCreativeTab("AdditionalRecipe");
 
 	@Metadata(MODID)
@@ -48,7 +63,9 @@ public class AdditionalRecipe
 	public static HashMap<String,Boolean> ARCrafting   = new HashMap<String,Boolean>();
 	public static HashMap<String,Integer> ARCfgOther   = new HashMap<String,Integer>();
 	public static HashMap<String,Boolean> ARAnother    = new HashMap<String,Boolean>();
-
+	public static int craftingDifficulty;
+	public static RecipeHandler recipehandler;
+	public static ARAddChestGenHooks addchestgenhooks;
 	public static ArmorMaterial ARMOR_BEDROCK,ARMOR_PRIDE,ARMOR_WRATH,ARMOR_ENVY,ARMOR_SLOTH,ARMOR_AVARICE,ARMOR_GLUTTONY,ARMOR_LUST,ARMOR_ANGELUS;
 	public static ToolMaterial WEAPON_ULTIMATE,WEAPON_BASIC,WEAPON_POOR,WEAPON_PHANTASM;
 	public static String BEDROCK          = "bedrock";
@@ -90,12 +107,106 @@ public class AdditionalRecipe
 		ARModInfo.loadInfo(meta);
 		ARLogger.init(MODNAME);
 		ARConfiguration.init(event);
+		craftingDifficulty = ARGetCfgOther("Difficulty",0);
+		if((craftingDifficulty < 0) && (4 < craftingDifficulty))
+		{
+			craftingDifficulty = 0;
+		}
 		ARItemRegister();
 	}
 
 	@Mod.EventHandler
 	public void load(FMLInitializationEvent event)
 	{
+		addchestgenhooks = new ARAddChestGenHooks();
+		addchestgenhooks.AddChestItems();
+
+		MinecraftForge.EVENT_BUS.register(new ARNoFallDamageEventHooks());
+		MinecraftForge.EVENT_BUS.register(new ARFlyingEventHooks());
+		MinecraftForge.EVENT_BUS.register(new BedrockArmorLivingEventHooks());
+		MinecraftForge.EVENT_BUS.register(new AngelusArmorLivingEventHooks());
+		MinecraftForge.EVENT_BUS.register(new CirceForceEventHooks());
+		//MinecraftForge.EVENT_BUS.register(new WeaponsEventHooks());
+
+		if(ARGetAnother("EndPortal",true))
+		{
+			Blocks.end_portal_frame.setHardness(60F);
+		}
 		//ItemStack PureCertus = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 10);
+	}
+
+	@Mod.EventHandler
+    public void postInit(FMLPostInitializationEvent event)
+	{
+		recipehandler = new RecipeHandler();
+		recipehandler.oredic();
+		recipehandler.init();
+    }
+	public static boolean equipArmor(Item armor,EntityPlayer player,int armorType)
+	{
+		switch(armorType)
+		{
+			case ARMOR_HELMET:
+			{
+				return player.inventory.armorItemInSlot(3) != null && player.inventory.armorItemInSlot(3).getItem() == armor;
+			}
+			case ARMOR_PLATE:
+			{
+				return player.inventory.armorItemInSlot(2) != null && player.inventory.armorItemInSlot(2).getItem() == armor;
+			}
+			case ARMOR_LEGS:
+			{
+				return player.inventory.armorItemInSlot(1) != null && player.inventory.armorItemInSlot(1).getItem() == armor;
+			}
+			case ARMOR_BOOTS:
+			{
+				return player.inventory.armorItemInSlot(0) != null && player.inventory.armorItemInSlot(0).getItem() == armor;
+			}
+		}
+		return false;
+	}
+	public static boolean equipArmor(Item par1Head,Item par2Plate,Item par3Leg,Item par4Boots,EntityPlayer player)
+	{
+		if(player.inventory.armorItemInSlot(3) != null && player.inventory.armorItemInSlot(3).getItem() == par1Head)
+		{
+			if(player.inventory.armorItemInSlot(2) != null && player.inventory.armorItemInSlot(2).getItem() == par2Plate)
+			{
+				if(player.inventory.armorItemInSlot(1) != null && player.inventory.armorItemInSlot(1).getItem() == par3Leg)
+				{
+					if(player.inventory.armorItemInSlot(0) != null && player.inventory.armorItemInSlot(0).getItem() == par4Boots)
+					{
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+	public static boolean equipArmor(Item par1Head,Item par2Plate,Item par3Leg,Item par4Boots,EntityPlayer par5Player,boolean par6Mode)
+	{
+		if((par5Player.inventory.armorItemInSlot(3) != null && par5Player.inventory.armorItemInSlot(3).getItem() == par1Head))
+		{
+			return true;
+		}
+		else if((par5Player.inventory.armorItemInSlot(2) != null && par5Player.inventory.armorItemInSlot(2).getItem() == par2Plate))
+		{
+			return true;
+		}
+		else if((par5Player.inventory.armorItemInSlot(1) != null && par5Player.inventory.armorItemInSlot(1).getItem() == par3Leg))
+		{
+			return true;
+		}
+		else if((par5Player.inventory.armorItemInSlot(0) != null && par5Player.inventory.armorItemInSlot(0).getItem() == par4Boots))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public static boolean hasItem(Item item,EntityPlayer player)
+	{
+		return player.inventory.hasItem(item);
 	}
 }

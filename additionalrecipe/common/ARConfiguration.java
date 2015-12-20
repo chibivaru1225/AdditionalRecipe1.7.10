@@ -107,15 +107,15 @@ public class ARConfiguration
 		Property prop = cfg.get(par1category, par2key, par3defaultID);
 		return prop.getInt();
 	}
-	public static boolean ARGetSmelting(String par1key)
+	public static boolean ARGetCrafting(String par1key,boolean par2default)
 	{
-		if(ARSmelting.containsKey(par1key))
+		if(ARCrafting.containsKey(par1key))
 		{
-			return ARSmelting.get(par1key);
+			return ARCrafting.get(par1key);
 		}
 		else
 		{
-			return false;
+			return par2default;
 		}
 	}
 	public static boolean ARGetSmelting(String par1key,boolean par2default)
