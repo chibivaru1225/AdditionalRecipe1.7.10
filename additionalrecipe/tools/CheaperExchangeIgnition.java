@@ -1,10 +1,10 @@
-package chibivaru.additionalrecipe.tool;
+package chibivaru.additionalrecipe.tools;
 
+import static chibivaru.additionalrecipe.common.ARItemHandler.*;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import chibivaru.additionalrecipe.AdditionalRecipe;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -37,7 +37,7 @@ public class CheaperExchangeIgnition extends Item
 	public void onCrafting(ItemCraftedEvent event)
 	{
 		//IDが無くなったので、アイテムインスタンスで比較。
-		repair = AdditionalRecipe.cheaperExchangeIgnition == event.crafting.getItem();
+		repair = ARGetItemRegister("cheaperexchangeiginiton") == event.crafting.getItem();
 	}
 
 	@Override
