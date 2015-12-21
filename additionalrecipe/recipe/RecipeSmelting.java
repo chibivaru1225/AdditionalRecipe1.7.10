@@ -1,12 +1,9 @@
 package chibivaru.additionalrecipe.recipe;
 
 import static chibivaru.additionalrecipe.common.ARConfiguration.*;
-import static chibivaru.additionalrecipe.common.ARItemHandler.*;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RecipeSmelting {
@@ -125,6 +122,7 @@ public class RecipeSmelting {
 				GameRegistry.addSmelting(Items.leather_boots,new ItemStack(Items.leather,4,0),0.0f);
 			}
 		}
+		/*
 		if((ARGetCrafting("DustIngot",true))&&(ARGetCrafting("CraftingFurnace",true)))
 		{
 			if(OreDictionary.getOres("dustIron").size() > 0)
@@ -184,5 +182,6 @@ public class RecipeSmelting {
 						new Object[]{"dustPlatinum",ARGetItemRegister("craftingfurnace")}));
 			}
 		}
+		*/
 	}
 }

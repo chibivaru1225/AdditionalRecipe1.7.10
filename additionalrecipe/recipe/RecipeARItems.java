@@ -291,6 +291,7 @@ public class RecipeARItems {
 				System.out.println(AdditionalRecipe.CONSOLE + "SuperGravitationFeather" + RecipeHandler.RECIPE + RecipeHandler.NOTADDED);
 			}
 		}
+		/*
 		if(ARGetCrafting("CraftingFurnace",true))
 		{
 			GameRegistry.addRecipe(
@@ -312,6 +313,7 @@ public class RecipeARItems {
 				System.out.println(AdditionalRecipe.CONSOLE + "CraftingFurnace" + RecipeHandler.RECIPE + RecipeHandler.NOTADDED);
 			}
 		}
+		*/
 		if(ARGetCrafting("BedrockArmor",true))
 		{
 			GameRegistry.addRecipe(
