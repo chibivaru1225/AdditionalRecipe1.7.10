@@ -1,11 +1,15 @@
 package chibivaru.additionalrecipe.recipe;
 
 import static chibivaru.additionalrecipe.common.ARConfiguration.*;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 import chibivaru.additionalrecipe.AdditionalRecipe;
 import chibivaru.additionalrecipe.common.ARItemHandler;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RecipeHandler {
 	RecipeARItems         recipeadditionalitems;
@@ -42,6 +46,53 @@ public class RecipeHandler {
 		recipeoredic.init();
 		recipeores.init();
 		recipesmelting.init();
+
+		ItemStack PinkSlime = new ItemStack(GameRegistry.findItem("MineFactoryReloaded","pinkslime"));
+		if(PinkSlime != null)
+		{
+			GameRegistry.addRecipe(
+				new ShapedOreRecipe(
+					PinkSlime,
+					new Object[]{"XXX","XYX","XXX",
+						Character.valueOf('X'),Items.rotten_flesh,
+						Character.valueOf('Y'),Items.slime_ball}));
+		}
+		ItemStack PureCertus = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,10);
+		ItemStack SeedCertus = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemCrystalSeed"),1,0);
+		if((PureCertus != null)&&(SeedCertus != null))
+		{
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					PureCertus,
+					new Object[]{SeedCertus,Blocks.sand}));
+		}
+		ItemStack PureNether = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,11);
+		ItemStack SeedNether = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemCrystalSeed"),1,600);
+		if((PureNether != null)&&(SeedNether != null))
+		{
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					PureNether,
+					new Object[]{SeedNether,Blocks.sand}));
+		}
+		ItemStack PureFluix = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,12);
+		ItemStack SeedFluix = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemCrystalSeed"),1,1200);
+		if((PureFluix != null)&&(SeedFluix != null))
+		{
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					PureFluix,
+					new Object[]{SeedFluix,Blocks.sand}));
+		}
+		ItemStack Certus = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,0);
+		ItemStack Fluix = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),2,7);
+		if((Certus != null)&&(Fluix != null))
+		{
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					Fluix,
+					new Object[]{Certus,Items.quartz,Items.redstone}));
+		}
 	}
 	public void oredic()
 	{

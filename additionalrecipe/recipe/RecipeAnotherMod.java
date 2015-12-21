@@ -313,6 +313,7 @@ public class RecipeAnotherMod {
 			}
 		}
 		*/
+		/*
 		try
 		{
 			MFR = Class.forName("powercrystals.minefactoryreloaded.MineFactoryReloadedCore");
@@ -343,6 +344,7 @@ public class RecipeAnotherMod {
 		{
 			System.out.println(AdditionalRecipe.CONSOLE + "Can't Find MineFactory Reloaded.");
 		}
+		*/
 		try
 		{
 			BC = Class.forName("buildcraft.BuildCraftCore");
