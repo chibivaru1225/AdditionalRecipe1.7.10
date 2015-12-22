@@ -249,8 +249,8 @@ public class RecipeItems {
 		{
 			GameRegistry.addRecipe(
 				new ShapelessOreRecipe(
-					Blocks.brown_mushroom,
-					new Object[]{Blocks.red_mushroom}));
+					Blocks.red_mushroom,
+					new Object[]{Blocks.brown_mushroom}));
 			GameRegistry.addRecipe(
 				new ShapelessOreRecipe(
 					Blocks.brown_mushroom,
