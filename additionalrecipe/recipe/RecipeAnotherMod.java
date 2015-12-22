@@ -10,6 +10,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import chibivaru.additionalrecipe.AdditionalRecipe;
+import chibivaru.additionalrecipe.common.ARLogger;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -357,7 +358,8 @@ public class RecipeAnotherMod {
 		}
 		catch(Exception e)
 		{
-			System.out.println(AdditionalRecipe.CONSOLE + "Can't Find BuildCraft.");
+			//ARLogger.logger.failLoadingModInfo((String)"BuildCraft");
+			//System.out.println(AdditionalRecipe.CONSOLE + "Can't Find BuildCraft.");
 		}
 		if((OreDictionary.getOres("oreTofu").size() > 0) && (OreDictionary.getOres("tofuGem").size() > 0))
 		{
@@ -386,7 +388,7 @@ public class RecipeAnotherMod {
 		}
 		catch(Exception e)
 		{
-			System.out.println(AdditionalRecipe.CONSOLE + "Can't Find MoreInventoryMod.");
+			//System.out.println(AdditionalRecipe.CONSOLE + "Can't Find MoreInventoryMod.");
 		}
 	}
 }

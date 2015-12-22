@@ -66,7 +66,7 @@ public class ARConfiguration
 		}
 		catch (Exception e)
 		{
-			ARLogger.logger.warning("Config Load Failure.");
+			ARLogger.logger.warn("Config Load Failure.");
 			//FMLLog.log(Level.SEVERE, e, AdditionalRecipe.CONSOLE + "Config Load Failure.");
 		}
 		finally

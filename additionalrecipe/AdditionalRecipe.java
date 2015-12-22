@@ -105,7 +105,7 @@ public class AdditionalRecipe
 		WEAPON_PHANTASM = EnumHelper.addToolMaterial("PHANTASM" , 4, 1, 6.0f, 95, 100);
 
 		ARModInfo.loadInfo(meta);
-		ARLogger.init(MODNAME);
+		//ARLogger.init(MODNAME);
 		ARConfiguration.init(event);
 		craftingDifficulty = ARGetCfgOther("Difficulty",0);
 		if((craftingDifficulty < 0) && (4 < craftingDifficulty))
