@@ -93,6 +93,34 @@ public class RecipeHandler {
 					Fluix,
 					new Object[]{Certus,Items.quartz,Items.redstone}));
 		}
+		ItemStack Silicon  = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,20);
+		ItemStack GChip    = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,22);
+		ItemStack DChip    = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,24);
+		ItemStack CChip    = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,23);
+		ItemStack GCircuit = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,18);
+		ItemStack DCircuit = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,17);
+		ItemStack CCircuit = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,16);
+		if(Silicon != null && GChip != null && GCircuit != null)
+		{
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					GChip,
+					new Object[]{GCircuit,Silicon,Items.redstone}));
+		}
+		if(Silicon != null && DChip != null && DCircuit != null)
+		{
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					DChip,
+					new Object[]{DCircuit,Silicon,Items.redstone}));
+		}
+		if(Silicon != null && CChip != null && CCircuit != null)
+		{
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					CChip,
+					new Object[]{CCircuit,Silicon,Items.redstone}));
+		}
 	}
 	public void oredic()
 	{

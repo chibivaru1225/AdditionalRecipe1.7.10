@@ -5,8 +5,10 @@ import static chibivaru.additionalrecipe.common.ARConfiguration.*;
 import java.util.List;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
@@ -50,6 +52,34 @@ public class SwordExelector extends ItemSword
 	{
 		return true;
 	}
+    @Override
+    public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List itemList)
+    {
+    	ItemStack lv1 = new ItemStack(this, 1, 0);
+        ItemStack lv2 = new ItemStack(this, 1, 0);
+        ItemStack lv3 = new ItemStack(this, 1, 0);
+        ItemStack lv4 = new ItemStack(this, 1, 0);
+        NBTTagCompound nbt1 = new NBTTagCompound();
+        NBTTagCompound nbt2 = new NBTTagCompound();
+        NBTTagCompound nbt3 = new NBTTagCompound();
+        NBTTagCompound nbt4 = new NBTTagCompound();
+        nbt1.setInteger("adr.exp",0);
+        nbt2.setInteger("adr.exp",ARGetCfgOther("ExelectorFirstExp",5));
+        nbt3.setInteger("adr.exp",ARGetCfgOther("ExelectorSecondExp",10));
+        nbt4.setInteger("adr.exp",ARGetCfgOther("ExelectorLastExp",15));
+        nbt2.setInteger("adr.lvl",0);
+        nbt2.setInteger("adr.lvl",1);
+        nbt3.setInteger("adr.lvl",2);
+        nbt4.setInteger("adr.lvl",2);
+        lv1.setTagCompound(nbt1);
+        lv2.setTagCompound(nbt2);
+        lv3.setTagCompound(nbt3);
+        lv4.setTagCompound(nbt4);
+        itemList.add(lv1);
+        itemList.add(lv2);
+        itemList.add(lv3);
+        itemList.add(lv4);
+    }
 	@Override
 	public boolean onLeftClickEntity(ItemStack itemStack, EntityPlayer player, Entity entity)
 	{

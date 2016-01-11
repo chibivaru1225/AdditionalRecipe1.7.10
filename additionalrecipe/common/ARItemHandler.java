@@ -51,14 +51,14 @@ public class ARItemHandler
 		//ARNewItemRegister(new SpearDAYO(WEAPON_ULTIMATE), "dayo", ARTabs, "Evil Spear 'DAYO'","ja_JP","悪槍「堕那」");
 		ARNewItemRegister(new MultiK2(WEAPON_POOR), "toolk2", ARTabs, "K2",new StringBuilder().append(EnumChatFormatting.LIGHT_PURPLE).append("K2's Multi-Weapon").toString());
 
-		ARNewItemRegister(new BedrockArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_HELMET, BEDROCK), "bedrockhelmet", ARTabs, "BedrockHelmet", "additionalrecipe:BedrockHelmet" ,ARMOR_HELMET);
-		ARNewItemRegister(new BedrockArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_PLATE, BEDROCK), "bedrockplate", ARTabs, "BedrockChestplate", "additionalrecipe:BedrockPlate" ,ARMOR_PLATE);
-		ARNewItemRegister(new BedrockArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_LEGS, BEDROCK), "bedrocklegs", ARTabs, "BedrockLeggings", "additionalrecipe:BedrockLegs" ,ARMOR_LEGS);
-		ARNewItemRegister(new BedrockArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_BOOTS, BEDROCK), "bedrockboots", ARTabs, "BedrockBoots", "additionalrecipe:BedrockBoots" ,ARMOR_BOOTS);
-		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_HELMET, ANGELUS), "angelushood", ARTabs, "AngelusHood", "additionalrecipe:AngelusHood" ,ARMOR_HELMET);
-		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_PLATE, ANGELUS), "angelusvestment", ARTabs, "AngelusVestment", "additionalrecipe:AngelusVestment" ,ARMOR_PLATE);
-		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_LEGS, ANGELUS), "angelusskirt", ARTabs, "AngelusSkirt", "additionalrecipe:AngelusSkirt" ,ARMOR_LEGS);
-		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_BOOTS, ANGELUS), "angelusboots", ARTabs, "AngelusBoots", "additionalrecipe:AngelusBoots" ,ARMOR_BOOTS);
+		ARNewItemRegister(new BedrockArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_HELMET, BEDROCK), "bedrockhelmet", ARTabs, "BedrockHelmet", "additionalrecipe:bedrockhelmet" ,ARMOR_HELMET);
+		ARNewItemRegister(new BedrockArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_PLATE, BEDROCK), "bedrockplate", ARTabs, "BedrockChestplate", "additionalrecipe:bedrockplate" ,ARMOR_PLATE);
+		ARNewItemRegister(new BedrockArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_LEGS, BEDROCK), "bedrocklegs", ARTabs, "BedrockLeggings", "additionalrecipe:bedrocklegs" ,ARMOR_LEGS);
+		ARNewItemRegister(new BedrockArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_BOOTS, BEDROCK), "bedrockboots", ARTabs, "BedrockBoots", "additionalrecipe:bedrockboots" ,ARMOR_BOOTS);
+		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_HELMET, ANGELUS), "angelushood", ARTabs, "AngelusHood", "additionalrecipe:angelushood" ,ARMOR_HELMET);
+		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_PLATE, ANGELUS), "angelusvestment", ARTabs, "AngelusVestment", "additionalrecipe:angelusvestment" ,ARMOR_PLATE);
+		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_LEGS, ANGELUS), "angelusskirt", ARTabs, "AngelusSkirt", "additionalrecipe:angelusskirt" ,ARMOR_LEGS);
+		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_BOOTS, ANGELUS), "angelusboots", ARTabs, "AngelusBoots", "additionalrecipe:angelusboots" ,ARMOR_BOOTS);
 
 		ARNewItemRegister(new DustNetherStar(), "dustnetherstar", ARTabs, "DustNetherStar");
 		ARNewItemRegister(new DustBedrock(), "dustbedrock", ARTabs, "DustBedrock");
