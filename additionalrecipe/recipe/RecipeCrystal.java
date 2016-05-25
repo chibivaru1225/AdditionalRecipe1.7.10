@@ -34,8 +34,8 @@ public class RecipeCrystal {
 			CertusDust   = OreDictionary.getOres("dustCertusQuartz").get(0);
 			NetherDust   = OreDictionary.getOres("dustNetherQuartz").get(0);
 			GameRegistry.addSmelting(Blocks.end_stone, new ItemStack(CertusDust.getItem(),4,7), 0.0f);
-			GameRegistry.addShapelessRecipe(CertusQuartz,new Object[]{CertusDust,Blocks.sand});
-			GameRegistry.addShapelessRecipe(new ItemStack(Items.quartz,1,0),new Object[]{NetherDust,Blocks.sand});
+			//GameRegistry.addShapelessRecipe(CertusQuartz,new Object[]{CertusDust,Blocks.sand});
+			//GameRegistry.addShapelessRecipe(new ItemStack(Items.quartz,1,0),new Object[]{NetherDust,Blocks.sand});
 			if(ARGetAnother("ConsoleOut",true))
 			{
 				System.out.println(AdditionalRecipe.CONSOLE + "CertusQuartz" + RecipeHandler.RECIPE + RecipeHandler.ADDED);
