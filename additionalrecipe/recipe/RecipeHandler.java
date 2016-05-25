@@ -100,6 +100,10 @@ public class RecipeHandler {
 		ItemStack GCircuit = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,18);
 		ItemStack DCircuit = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,17);
 		ItemStack CCircuit = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,16);
+		ItemStack CPress   = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,13);
+		ItemStack EPress   = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,14);
+		ItemStack LPress   = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,15);
+		ItemStack SPress   = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,19);
 		if(Silicon != null && GChip != null && GCircuit != null)
 		{
 			GameRegistry.addRecipe(
@@ -120,6 +124,34 @@ public class RecipeHandler {
 				new ShapelessOreRecipe(
 					CChip,
 					new Object[]{CCircuit,Silicon,Items.redstone}));
+		}
+		if(CPress != null && Certus != null)
+		{
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					CPress,
+					new Object[]{Blocks.iron_block,Certus}));
+		}
+		if(EPress != null)
+		{
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					EPress,
+					new Object[]{Blocks.iron_block,Items.diamond}));
+		}
+		if(LPress != null)
+		{
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					LPress,
+					new Object[]{Blocks.iron_block,Items.gold_ingot}));
+		}
+		if(SPress != null)
+		{
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					SPress,
+					new Object[]{Blocks.iron_block,"itemSilicon"}));
 		}
 	}
 	public void oredic()
