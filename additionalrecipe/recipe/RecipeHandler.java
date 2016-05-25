@@ -86,12 +86,12 @@ public class RecipeHandler {
 		}
 		ItemStack Certus = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,0);
 		ItemStack Fluix = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),2,7);
-		if((Certus != null)&&(Fluix != null))
+		if(Fluix != null)
 		{
 			GameRegistry.addRecipe(
 				new ShapelessOreRecipe(
 					Fluix,
-					new Object[]{Certus,Items.quartz,Items.redstone}));
+					new Object[]{"crystalCertusQuartz",Items.quartz,Items.redstone}));
 		}
 		ItemStack Silicon  = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,20);
 		ItemStack GChip    = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,22);
