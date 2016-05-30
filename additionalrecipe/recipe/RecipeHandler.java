@@ -58,6 +58,7 @@ public class RecipeHandler {
 						Character.valueOf('X'),Items.rotten_flesh,
 						Character.valueOf('Y'),Items.slime_ball}));
 		}
+		/*
 		ItemStack PureCertus = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,10);
 		ItemStack SeedCertus = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemCrystalSeed"),1,0);
 		if((PureCertus != null)&&(SeedCertus != null))
@@ -189,6 +190,7 @@ public class RecipeHandler {
 						Silicon,
 						new Object[]{ARGetItemRegister("handstamp"),"itemSilicon"}));
 		}
+		*/
 	}
 	public void oredic()
 	{

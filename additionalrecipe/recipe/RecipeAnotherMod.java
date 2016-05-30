@@ -1,6 +1,8 @@
 package chibivaru.additionalrecipe.recipe;
 
 import static chibivaru.additionalrecipe.common.ARConfiguration.*;
+import static chibivaru.additionalrecipe.common.ARItemHandler.ARGetItemRegister;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -67,6 +69,140 @@ public class RecipeAnotherMod {
 					{
 						System.out.println(AdditionalRecipe.CONSOLE + "Flour" + RecipeHandler.RECIPE + RecipeHandler.NOTADDED);
 					}
+				}
+			}
+			if(ARGetCrafting("AppliedEnergistics2",true))
+			{
+				ItemStack SeedCertus = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemCrystalSeed"),1,0);
+				ItemStack SeedNether = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemCrystalSeed"),1,600);
+				ItemStack SeedFluix  = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemCrystalSeed"),1,1200);
+				ItemStack PureCertus = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,10);
+				ItemStack PureNether = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,11);
+				ItemStack PureFluix  = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,12);
+				ItemStack Certus     = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,0);
+				ItemStack Fluix      = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),2,7);
+				ItemStack Silicon    = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,20);
+				ItemStack GChip      = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,22);
+				ItemStack DChip      = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,24);
+				ItemStack CChip      = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,23);
+				ItemStack GCircuit   = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,18);
+				ItemStack DCircuit   = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,17);
+				ItemStack CCircuit   = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,16);
+				ItemStack CPress     = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,13);
+				ItemStack EPress     = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,14);
+				ItemStack LPress     = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,15);
+				ItemStack SPress     = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,19);
+				if((PureCertus != null)&&(SeedCertus != null))
+				{
+					GameRegistry.addRecipe(
+						new ShapelessOreRecipe(
+							PureCertus,
+							new Object[]{SeedCertus,Blocks.sand}));
+				}
+				if((PureNether != null)&&(SeedNether != null))
+				{
+					GameRegistry.addRecipe(
+						new ShapelessOreRecipe(
+							PureNether,
+							new Object[]{SeedNether,Blocks.sand}));
+				}
+				if((PureFluix != null)&&(SeedFluix != null))
+				{
+					GameRegistry.addRecipe(
+						new ShapelessOreRecipe(
+							PureFluix,
+							new Object[]{SeedFluix,Blocks.sand}));
+				}
+				if(Fluix != null)
+				{
+					GameRegistry.addRecipe(
+						new ShapelessOreRecipe(
+							Fluix,
+							new Object[]{"crystalCertusQuartz",Items.quartz,Items.redstone}));
+				}
+				if(Silicon != null && GChip != null && GCircuit != null)
+				{
+					GameRegistry.addRecipe(
+						new ShapelessOreRecipe(
+							GChip,
+							new Object[]{GCircuit,Silicon,Items.redstone}));
+				}
+				if(Silicon != null && DChip != null && DCircuit != null)
+				{
+					GameRegistry.addRecipe(
+						new ShapelessOreRecipe(
+							DChip,
+							new Object[]{DCircuit,Silicon,Items.redstone}));
+				}
+				if(Silicon != null && CChip != null && CCircuit != null)
+				{
+					GameRegistry.addRecipe(
+						new ShapelessOreRecipe(
+							CChip,
+							new Object[]{CCircuit,Silicon,Items.redstone}));
+				}
+				if(CPress != null && Certus != null)
+				{
+					GameRegistry.addRecipe(
+						new ShapelessOreRecipe(
+							CPress,
+							new Object[]{Blocks.iron_block,Certus}));
+				}
+				if(EPress != null)
+				{
+					GameRegistry.addRecipe(
+						new ShapelessOreRecipe(
+							EPress,
+							new Object[]{Blocks.iron_block,Items.diamond}));
+				}
+				if(LPress != null)
+				{
+					GameRegistry.addRecipe(
+						new ShapelessOreRecipe(
+							LPress,
+							new Object[]{Blocks.iron_block,Items.gold_ingot}));
+				}
+				if(SPress != null)
+				{
+					GameRegistry.addRecipe(
+						new ShapelessOreRecipe(
+							SPress,
+							new Object[]{Blocks.iron_block,"itemSilicon"}));
+				}
+				if(CPress != null && EPress != null && LPress != null && SPress != null)
+				{
+					GameRegistry.addRecipe(
+						new ShapelessOreRecipe(
+							ARGetItemRegister("handstamp"),
+							new Object[]{CPress,EPress,LPress,SPress}));
+				}
+				if(CCircuit != null && Certus != null)
+				{
+					GameRegistry.addRecipe(
+							new ShapelessOreRecipe(
+								CCircuit,
+								new Object[]{ARGetItemRegister("handstamp"),Certus}));
+				}
+				if(GCircuit != null)
+				{
+					GameRegistry.addRecipe(
+							new ShapelessOreRecipe(
+								GCircuit,
+								new Object[]{ARGetItemRegister("handstamp"),Items.gold_ingot}));
+				}
+				if(DCircuit != null)
+				{
+					GameRegistry.addRecipe(
+							new ShapelessOreRecipe(
+								DCircuit,
+								new Object[]{ARGetItemRegister("handstamp"),Items.diamond}));
+				}
+				if(Silicon != null)
+				{
+					GameRegistry.addRecipe(
+							new ShapelessOreRecipe(
+								Silicon,
+								new Object[]{ARGetItemRegister("handstamp"),"itemSilicon"}));
 				}
 			}
 		}

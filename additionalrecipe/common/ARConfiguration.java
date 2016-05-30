@@ -55,6 +55,8 @@ public class ARConfiguration
 			ARCfgOther.put("ExelectorSecondExp",ARSet("Another","ExelectorSecondExp",250));
 			ARCfgOther.put("ExelectorLastExp",ARSet("Another","ExelectorLastExp",500));
 			ARCfgOther.put("Difficulty",ARSet("Another","Difficulty",0,"0=easy 1=normal 2=hard 3=lunatic 4=ultimate The others are easy."));
+			
+			ARCrafting.put("AppliedEnergistics2",ARSet("AnotherMod","AppliedEnergistics2",true));
 
 			ARAnother.put("ExpBottle",ARSet("OreDicitionary","ExpBottle",false));
 			ARAnother.put("BuildCraft_Spring",ARSet("Dig","BuildCraft_Spring",true));
