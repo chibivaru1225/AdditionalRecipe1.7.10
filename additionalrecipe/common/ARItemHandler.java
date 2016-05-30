@@ -19,6 +19,7 @@ import chibivaru.additionalrecipe.tools.BedrockMortar;
 import chibivaru.additionalrecipe.tools.CheaperExchangeIgnition;
 import chibivaru.additionalrecipe.tools.DiamondMortar;
 import chibivaru.additionalrecipe.tools.ExchangeIgnition;
+import chibivaru.additionalrecipe.tools.HandStamp;
 import chibivaru.additionalrecipe.tools.IronMortar;
 import chibivaru.additionalrecipe.tools.UltimateExchangeIgnition;
 import chibivaru.additionalrecipe.weapons.BladeNIOH;
@@ -44,6 +45,7 @@ public class ARItemHandler
 		ARNewItemRegister(new NightVisionTorch(), "nightvisiontorch", ARTabs, "NightVisionTorch");
 		ARNewItemRegister(new ForceBall(), "forceball", ARTabs, "ForceBall");
 		ARNewItemRegister(new CirceForce(), "circeforce", ARTabs, "CirceForce");
+		ARNewItemRegister(new HandStamp(), "handstamp", ARTabs, "HandStamp");
 
 		ARNewItemRegister(new SwordExelector(WEAPON_POOR), "exelector", ARTabs, "Exelector",new StringBuilder().append(EnumChatFormatting.WHITE).append("Exelector").toString());
 		ARNewItemRegister(new BladeNIOH(WEAPON_PHANTASM), "nioh", ARTabs, "NIOH");

@@ -1,6 +1,7 @@
 package chibivaru.additionalrecipe.recipe;
 
 import static chibivaru.additionalrecipe.common.ARConfiguration.*;
+import static chibivaru.additionalrecipe.common.ARItemHandler.*;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -152,6 +153,41 @@ public class RecipeHandler {
 				new ShapelessOreRecipe(
 					SPress,
 					new Object[]{Blocks.iron_block,"itemSilicon"}));
+		}
+		if(CPress != null && EPress != null && LPress != null && SPress != null)
+		{
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					ARGetItemRegister("handstamp"),
+					new Object[]{CPress,EPress,LPress,SPress}));
+		}
+		if(CCircuit != null && Certus != null)
+		{
+			GameRegistry.addRecipe(
+					new ShapelessOreRecipe(
+						CCircuit,
+						new Object[]{ARGetItemRegister("handstamp"),Certus}));
+		}
+		if(GCircuit != null)
+		{
+			GameRegistry.addRecipe(
+					new ShapelessOreRecipe(
+						GCircuit,
+						new Object[]{ARGetItemRegister("handstamp"),Items.gold_ingot}));
+		}
+		if(DCircuit != null)
+		{
+			GameRegistry.addRecipe(
+					new ShapelessOreRecipe(
+						DCircuit,
+						new Object[]{ARGetItemRegister("handstamp"),Items.diamond}));
+		}
+		if(Silicon != null)
+		{
+			GameRegistry.addRecipe(
+					new ShapelessOreRecipe(
+						Silicon,
+						new Object[]{ARGetItemRegister("handstamp"),"itemSilicon"}));
 		}
 	}
 	public void oredic()
