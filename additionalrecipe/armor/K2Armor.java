@@ -1,17 +1,17 @@
 package chibivaru.additionalrecipe.armor;
 
+import chibivaru.additionalrecipe.AdditionalRecipe;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import chibivaru.additionalrecipe.AdditionalRecipe;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
-public class AngelusArmor extends ItemArmor
+public class K2Armor extends ItemArmor
 {
 	private String texturePath = AdditionalRecipe.MODID + ":" + "textures/armor/";
-	public AngelusArmor(ArmorMaterial par2EnumArmorMaterial, int par3, int par4,String type)
+	public K2Armor(ArmorMaterial par2EnumArmorMaterial, int par3, int par4,String type)
 	{
 		super(par2EnumArmorMaterial, par3, par4);
 		this.setTextureName(type,par4);
@@ -24,9 +24,9 @@ public class AngelusArmor extends ItemArmor
 	{
 		if (this.armorType == 2)
 		{
-			return "additionalrecipe:textures/armor/angelus_2.png";
+			return "additionalrecipe:textures/armor/k2_2.png";
 		}
-		return "additionalrecipe:textures/armor/angelus_1.png";
+		return "additionalrecipe:textures/armor/k2_1.png";
 	}
 	private void setTextureName(String type,int armorPart)
 	{
