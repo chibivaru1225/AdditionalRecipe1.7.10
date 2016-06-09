@@ -48,14 +48,14 @@ public class ARConfiguration
 			ARCfgOther.put("NIOH",ARSet("ItemDamage","NIOH",4));
 
 			ARCfgOther.put("BedrockMortarDust",ARSet("MortarCrafting","BedrockMortarDust",8));
-			ARCfgOther.put("DiamondMortar",ARSet("MortarCrafting","DiamondMortar",4));
+			ARCfgOther.put("DiamondMortarDust",ARSet("MortarCrafting","DiamondMortar",4));
 			ARCfgOther.put("IronMortarDust",ARSet("MortarCrafting","IronMortarDust",2));
 
 			ARCfgOther.put("ExelectorFirstExp",ARSet("Another","ExelectorFirstExp",100));
 			ARCfgOther.put("ExelectorSecondExp",ARSet("Another","ExelectorSecondExp",250));
 			ARCfgOther.put("ExelectorLastExp",ARSet("Another","ExelectorLastExp",500));
 			ARCfgOther.put("Difficulty",ARSet("Another","Difficulty",0,"0=easy 1=normal 2=hard 3=lunatic 4=ultimate The others are easy."));
-			
+
 			ARCrafting.put("AppliedEnergistics2",ARSet("AnotherMod","AppliedEnergistics2",true));
 
 			ARAnother.put("ExpBottle",ARSet("OreDicitionary","ExpBottle",false));

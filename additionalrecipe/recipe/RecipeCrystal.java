@@ -1,7 +1,6 @@
 package chibivaru.additionalrecipe.recipe;
 
 import static chibivaru.additionalrecipe.common.ARConfiguration.*;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -33,7 +32,7 @@ public class RecipeCrystal {
 			CertusQuartz = OreDictionary.getOres("crystalCertusQuartz").get(0);
 			CertusDust   = OreDictionary.getOres("dustCertusQuartz").get(0);
 			NetherDust   = OreDictionary.getOres("dustNetherQuartz").get(0);
-			GameRegistry.addSmelting(Blocks.end_stone, new ItemStack(CertusDust.getItem(),4,7), 0.0f);
+			//GameRegistry.addSmelting(Blocks.end_stone, new ItemStack(CertusDust.getItem(),4,7), 0.0f);
 			//GameRegistry.addShapelessRecipe(CertusQuartz,new Object[]{CertusDust,Blocks.sand});
 			//GameRegistry.addShapelessRecipe(new ItemStack(Items.quartz,1,0),new Object[]{NetherDust,Blocks.sand});
 			if(ARGetAnother("ConsoleOut",true))
