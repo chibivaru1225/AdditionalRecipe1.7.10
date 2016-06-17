@@ -2,13 +2,11 @@ package chibivaru.additionalrecipe.recipe;
 
 import static chibivaru.additionalrecipe.common.ARConfiguration.*;
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
-import static chibivaru.additionalrecipe.AdditionalRecipe.*;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import chibivaru.additionalrecipe.AdditionalRecipe;
 import chibivaru.additionalrecipe.common.ARLogger;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -345,6 +343,26 @@ public class RecipeARItems {
 					new Object[]{"   ","XYX","X X",
 						Character.valueOf('X'),Blocks.bedrock,
 						Character.valueOf('Y'),ARGetItemRegister("dustexchangeignition")}));
+			GameRegistry.addRecipe(
+				new ShapedOreRecipe(
+					ARGetItemRegister("bedrockhelmet"),
+					new Object[]{"XXX","X X","   ",
+						Character.valueOf('X'),"ingotBedrockium"}));
+			GameRegistry.addRecipe(
+				new ShapedOreRecipe(
+					ARGetItemRegister("bedrockplate"),
+					new Object[]{"X X","XXX","XXX",
+						Character.valueOf('X'),"ingotBedrockium"}));
+			GameRegistry.addRecipe(
+				new ShapedOreRecipe(
+					ARGetItemRegister("bedrocklegs"),
+					new Object[]{"XXX","X X","X X",
+						Character.valueOf('X'),"ingotBedrockium"}));
+			GameRegistry.addRecipe(
+				new ShapedOreRecipe(
+					ARGetItemRegister("bedrockboots"),
+					new Object[]{"   ","X X","X X",
+						Character.valueOf('X'),"ingotBedrockium"}));
 			if(ARGetAnother("ConsoleOut",true))
 			{
 				ARLogger.logger.info("BedrockArmor" + RecipeHandler.RECIPE + RecipeHandler.ADDED);

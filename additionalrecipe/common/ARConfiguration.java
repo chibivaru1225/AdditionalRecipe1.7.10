@@ -57,6 +57,7 @@ public class ARConfiguration
 			ARCfgOther.put("Difficulty",ARSet("Another","Difficulty",0,"0=easy 1=normal 2=hard 3=lunatic 4=ultimate The others are easy."));
 
 			ARCrafting.put("AppliedEnergistics2",ARSet("AnotherMod","AppliedEnergistics2",true));
+			ARCrafting.put("StorageDrawers",ARSet("AnotherMod","StorageDrawers",true));
 
 			ARAnother.put("ExpBottle",ARSet("OreDicitionary","ExpBottle",false));
 			ARAnother.put("BuildCraft_Spring",ARSet("Dig","BuildCraft_Spring",true));
@@ -65,6 +66,7 @@ public class ARConfiguration
 			ARAnother.put("ConsoleOut",ARSet("Another","ConsoleOut",true));
 			ARAnother.put("UltimateExchangeIgnitionEffect",ARSet("Another","UltimateExchangeIgnitionEffect",false));
 			ARAnother.put("NIOHPreventDamage",ARSet("Another","NIOHPreventDamage",true));
+			ARAnother.put("BedrockArmorFlying",ARSet("Another","BedrockArmorFlying",false));
 		}
 		catch (Exception e)
 		{

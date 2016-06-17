@@ -88,6 +88,7 @@ public class RecipeAnotherMod {
 			ItemStack EPress     = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,14);
 			ItemStack LPress     = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,15);
 			ItemStack SPress     = new ItemStack(GameRegistry.findItem("appliedenergistics2","item.ItemMultiMaterial"),1,19);
+
 			if((PureCertus != null)&&(SeedCertus != null))
 			{
 				GameRegistry.addRecipe(
@@ -199,6 +200,43 @@ public class RecipeAnotherMod {
 					new ShapelessOreRecipe(
 						Silicon,
 						new Object[]{ARGetItemRegister("handstamp"),"itemSilicon"}));
+			}
+		}
+		if(ARGetCrafting("StorageDrawers",true))
+		{
+			ItemStack Creative = new ItemStack(GameRegistry.findItem("StorageDrawers","upgradeCreative"),1,0);
+			ItemStack Temp     = new ItemStack(GameRegistry.findItem("StorageDrawers","upgradeTemplate"),1,0);
+
+			if(Creative != null && Temp != null)
+			{
+				GameRegistry.addRecipe(
+					new ShapedOreRecipe(
+						Creative,
+						new Object[]{"XYX","YZY","XYX",
+							Character.valueOf('X'),"ingotBedrockium",
+							Character.valueOf('Y'),Items.stick,
+							Character.valueOf('Z'),Temp}));
+				GameRegistry.addRecipe(
+					new ShapedOreRecipe(
+						new ItemStack(Creative.getItem(),4),
+						new Object[]{"XYX","YZY","XYX",
+							Character.valueOf('X'),"ingotUnstable",
+							Character.valueOf('Y'),Items.stick,
+							Character.valueOf('Z'),Temp}));
+				GameRegistry.addRecipe(
+					new ShapedOreRecipe(
+						Creative,
+						new Object[]{"XYX","YZY","XYX",
+							Character.valueOf('X'),"ingotEnderium",
+							Character.valueOf('Y'),Items.stick,
+							Character.valueOf('Z'),Temp}));
+				GameRegistry.addRecipe(
+					new ShapedOreRecipe(
+						new ItemStack(Creative.getItem(),4),
+						new Object[]{"XYX","YZY","XYX",
+							Character.valueOf('X'),Items.nether_star,
+							Character.valueOf('Y'),Items.stick,
+							Character.valueOf('Z'),Temp}));
 			}
 		}
 		/*

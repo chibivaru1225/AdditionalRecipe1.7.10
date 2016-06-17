@@ -1,6 +1,7 @@
 package chibivaru.additionalrecipe.event;
 
 import static chibivaru.additionalrecipe.AdditionalRecipe.*;
+import static chibivaru.additionalrecipe.common.ARConfiguration.*;
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.player.EntityPlayer;
@@ -38,7 +39,7 @@ public class ARFlyingEventHooks
 	{
 		exchange = player.inventory.hasItem(ARGetItemRegister("exchangeiginiton"));
 		ultimate = player.inventory.hasItem(ARGetItemRegister("ultimateexchangeiginiton"));
-		bedrock  = equipArmor(ARGetItemRegister("bedrockhelmet"),ARGetItemRegister("bedrockplate"),ARGetItemRegister("bedrocklegs"),ARGetItemRegister("bedrockboots"), player);
+		bedrock  = equipArmor(ARGetItemRegister("bedrockhelmet"),ARGetItemRegister("bedrockplate"),ARGetItemRegister("bedrocklegs"),ARGetItemRegister("bedrockboots"), player) && ARGetAnother("BedrockArmorFlying",false);
 		angelus  = equipArmor(ARGetItemRegister("angelushood"),ARGetItemRegister("angelusvestment"),ARGetItemRegister("angelusskirt"),ARGetItemRegister("angelusboots"), player,true);
 		angelus2 = equipArmor(ARGetItemRegister("angelushood"),ARGetItemRegister("angelusvestment"),ARGetItemRegister("angelusskirt"),ARGetItemRegister("angelusboots"), player);
 		//クリエイティブでないなら

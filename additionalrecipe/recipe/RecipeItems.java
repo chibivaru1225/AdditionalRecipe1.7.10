@@ -286,5 +286,12 @@ public class RecipeItems {
 					Blocks.stone,
 					new Object[]{Blocks.stone_button}));
 		}
+		if(ARGetCrafting("Clay",true))
+		{
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					new ItemStack(Items.clay_ball,4),
+					new Object[]{Blocks.clay}));
+		}
 	}
 }
