@@ -16,9 +16,9 @@ public class TearOfCorpelEventHooks
 	{
 		EntityPlayer player = ((PlayerEvent)(event)).entityPlayer;
 		Entity entity       = event.target;
-		boolean corpel      = AdditionalRecipe.hasItem(ARGetItemRegister("tearofcorpel"), player);
-		boolean bauble      = AdditionalRecipe.getBaubles(ARGetItemRegister("tearofcorpel"), player);
-		if((corpel||bauble) && (entity instanceof EntityLivingBase))
+		boolean compel      = AdditionalRecipe.hasItem(ARGetItemRegister("tearofcompel"), player);
+		boolean bauble      = AdditionalRecipe.getBaubles(ARGetItemRegister("tearofcompel"), player);
+		if((compel||bauble) && (entity instanceof EntityLivingBase))
 		{
 			EntityLivingBase target = (EntityLivingBase)entity;
 			target.hurtResistantTime = 0;
