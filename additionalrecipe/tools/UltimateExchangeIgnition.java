@@ -4,6 +4,7 @@ import static chibivaru.additionalrecipe.common.ARConfiguration.*;
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -11,12 +12,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import baubles.api.BaubleType;
+import baubles.api.IBauble;
+import chibivaru.additionalrecipe.AdditionalRecipe;
+import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class UltimateExchangeIgnition extends Item
+@Optional.Interface(iface = "baubles.api.IBauble", modid = "Baubles")
+public class UltimateExchangeIgnition extends Item implements IBauble
 {
     private boolean repair;
     private boolean effect;
@@ -93,5 +99,61 @@ public class UltimateExchangeIgnition extends Item
 				}
 			}
 		}
+	}
+
+	@Override
+	@Optional.Method(modid = "Baubles")
+	public BaubleType getBaubleType(ItemStack itemstack) {
+		// TODO 自動生成されたメソッド・スタブ
+		return BaubleType.RING;
+	}
+
+	@Override
+	@Optional.Method(modid = "Baubles")
+	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
+		// TODO 自動生成されたメソッド・スタブ
+		if(player instanceof EntityPlayer)
+		{
+			EntityPlayer player2 = (EntityPlayer)player;
+			if(AdditionalRecipe.getBaubles(ARGetItemRegister("ultimateexchangeiginiton"), player2))
+			{
+				if(ARGetAnother("UltimateExchangeIgnitionEffect",false))
+				{
+					player2.addPotionEffect(new PotionEffect(Potion.damageBoost.id,20*30,75));
+					player2.addPotionEffect(new PotionEffect(Potion.waterBreathing.id,20*30,75));
+					player2.addPotionEffect(new PotionEffect(Potion.regeneration.id,20*30,75));
+					player2.addPotionEffect(new PotionEffect(Potion.digSpeed.id,20*30,75));
+					player2.addPotionEffect(new PotionEffect(Potion.nightVision.id,20*30));
+				}
+			}
+		}
+	}
+
+	@Override
+	@Optional.Method(modid = "Baubles")
+	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
+
+	@Override
+	@Optional.Method(modid = "Baubles")
+	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
+
+	@Override
+	@Optional.Method(modid = "Baubles")
+	public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
+		// TODO 自動生成されたメソッド・スタブ
+		return true;
+	}
+
+	@Override
+	@Optional.Method(modid = "Baubles")
+	public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
+		// TODO 自動生成されたメソッド・スタブ
+		return true;
 	}
 }

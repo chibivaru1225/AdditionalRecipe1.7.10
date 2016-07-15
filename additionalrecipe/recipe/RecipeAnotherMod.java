@@ -138,12 +138,16 @@ public class RecipeAnotherMod {
 						CChip,
 						new Object[]{CCircuit,Silicon,Items.redstone}));
 			}
-			if(CPress != null && Certus != null)
+			if(CPress != null && Certus != null && PureCertus != null)
 			{
 				GameRegistry.addRecipe(
 					new ShapelessOreRecipe(
 						CPress,
 						new Object[]{Blocks.iron_block,Certus}));
+				GameRegistry.addRecipe(
+					new ShapelessOreRecipe(
+						CPress,
+						new Object[]{Blocks.iron_block,PureCertus}));
 			}
 			if(EPress != null)
 			{
@@ -173,12 +177,16 @@ public class RecipeAnotherMod {
 						ARGetItemRegister("handstamp"),
 						new Object[]{CPress,EPress,LPress,SPress}));
 			}
-			if(CCircuit != null && Certus != null)
+			if(CCircuit != null && Certus != null && PureCertus != null)
 			{
 				GameRegistry.addRecipe(
 					new ShapelessOreRecipe(
 						CCircuit,
 						new Object[]{ARGetItemRegister("handstamp"),Certus}));
+				GameRegistry.addRecipe(
+					new ShapelessOreRecipe(
+						CCircuit,
+						new Object[]{ARGetItemRegister("handstamp"),PureCertus}));
 			}
 			if(GCircuit != null)
 			{

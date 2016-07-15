@@ -36,11 +36,19 @@ public class ARNoFallDamageEventHooks
 				{
 					this.noFallDamage = true;
 				}
-				else if((player.inventory.hasItem(ARGetItemRegister("gravitationfeather"))||(player.inventory.hasItem(ARGetItemRegister("supergravitationfeather")))))
+				else if(AdditionalRecipe.hasItem(ARGetItemRegister("supergravitationfeather"), player))
 				{
 					this.noFallDamage = true;
 				}
-				else if((player.inventory.hasItem(ARGetItemRegister("exchangeiginiton")))||(player.inventory.hasItem(ARGetItemRegister("ultimateexchangeiginiton"))))
+				else if((AdditionalRecipe.hasItem(ARGetItemRegister("exchangeiginiton"), player))||(AdditionalRecipe.hasItem(ARGetItemRegister("ultimateexchangeiginiton"), player)))
+				{
+					this.noFallDamage = true;
+				}
+				else if(AdditionalRecipe.getBaubles(ARGetItemRegister("supergravitationfeather"), player))
+				{
+					this.noFallDamage = true;
+				}
+				else if((AdditionalRecipe.hasItem(ARGetItemRegister("exchangeiginiton"), player))||(AdditionalRecipe.hasItem(ARGetItemRegister("ultimateexchangeiginiton"), player)))
 				{
 					this.noFallDamage = true;
 				}

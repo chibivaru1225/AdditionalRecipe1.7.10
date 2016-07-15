@@ -67,6 +67,8 @@ public class ARConfiguration
 			ARAnother.put("UltimateExchangeIgnitionEffect",ARSet("Another","UltimateExchangeIgnitionEffect",false));
 			ARAnother.put("NIOHPreventDamage",ARSet("Another","NIOHPreventDamage",true));
 			ARAnother.put("BedrockArmorFlying",ARSet("Another","BedrockArmorFlying",false));
+			//ARAnother.put("ReplaceOverworldSpring",ARSet("Another","ReplaceOverworldSpring",true));
+			//ARAnother.put("ReplaceNetherLava",ARSet("Another","ReplaceNetherLava",false));
 		}
 		catch (Exception e)
 		{

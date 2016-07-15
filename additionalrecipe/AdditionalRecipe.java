@@ -15,7 +15,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 import chibivaru.additionalrecipe.common.ARConfiguration;
 import chibivaru.additionalrecipe.common.ARCreativeTab;
-import chibivaru.additionalrecipe.common.ARLogger;
 import chibivaru.additionalrecipe.common.ARModInfo;
 import chibivaru.additionalrecipe.event.ARAddChestGenHooks;
 import chibivaru.additionalrecipe.event.ARFlyingEventHooks;
@@ -126,6 +125,7 @@ public class AdditionalRecipe
 		MinecraftForge.EVENT_BUS.register(new BedrockArmorLivingEventHooks());
 		MinecraftForge.EVENT_BUS.register(new AngelusArmorLivingEventHooks());
 		MinecraftForge.EVENT_BUS.register(new CirceForceEventHooks());
+		//MinecraftForge.EVENT_BUS.register(new ReplaceBlock());
 		//MinecraftForge.EVENT_BUS.register(new WeaponsEventHooks());
 
 		if(ARGetAnother("EndPortal",true))
@@ -204,6 +204,29 @@ public class AdditionalRecipe
 		{
 			return false;
 		}
+	}
+	public static boolean getBaubles(Item par1Item,EntityPlayer player)
+	{
+		return false;
+		/*
+		IInventory baubles  = BaublesApi.getBaubles(player);
+		boolean bauble      = false;
+		if(baubles == null||baubles.getSizeInventory() == 0)
+		{
+			return false;
+		}
+		for(int i = 0; i < baubles.getSizeInventory(); i++)
+		{
+			if(baubles.getStackInSlot(i).getItem() != null)
+			{
+				if(par1Item == baubles.getStackInSlot(i).getItem())
+				{
+					bauble = true;
+				}
+			}
+		}
+		return bauble;
+		*/
 	}
 	public static boolean hasItem(Item item,EntityPlayer player)
 	{

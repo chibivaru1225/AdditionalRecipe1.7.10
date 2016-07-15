@@ -6,15 +6,16 @@ import net.minecraft.item.Item;
 import net.minecraft.util.EnumChatFormatting;
 import chibivaru.additionalrecipe.armor.AngelusArmor;
 import chibivaru.additionalrecipe.armor.BedrockArmor;
+import chibivaru.additionalrecipe.baubles.CirceForce;
+import chibivaru.additionalrecipe.baubles.GravitationFeather;
+import chibivaru.additionalrecipe.baubles.NightVisionTorch;
+import chibivaru.additionalrecipe.baubles.SuperGravitationFeather;
+import chibivaru.additionalrecipe.baubles.TearOfCompel;
 import chibivaru.additionalrecipe.dust.DustBedrock;
 import chibivaru.additionalrecipe.dust.DustExchangeIgnition;
 import chibivaru.additionalrecipe.dust.DustNetherStar;
 import chibivaru.additionalrecipe.item.BlackRottenFlesh;
-import chibivaru.additionalrecipe.item.CirceForce;
 import chibivaru.additionalrecipe.item.ForceBall;
-import chibivaru.additionalrecipe.item.GravitationFeather;
-import chibivaru.additionalrecipe.item.NightVisionTorch;
-import chibivaru.additionalrecipe.item.SuperGravitationFeather;
 import chibivaru.additionalrecipe.tools.BedrockMortar;
 import chibivaru.additionalrecipe.tools.CheaperExchangeIgnition;
 import chibivaru.additionalrecipe.tools.DiamondMortar;
@@ -46,6 +47,7 @@ public class ARItemHandler
 		ARNewItemRegister(new ForceBall(), "forceball", ARTabs, "ForceBall");
 		ARNewItemRegister(new CirceForce(), "circeforce", ARTabs, "CirceForce");
 		ARNewItemRegister(new HandStamp(), "handstamp", ARTabs, "HandStamp");
+		ARNewItemRegister(new TearOfCompel(),"tearofcompel",ARTabs,"TearOfCompel");
 
 		ARNewItemRegister(new SwordExelector(WEAPON_POOR), "exelector", ARTabs, "Exelector",new StringBuilder().append(EnumChatFormatting.WHITE).append("Exelector").toString());
 		ARNewItemRegister(new BladeNIOH(WEAPON_PHANTASM), "nioh", ARTabs, "NIOH");

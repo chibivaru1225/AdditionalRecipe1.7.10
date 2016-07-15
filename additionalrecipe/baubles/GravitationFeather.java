@@ -1,122 +1,104 @@
-package chibivaru.additionalrecipe.tools;
+package chibivaru.additionalrecipe.baubles;
 
-import static chibivaru.additionalrecipe.common.ARItemHandler.*;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "baubles.api.IBauble", modid = "Baubles")
-public class ExchangeIgnition extends Item implements IBauble
+public class GravitationFeather extends Item implements IBauble
 {
     private boolean repair;
     private boolean effect;
 
-    public ExchangeIgnition()
+    public GravitationFeather()
     {
         super();
         this.setMaxStackSize(1);
     }
-
-    //アイテムがクラフト後に戻らないようにする
-    public boolean doesContainerItemLeaveCraftingGrid(ItemStack par1ItemStack)
-    {
-        return false;
-    }
-
-    //クラフト後にgetContainerItemStackを呼び出す
-    public boolean hasContainerItem()
-    {
-        return !repair;
-    }
-
-    //クラフト後のアイテムを、ダメージを与えて返す
 	@Override
-	public ItemStack getContainerItem(ItemStack itemStack)
+	public boolean onItemUse(ItemStack item, EntityPlayer player, World world, int x, int y, int z, int side, float disX, float disY, float disZ)
 	{
-		return itemStack;
+		//アイテムをブロックに対して右クリックした時に呼ばれる
+		return false;
 	}
 
-
-	@SubscribeEvent
-	public void onCrafting(ItemCraftedEvent event)
+	@Override
+	public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer player)
 	{
-		//IDが無くなったので、アイテムインスタンスで比較。
-		repair = ARGetItemRegister("exchangeiginiton") == event.crafting.getItem();
+		//アイテムを右クリック時に呼ばれる
+		return item;
 	}
-
     //既存のハサミと見分けるため、テクスチャを赤で乗算
     public int getColorFromItemStack(ItemStack par1ItemStack, int par2)
     {
-        return 0x666666;
+        return 0xFFFF00;
     }
-
+    @Override
+    public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean held)
+    {
+		if (entity.worldObj.isRemote)
+		{
+			return;
+		}
+    	totick(stack,(EntityPlayer) entity);
+    }
     //1.5.2のテクスチャ指定
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister par1IconRegister)
     {
-        this.itemIcon = Items.ender_pearl.getIconFromDamage(0);
+        this.itemIcon = Items.feather.getIconFromDamage(0);
     }
     @SideOnly(Side.CLIENT)
     public boolean hasEffect(ItemStack par1ItemStack)
     {
-        return !this.effect;
+        return !effect;
     }
-	/*@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
-	{
-		this.effect = !this.effect;
-		ExchangeIgnitionLivingEventHooks.flyBoost = this.effect;
-		return par1ItemStack;
-	}*/
-
 	@Override
 	@Optional.Method(modid = "Baubles")
 	public BaubleType getBaubleType(ItemStack itemstack) {
 		// TODO 自動生成されたメソッド・スタブ
-		return BaubleType.RING;
+		return BaubleType.AMULET;
 	}
-
 	@Override
 	@Optional.Method(modid = "Baubles")
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
 		// TODO 自動生成されたメソッド・スタブ
-
+		totick(itemstack,(EntityPlayer) player);
 	}
-
 	@Override
 	@Optional.Method(modid = "Baubles")
 	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
 		// TODO 自動生成されたメソッド・スタブ
-
 	}
-
 	@Override
 	@Optional.Method(modid = "Baubles")
 	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
 		// TODO 自動生成されたメソッド・スタブ
-
 	}
-
 	@Override
 	@Optional.Method(modid = "Baubles")
 	public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
 		// TODO 自動生成されたメソッド・スタブ
 		return true;
 	}
-
 	@Override
 	@Optional.Method(modid = "Baubles")
 	public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
 		// TODO 自動生成されたメソッド・スタブ
 		return true;
+	}
+	public static void totick(ItemStack stack, EntityPlayer player)
+	{
+		player.fallDistance = 0;
 	}
 }

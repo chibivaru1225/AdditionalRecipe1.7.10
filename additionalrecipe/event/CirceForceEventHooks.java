@@ -21,7 +21,8 @@ public class CirceForceEventHooks {
 	public void Circe(EntityPlayer par1player,EntityPlayerSP par2player)
 	{
 		boolean circeForce = AdditionalRecipe.hasItem(ARGetItemRegister("circeforce"), par1player);
-		if(circeForce)
+		boolean bauble     = AdditionalRecipe.getBaubles(ARGetItemRegister("circeforce"), par1player);
+		if(circeForce||bauble)
 		{
 			if(par1player.isInWater())
 			{
