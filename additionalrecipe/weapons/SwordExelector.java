@@ -34,7 +34,7 @@ public class SwordExelector extends ItemSword
 	public SwordExelector(ToolMaterial par2EnumToolMaterial) {
 		super(par2EnumToolMaterial);
 		this.setMaxStackSize(1);
-		this.setMaxDamage(4);
+		this.setMaxDamage(6);
 		this.setContainerItem(this);
 		this.setTextureName("additionalrecipe:exelectorFirst");
 		//this.level = 0; 0 = Great Sword,1 = Long Sword,2 = Lapier,3 = Wand

@@ -46,11 +46,13 @@ public class GravitationFeather extends Item implements IBauble
     @Override
     public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean held)
     {
+    	/*
 		if (entity.worldObj.isRemote)
 		{
 			return;
 		}
     	totick(stack,(EntityPlayer) entity);
+    	*/
     }
     //1.5.2のテクスチャ指定
     @SideOnly(Side.CLIENT)
@@ -73,7 +75,7 @@ public class GravitationFeather extends Item implements IBauble
 	@Optional.Method(modid = "Baubles")
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
 		// TODO 自動生成されたメソッド・スタブ
-		totick(itemstack,(EntityPlayer) player);
+		//totick(itemstack,(EntityPlayer) player);
 	}
 	@Override
 	@Optional.Method(modid = "Baubles")
@@ -99,6 +101,6 @@ public class GravitationFeather extends Item implements IBauble
 	}
 	public static void totick(ItemStack stack, EntityPlayer player)
 	{
-		player.fallDistance = 0;
+		//player.fallDistance = 0;
 	}
 }

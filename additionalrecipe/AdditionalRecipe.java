@@ -8,11 +8,14 @@ import java.util.HashMap;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
+import baubles.api.BaublesApi;
 import chibivaru.additionalrecipe.common.ARConfiguration;
 import chibivaru.additionalrecipe.common.ARCreativeTab;
 import chibivaru.additionalrecipe.common.ARModInfo;
@@ -22,7 +25,9 @@ import chibivaru.additionalrecipe.event.ARNoFallDamageEventHooks;
 import chibivaru.additionalrecipe.event.AngelusArmorLivingEventHooks;
 import chibivaru.additionalrecipe.event.BedrockArmorLivingEventHooks;
 import chibivaru.additionalrecipe.event.CirceForceEventHooks;
+import chibivaru.additionalrecipe.event.TearOfCorpelEventHooks;
 import chibivaru.additionalrecipe.recipe.RecipeHandler;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Metadata;
 import cpw.mods.fml.common.ModMetadata;
@@ -125,6 +130,7 @@ public class AdditionalRecipe
 		MinecraftForge.EVENT_BUS.register(new BedrockArmorLivingEventHooks());
 		MinecraftForge.EVENT_BUS.register(new AngelusArmorLivingEventHooks());
 		MinecraftForge.EVENT_BUS.register(new CirceForceEventHooks());
+		MinecraftForge.EVENT_BUS.register(new TearOfCorpelEventHooks());
 		//MinecraftForge.EVENT_BUS.register(new ReplaceBlock());
 		//MinecraftForge.EVENT_BUS.register(new WeaponsEventHooks());
 
@@ -207,26 +213,26 @@ public class AdditionalRecipe
 	}
 	public static boolean getBaubles(Item par1Item,EntityPlayer player)
 	{
-		return false;
-		/*
-		IInventory baubles  = BaublesApi.getBaubles(player);
-		boolean bauble      = false;
-		if(baubles == null||baubles.getSizeInventory() == 0)
+		if(Loader.isModLoaded("Baubles"))
 		{
-			return false;
-		}
-		for(int i = 0; i < baubles.getSizeInventory(); i++)
-		{
-			if(baubles.getStackInSlot(i).getItem() != null)
+			IInventory baubles  = BaublesApi.getBaubles(player);
+			boolean bauble      = false;
+			if(baubles != null)
 			{
-				if(par1Item == baubles.getStackInSlot(i).getItem())
+				for(int i = 0; i < baubles.getSizeInventory(); i++)
 				{
-					bauble = true;
+					ItemStack itemstack = baubles.getStackInSlot(i);
+					if(itemstack != null)
+					{
+						if(par1Item == baubles.getStackInSlot(i).getItem())
+						{
+							return true;
+						}
+					}
 				}
 			}
 		}
-		return bauble;
-		*/
+		return false;
 	}
 	public static boolean hasItem(Item item,EntityPlayer player)
 	{

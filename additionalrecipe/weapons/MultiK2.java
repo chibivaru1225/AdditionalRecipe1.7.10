@@ -7,6 +7,7 @@ import java.util.List;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -19,11 +20,15 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import baubles.api.BaubleType;
+import baubles.api.IBauble;
 import chibivaru.additionalrecipe.AdditionalRecipe;
+import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class MultiK2 extends ItemSword
+@Optional.Interface(iface = "baubles.api.IBauble", modid = "Baubles")
+public class MultiK2 extends ItemSword implements IBauble
 {
 	private float weaponDamage = 10.0f;
     private boolean effect;
@@ -222,5 +227,86 @@ public class MultiK2 extends ItemSword
 	public IIcon[] getIcons()
 	{
 		return icons;
+	}
+	@Override
+	@Optional.Method(modid = "Baubles")
+	public BaubleType getBaubleType(ItemStack itemstack) {
+		// TODO 自動生成されたメソッド・スタブ
+		return BaubleType.BELT;
+	}
+	@Override
+	@Optional.Method(modid = "Baubles")
+	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
+		// TODO 自動生成されたメソッド・スタブ
+		if(player instanceof EntityPlayer)
+		{
+			EntityPlayer player2 = (EntityPlayer)player;
+			if(player2.inventory.hasItem(ARGetItemRegister("toolk2")))
+			{
+				NBTTagCompound nbttagcompound = itemstack.getTagCompound();
+				int mk2;
+				if(nbttagcompound == null)
+				{
+					nbttagcompound = new NBTTagCompound();
+					itemstack.setTagCompound(nbttagcompound);
+					mk2 = 0;
+				}
+				else
+				{
+					mk2 = nbttagcompound.getInteger("adr.mk2");
+				}
+				switch(mk2)
+				{
+					case 0:
+					{
+						if(!player2.isPotionActive(Potion.resistance.id))
+						{
+							player2.addPotionEffect(new PotionEffect(Potion.resistance.id,20*2,1));
+						}
+						break;
+					}
+					case 1:
+					{
+						if(!player2.isPotionActive(Potion.moveSpeed.id))
+						{
+							player2.addPotionEffect(new PotionEffect(Potion.moveSpeed.id,20*2,1));
+						}
+						break;
+					}
+					case 2:
+					{
+						if(player2.shouldHeal())
+						{
+							player2.heal(1.0f);
+						}
+						break;
+					}
+				}
+			}
+		}
+	}
+	@Override
+	@Optional.Method(modid = "Baubles")
+	public void onEquipped(ItemStack itemstack, EntityLivingBase player) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
+	@Override
+	@Optional.Method(modid = "Baubles")
+	public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
+	@Override
+	@Optional.Method(modid = "Baubles")
+	public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
+		// TODO 自動生成されたメソッド・スタブ
+		return false;
+	}
+	@Override
+	@Optional.Method(modid = "Baubles")
+	public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
+		// TODO 自動生成されたメソッド・スタブ
+		return false;
 	}
 }

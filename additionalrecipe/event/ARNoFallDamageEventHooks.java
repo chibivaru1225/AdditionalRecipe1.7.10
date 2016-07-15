@@ -1,11 +1,11 @@
 package chibivaru.additionalrecipe.event;
 
+import static chibivaru.additionalrecipe.AdditionalRecipe.*;
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
-import chibivaru.additionalrecipe.AdditionalRecipe;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class ARNoFallDamageEventHooks
@@ -28,27 +28,27 @@ public class ARNoFallDamageEventHooks
 			//飛行が許可されていないなら
 			if(!player.capabilities.allowFlying)
 			{
-				if(AdditionalRecipe.equipArmor(ARGetItemRegister("bedrockboots"), player, AdditionalRecipe.ARMOR_BOOTS))
+				if(equipArmor(ARGetItemRegister("bedrockboots"), player, ARMOR_BOOTS))
 				{
 					this.noFallDamage = true;
 				}
-				else if(AdditionalRecipe.equipArmor(ARGetItemRegister("angelusboots"), player, AdditionalRecipe.ARMOR_BOOTS))
+				else if(equipArmor(ARGetItemRegister("angelusboots"), player, ARMOR_BOOTS))
 				{
 					this.noFallDamage = true;
 				}
-				else if(AdditionalRecipe.hasItem(ARGetItemRegister("supergravitationfeather"), player))
+				else if(hasItem(ARGetItemRegister("gravitationfeather"), player)||(hasItem(ARGetItemRegister("supergravitationfeather"), player)))
 				{
 					this.noFallDamage = true;
 				}
-				else if((AdditionalRecipe.hasItem(ARGetItemRegister("exchangeiginiton"), player))||(AdditionalRecipe.hasItem(ARGetItemRegister("ultimateexchangeiginiton"), player)))
+				else if(hasItem(ARGetItemRegister("exchangeiginiton"), player)||(hasItem(ARGetItemRegister("ultimateexchangeiginiton"), player)))
 				{
 					this.noFallDamage = true;
 				}
-				else if(AdditionalRecipe.getBaubles(ARGetItemRegister("supergravitationfeather"), player))
+				else if(getBaubles(ARGetItemRegister("gravitationfeather"), player)||getBaubles(ARGetItemRegister("supergravitationfeather"), player))
 				{
 					this.noFallDamage = true;
 				}
-				else if((AdditionalRecipe.hasItem(ARGetItemRegister("exchangeiginiton"), player))||(AdditionalRecipe.hasItem(ARGetItemRegister("ultimateexchangeiginiton"), player)))
+				else if(getBaubles(ARGetItemRegister("exchangeiginiton"), player)||(getBaubles(ARGetItemRegister("ultimateexchangeiginiton"), player)))
 				{
 					this.noFallDamage = true;
 				}

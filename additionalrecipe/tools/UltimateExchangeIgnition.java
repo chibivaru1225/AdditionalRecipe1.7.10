@@ -14,7 +14,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
-import chibivaru.additionalrecipe.AdditionalRecipe;
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
@@ -84,21 +83,7 @@ public class UltimateExchangeIgnition extends Item implements IBauble
 	}
 	public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean held)
 	{
-		if(entity instanceof EntityPlayer)
-		{
-			EntityPlayer player = (EntityPlayer)entity;
-			if(player.inventory.hasItem(ARGetItemRegister("ultimateexchangeiginiton")))
-			{
-				if(ARGetAnother("UltimateExchangeIgnitionEffect",false))
-				{
-					player.addPotionEffect(new PotionEffect(Potion.damageBoost.id,20*30,75));
-					player.addPotionEffect(new PotionEffect(Potion.waterBreathing.id,20*30,75));
-					player.addPotionEffect(new PotionEffect(Potion.regeneration.id,20*30,75));
-					player.addPotionEffect(new PotionEffect(Potion.digSpeed.id,20*30,75));
-					player.addPotionEffect(new PotionEffect(Potion.nightVision.id,20*30));
-				}
-			}
-		}
+		totick(stack,(EntityPlayer) entity);
 	}
 
 	@Override
@@ -112,21 +97,7 @@ public class UltimateExchangeIgnition extends Item implements IBauble
 	@Optional.Method(modid = "Baubles")
 	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
 		// TODO 自動生成されたメソッド・スタブ
-		if(player instanceof EntityPlayer)
-		{
-			EntityPlayer player2 = (EntityPlayer)player;
-			if(AdditionalRecipe.getBaubles(ARGetItemRegister("ultimateexchangeiginiton"), player2))
-			{
-				if(ARGetAnother("UltimateExchangeIgnitionEffect",false))
-				{
-					player2.addPotionEffect(new PotionEffect(Potion.damageBoost.id,20*30,75));
-					player2.addPotionEffect(new PotionEffect(Potion.waterBreathing.id,20*30,75));
-					player2.addPotionEffect(new PotionEffect(Potion.regeneration.id,20*30,75));
-					player2.addPotionEffect(new PotionEffect(Potion.digSpeed.id,20*30,75));
-					player2.addPotionEffect(new PotionEffect(Potion.nightVision.id,20*30));
-				}
-			}
-		}
+		totick(itemstack,(EntityPlayer) player);
 	}
 
 	@Override
@@ -142,7 +113,6 @@ public class UltimateExchangeIgnition extends Item implements IBauble
 		// TODO 自動生成されたメソッド・スタブ
 
 	}
-
 	@Override
 	@Optional.Method(modid = "Baubles")
 	public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
@@ -155,5 +125,20 @@ public class UltimateExchangeIgnition extends Item implements IBauble
 	public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
 		// TODO 自動生成されたメソッド・スタブ
 		return true;
+	}
+	public static void totick(ItemStack stack, EntityPlayer player)
+	{
+		if(player instanceof EntityPlayer)
+		{
+			EntityPlayer player2 = (EntityPlayer)player;
+			if(ARGetAnother("UltimateExchangeIgnitionEffect",false))
+			{
+				player2.addPotionEffect(new PotionEffect(Potion.damageBoost.id,20*30,75));
+				player2.addPotionEffect(new PotionEffect(Potion.waterBreathing.id,20*30,75));
+				player2.addPotionEffect(new PotionEffect(Potion.regeneration.id,20*30,75));
+				player2.addPotionEffect(new PotionEffect(Potion.digSpeed.id,20*30,75));
+				player2.addPotionEffect(new PotionEffect(Potion.nightVision.id,20*30));
+			}
+		}
 	}
 }

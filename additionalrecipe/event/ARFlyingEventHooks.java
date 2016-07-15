@@ -37,8 +37,8 @@ public class ARFlyingEventHooks
 	//落下時ダメージ無効化処理。LivingFallEventが実装されたバージョンのみ
 	public void Flight(EntityPlayerSP player)
 	{
-		exchange = player.inventory.hasItem(ARGetItemRegister("exchangeiginiton"));
-		ultimate = player.inventory.hasItem(ARGetItemRegister("ultimateexchangeiginiton"));
+		exchange = hasItem(ARGetItemRegister("exchangeiginiton"),player)||getBaubles(ARGetItemRegister("exchangeiginiton"),player);
+		ultimate = hasItem(ARGetItemRegister("ultimateexchangeiginiton"),player)||getBaubles(ARGetItemRegister("ultimateexchangeiginiton"),player);
 		bedrock  = equipArmor(ARGetItemRegister("bedrockhelmet"),ARGetItemRegister("bedrockplate"),ARGetItemRegister("bedrocklegs"),ARGetItemRegister("bedrockboots"), player) && ARGetAnother("BedrockArmorFlying",false);
 		angelus  = equipArmor(ARGetItemRegister("angelushood"),ARGetItemRegister("angelusvestment"),ARGetItemRegister("angelusskirt"),ARGetItemRegister("angelusboots"), player,true);
 		angelus2 = equipArmor(ARGetItemRegister("angelushood"),ARGetItemRegister("angelusvestment"),ARGetItemRegister("angelusskirt"),ARGetItemRegister("angelusboots"), player);
