@@ -56,32 +56,39 @@ public class MultiK2 extends ItemSword implements IBauble
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer entityPlayer)
 	{
-		NBTTagCompound nbttagcompound = itemStack.getTagCompound();
-		int mk2;
-		if(nbttagcompound == null)
+		if(entityPlayer.isSneaking())
 		{
-			System.out.println();
-			nbttagcompound = new NBTTagCompound();
-			itemStack.setTagCompound(nbttagcompound);
-			mk2 = 0;
+			NBTTagCompound nbttagcompound = itemStack.getTagCompound();
+			int mk2;
+			if(nbttagcompound == null)
+			{
+				System.out.println();
+				nbttagcompound = new NBTTagCompound();
+				itemStack.setTagCompound(nbttagcompound);
+				mk2 = 0;
+			}
+			else
+			{
+				mk2 = nbttagcompound.getInteger("adr.mk2");
+			}
+			mk2 = mk2 + 1;
+			if(mk2 > 2)
+			{
+				mk2 = 0;
+			}
+			this.weaponDamage = dmg[mk2];
+			nbttagcompound.setInteger("adr.mk2",mk2);
+			if(!world.isRemote)
+			{
+				entityPlayer.addChatMessage(new ChatComponentTranslation(new StringBuilder().append(EnumChatFormatting.LIGHT_PURPLE).append("K2's Multi-Weapon : ").append(EnumChatFormatting.RED).append("Mode ").append(EnumChatFormatting.BLUE).append(str[mk2]).toString()));
+			}
+			entityPlayer.swingItem();
+			entityPlayer.worldObj.playSoundAtEntity(entityPlayer, "random.orb", 0.2F, 0.6F);
 		}
 		else
 		{
-			mk2 = nbttagcompound.getInteger("adr.mk2");
+			entityPlayer.setItemInUse(itemStack, itemStack.getMaxItemUseDuration());
 		}
-		mk2 = mk2 + 1;
-		if(mk2 > 2)
-		{
-			mk2 = 0;
-		}
-		this.weaponDamage = dmg[mk2];
-		nbttagcompound.setInteger("adr.mk2",mk2);
-		if(!world.isRemote)
-		{
-			entityPlayer.addChatMessage(new ChatComponentTranslation(new StringBuilder().append(EnumChatFormatting.LIGHT_PURPLE).append("K2's Multi-Weapon : ").append(EnumChatFormatting.RED).append("Mode ").append(EnumChatFormatting.BLUE).append(str[mk2]).toString()));
-		}
-		entityPlayer.swingItem();
-		entityPlayer.worldObj.playSoundAtEntity(entityPlayer, "random.orb", 0.2F, 0.6F);
 		return itemStack;
 	}
 	@Override
@@ -230,57 +237,56 @@ public class MultiK2 extends ItemSword implements IBauble
 	}
 	@Override
 	@Optional.Method(modid = "Baubles")
-	public BaubleType getBaubleType(ItemStack itemstack) {
+	public BaubleType getBaubleType(ItemStack itemstack)
+	{
 		// TODO 自動生成されたメソッド・スタブ
 		return BaubleType.BELT;
 	}
 	@Override
 	@Optional.Method(modid = "Baubles")
-	public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
+	public void onWornTick(ItemStack itemstack, EntityLivingBase player)
+	{
 		// TODO 自動生成されたメソッド・スタブ
 		if(player instanceof EntityPlayer)
 		{
 			EntityPlayer player2 = (EntityPlayer)player;
-			if(player2.inventory.hasItem(ARGetItemRegister("toolk2")))
+			NBTTagCompound nbttagcompound = itemstack.getTagCompound();
+			int mk2;
+			if(nbttagcompound == null)
 			{
-				NBTTagCompound nbttagcompound = itemstack.getTagCompound();
-				int mk2;
-				if(nbttagcompound == null)
+				nbttagcompound = new NBTTagCompound();
+				itemstack.setTagCompound(nbttagcompound);
+				mk2 = 0;
+			}
+			else
+			{
+				mk2 = nbttagcompound.getInteger("adr.mk2");
+			}
+			switch(mk2)
+			{
+				case 0:
 				{
-					nbttagcompound = new NBTTagCompound();
-					itemstack.setTagCompound(nbttagcompound);
-					mk2 = 0;
+					if(!player2.isPotionActive(Potion.resistance.id))
+					{
+						player2.addPotionEffect(new PotionEffect(Potion.resistance.id,20*2,1));
+					}
+					break;
 				}
-				else
+				case 1:
 				{
-					mk2 = nbttagcompound.getInteger("adr.mk2");
+					if(!player2.isPotionActive(Potion.moveSpeed.id))
+					{
+						player2.addPotionEffect(new PotionEffect(Potion.moveSpeed.id,20*2,1));
+					}
+					break;
 				}
-				switch(mk2)
+				case 2:
 				{
-					case 0:
+					if(player2.shouldHeal())
 					{
-						if(!player2.isPotionActive(Potion.resistance.id))
-						{
-							player2.addPotionEffect(new PotionEffect(Potion.resistance.id,20*2,1));
-						}
-						break;
+						player2.heal(1.0f);
 					}
-					case 1:
-					{
-						if(!player2.isPotionActive(Potion.moveSpeed.id))
-						{
-							player2.addPotionEffect(new PotionEffect(Potion.moveSpeed.id,20*2,1));
-						}
-						break;
-					}
-					case 2:
-					{
-						if(player2.shouldHeal())
-						{
-							player2.heal(1.0f);
-						}
-						break;
-					}
+					break;
 				}
 			}
 		}
@@ -301,12 +307,12 @@ public class MultiK2 extends ItemSword implements IBauble
 	@Optional.Method(modid = "Baubles")
 	public boolean canEquip(ItemStack itemstack, EntityLivingBase player) {
 		// TODO 自動生成されたメソッド・スタブ
-		return false;
+		return true;
 	}
 	@Override
 	@Optional.Method(modid = "Baubles")
 	public boolean canUnequip(ItemStack itemstack, EntityLivingBase player) {
 		// TODO 自動生成されたメソッド・スタブ
-		return false;
+		return true;
 	}
 }
