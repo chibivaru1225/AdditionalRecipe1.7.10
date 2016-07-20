@@ -52,7 +52,7 @@ public class AdditionalRecipe
 {
 	public static final String MODID   = "additionalrecipe";
 	public static final String MODNAME = "AdditionalRecipe";
-	public static final String VERSION = "0.01";
+	public static final String VERSION = "0.01-7";
 
 	public static final String CONSOLE = "[AdditionalRecipe]:";
 	public static final String ADDID = " added ID ";
