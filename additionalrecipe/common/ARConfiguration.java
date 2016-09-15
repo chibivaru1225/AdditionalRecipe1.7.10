@@ -37,7 +37,7 @@ public class ARConfiguration
 			ARSmelting.put("NetherBrick", ARSet("Smelting","NetherBrick",true,"Require StoneBrick"));
 			ARSmelting.put("Netherrack", ARSet("Smelting","Netherrack",false,"Require Dirt"));
 			ARSmelting.put("Leather", ARSet("Smelting","Leather",true,"Require RottenFlesh"));
-			ARSmelting.put("GlowStoneDust", ARSet("Smelting","GlowStoneDust",false,"Require RedstoneDust"));
+			ARSmelting.put("GlowStoneDust", ARSet("Smelting","GlowStoneDust",true,"Require RedstoneDust"));
 			ARSmelting.put("MinecartEmpty", ARSet("Smelting","MinecartEmpty",true));
 			ARSmelting.put("IronDoor", ARSet("Smelting","IronDoor",true));
 			ARSmelting.put("WoodDoor", ARSet("Smelting","WoodDoor",true));
@@ -58,6 +58,7 @@ public class ARConfiguration
 
 			ARCrafting.put("AppliedEnergistics2",ARSet("AnotherMod","AppliedEnergistics2",true));
 			ARCrafting.put("StorageDrawers",ARSet("AnotherMod","StorageDrawers",true));
+			ARCrafting.put("TinkersConstruct",ARSet("AnotherMod","TinkersConstruct",true));
 
 			ARAnother.put("ExpBottle",ARSet("OreDicitionary","ExpBottle",false));
 			ARAnother.put("BuildCraft_Spring",ARSet("Dig","BuildCraft_Spring",true));

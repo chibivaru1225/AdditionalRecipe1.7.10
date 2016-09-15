@@ -272,8 +272,36 @@ public class RecipeItems {
 		{
 			GameRegistry.addRecipe(
 				new ShapelessOreRecipe(
+					new ItemStack(Items.glowstone_dust,2),
+					new Object[]{"dustGold",Items.redstone}));
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
 					new ItemStack(Items.glowstone_dust,4),
-					new Object[]{"dustGold",Items.redstone,"dustGold",Items.redstone}));
+					new Object[]{"dustGold",Items.redstone,Items.redstone,"dustGold"}));
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					new ItemStack(Items.glowstone_dust,6),
+					new Object[]{"dustGold",Items.redstone,"dustGold",Items.redstone,"dustGold",Items.redstone}));
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					new ItemStack(Items.glowstone_dust,8),
+					new Object[]{"dustGold",Items.redstone,"dustGold",Items.redstone,"dustGold",Items.redstone,"dustGold",Items.redstone}));
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					new ItemStack(Items.glowstone_dust,4),
+					new Object[]{"dustElectrum",Items.redstone}));
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					new ItemStack(Items.glowstone_dust,8),
+					new Object[]{"dustElectrum",Items.redstone,Items.redstone,"dustElectrum"}));
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					new ItemStack(Items.glowstone_dust,12),
+					new Object[]{"dustElectrum",Items.redstone,"dustElectrum",Items.redstone,"dustElectrum",Items.redstone}));
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					new ItemStack(Items.glowstone_dust,16),
+					new Object[]{"dustElectrum",Items.redstone,"dustElectrum",Items.redstone,"dustElectrum",Items.redstone,"dustElectrum",Items.redstone}));
 		}
 		if(ARGetCrafting("Button",true))
 		{
@@ -292,6 +320,13 @@ public class RecipeItems {
 				new ShapelessOreRecipe(
 					new ItemStack(Items.clay_ball,4),
 					new Object[]{Blocks.clay}));
+		}
+		if(ARGetCrafting("Flint",true))
+		{
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					new ItemStack(Items.flint,1),
+					new Object[]{Blocks.gravel,Blocks.gravel,Blocks.gravel,Blocks.gravel}));
 		}
 	}
 }

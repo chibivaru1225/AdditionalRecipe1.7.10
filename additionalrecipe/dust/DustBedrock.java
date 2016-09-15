@@ -26,7 +26,6 @@ public class DustBedrock extends Item{
 		//アイテムをブロックに対して右クリックした時に呼ばれる
 		return false;
 	}
-
 	@Override
 	public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer player)
 	{

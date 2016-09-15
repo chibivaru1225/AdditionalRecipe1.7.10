@@ -247,6 +247,50 @@ public class RecipeAnotherMod {
 							Character.valueOf('Z'),Temp}));
 			}
 		}
+		if(ARGetCrafting("TinkersConstruct",true))
+		{
+			ItemStack Creative  = new ItemStack(GameRegistry.findItem("TConstruct","creativeModifier"),1,0);
+			ItemStack ExBush    = new ItemStack(GameRegistry.findItem("TConstruct","ore.berries.two"),1,9);
+			ItemStack YHeart    = new ItemStack(GameRegistry.findItem("TConstruct","heartCanister"),1,3);
+			ItemStack YCanister = new ItemStack(GameRegistry.findItem("TConstruct","heartCanister"),1,4);
+			ItemStack GHeart    = new ItemStack(GameRegistry.findItem("TConstruct","heartCanister"),1,5);
+			ItemStack GCanister = new ItemStack(GameRegistry.findItem("TConstruct","heartCanister"),1,6);
+			if(Creative != null)
+			{
+				GameRegistry.addRecipe(
+					new ShapedOreRecipe(
+						Creative,
+						new Object[]{" X ","XYX"," X ",
+							Character.valueOf('X'),Items.nether_star,
+							Character.valueOf('Y'),Blocks.diamond_block}));
+				GameRegistry.addRecipe(
+					new ShapedOreRecipe(
+						new ItemStack(Creative.getItem(),32,0),
+						new Object[]{"XXX","XYX","XXX",
+							Character.valueOf('X'),Items.ender_pearl,
+							Character.valueOf('Y'),Blocks.diamond_block}));
+			}
+			if(ExBush != null)
+			{
+				GameRegistry.addRecipe(
+					new ShapedOreRecipe(
+						ExBush,
+						new Object[]{"XXX","XYX","XXX",
+							Character.valueOf('X'),Items.experience_bottle,
+							Character.valueOf('Y'),Blocks.sapling}));
+			}
+			if(YCanister != null && YCanister != null && GHeart != null && GCanister != null)
+			{
+				GameRegistry.addRecipe(
+					new ShapelessOreRecipe(
+						GHeart,
+						new Object[]{YHeart,Items.ender_pearl}));
+				GameRegistry.addRecipe(
+					new ShapelessOreRecipe(
+						GCanister,
+						new Object[]{YCanister,GHeart,Blocks.diamond_block,Items.ender_pearl}));
+			}
+		}
 		/*
 		if(Loader.isModLoaded("Railcraft"))
 		{
