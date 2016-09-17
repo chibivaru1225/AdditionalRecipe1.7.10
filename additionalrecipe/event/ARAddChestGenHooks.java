@@ -1,6 +1,7 @@
 package chibivaru.additionalrecipe.event;
 
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
@@ -13,15 +14,22 @@ public class ARAddChestGenHooks {
 	public void AddChestItems()
 	{
 		//WeightRandomChestContent(ItemStack,MaxValue,MinValue,Rarity)
+		//mineshaft
 		mineshaft.addItem(new WeightedRandomChestContent(new ItemStack(ARGetItemRegister("exchangeiginiton")),1,1,1));
 		mineshaft.addItem(new WeightedRandomChestContent(new ItemStack(ARGetItemRegister("cheaperexchangeiginiton")),1,1,10));
 		mineshaft.addItem(new WeightedRandomChestContent(new ItemStack(ARGetItemRegister("ironmortar")),1,1,50));
+		
+		//stronghold
 		stronghold.addItem(new WeightedRandomChestContent(new ItemStack(ARGetItemRegister("exchangeiginiton")),1,1,1));
 		stronghold.addItem(new WeightedRandomChestContent(new ItemStack(ARGetItemRegister("cheaperexchangeiginiton")),1,1,10));
 		stronghold.addItem(new WeightedRandomChestContent(new ItemStack(ARGetItemRegister("diamondmortar")),1,1,50));
+		
+		//pyramid
 		pyramid.addItem(new WeightedRandomChestContent(new ItemStack(ARGetItemRegister("exchangeiginiton")),1,1,1));
 		pyramid.addItem(new WeightedRandomChestContent(new ItemStack(ARGetItemRegister("cheaperexchangeiginiton")),1,1,10));
 		pyramid.addItem(new WeightedRandomChestContent(new ItemStack(ARGetItemRegister("diamondmortar")),1,1,50));
+		
+		//dungeon
 		dungeon.addItem(new WeightedRandomChestContent(new ItemStack(ARGetItemRegister("exchangeiginiton")),1,1,1));
 		dungeon.addItem(new WeightedRandomChestContent(new ItemStack(ARGetItemRegister("cheaperexchangeiginiton")),1,1,10));
 		dungeon.addItem(new WeightedRandomChestContent(new ItemStack(ARGetItemRegister("ironmortar")),1,1,50));

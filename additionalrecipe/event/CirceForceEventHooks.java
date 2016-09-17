@@ -2,10 +2,11 @@ package chibivaru.additionalrecipe.event;
 
 import static chibivaru.additionalrecipe.AdditionalRecipe.*;
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
+
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class CirceForceEventHooks {
 	@SubscribeEvent//(1.6までは@ForgeSubscribe)
@@ -20,9 +21,8 @@ public class CirceForceEventHooks {
 	}
 	public void Circe(EntityPlayer par1player,EntityPlayerSP par2player)
 	{
-		boolean circeForce = hasItem(ARGetItemRegister("circeforce"), par1player);
-		boolean bauble     = getBaubles(ARGetItemRegister("circeforce"), par1player);
-		if(circeForce||bauble)
+		boolean circeForce = searchItem(ARGetItemRegister("circeforce"), par1player);
+		if(circeForce)
 		{
 			if(par1player.isInWater())
 			{

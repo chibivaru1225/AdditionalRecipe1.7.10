@@ -1,14 +1,15 @@
 package chibivaru.additionalrecipe.event;
 
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
+
+import chibivaru.additionalrecipe.AdditionalRecipe;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
-import chibivaru.additionalrecipe.AdditionalRecipe;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class WeaponsEventHooks {
 	@SubscribeEvent//(1.6までは@ForgeSubscribe)
@@ -23,8 +24,8 @@ public class WeaponsEventHooks {
 	}
 	public void Weapons(EntityPlayer player)
 	{
-		boolean spearDAYO = AdditionalRecipe.hasItem(ARGetItemRegister("dayo"), player);
-		boolean swordYORU = AdditionalRecipe.hasItem(ARGetItemRegister("yoru"), player);
+		boolean spearDAYO = AdditionalRecipe.searchItem(ARGetItemRegister("dayo"), player);
+		boolean swordYORU = AdditionalRecipe.searchItem(ARGetItemRegister("yoru"), player);
 		if(spearDAYO)
 		{
 			if(!(player.experienceLevel > 10))

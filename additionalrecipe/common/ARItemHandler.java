@@ -1,11 +1,11 @@
 package chibivaru.additionalrecipe.common;
 
 import static chibivaru.additionalrecipe.AdditionalRecipe.*;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.util.EnumChatFormatting;
+
 import chibivaru.additionalrecipe.armor.AngelusArmor;
 import chibivaru.additionalrecipe.armor.BedrockArmor;
+import chibivaru.additionalrecipe.armor.K2Armor;
+import chibivaru.additionalrecipe.baubles.CharmOfGuardian;
 import chibivaru.additionalrecipe.baubles.CirceForce;
 import chibivaru.additionalrecipe.baubles.GravitationFeather;
 import chibivaru.additionalrecipe.baubles.NightVisionTorch;
@@ -29,6 +29,9 @@ import chibivaru.additionalrecipe.weapons.SwordExelector;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.util.EnumChatFormatting;
 
 public class ARItemHandler
 {
@@ -48,6 +51,7 @@ public class ARItemHandler
 		ARNewItemRegister(new CirceForce(), "circeforce", ARTabs, "CirceForce");
 		ARNewItemRegister(new HandStamp(), "handstamp", ARTabs, "HandStamp");
 		ARNewItemRegister(new TearOfCompel(),"tearofcompel",ARTabs,"TearOfCompel");
+		ARNewItemRegister(new CharmOfGuardian(),"charmofguardian",ARTabs,"CharmOfGuardian");
 
 		ARNewItemRegister(new SwordExelector(WEAPON_POOR), "exelector", ARTabs, "Exelector",new StringBuilder().append(EnumChatFormatting.WHITE).append("Exelector").toString());
 		ARNewItemRegister(new BladeNIOH(WEAPON_PHANTASM), "nioh", ARTabs, "NIOH");
@@ -63,6 +67,10 @@ public class ARItemHandler
 		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_PLATE, ANGELUS), "angelusvestment", ARTabs, "AngelusVestment", "additionalrecipe:angelusvestment" ,ARMOR_PLATE);
 		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_LEGS, ANGELUS), "angelusskirt", ARTabs, "AngelusSkirt", "additionalrecipe:angelusskirt" ,ARMOR_LEGS);
 		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_BOOTS, ANGELUS), "angelusboots", ARTabs, "AngelusBoots", "additionalrecipe:angelusboots" ,ARMOR_BOOTS);
+		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_HELMET, K2), "k2hood", ARTabs, "K2Hood", "additionalrecipe:k2hood" ,ARMOR_HELMET);
+		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_PLATE, K2), "k2vestment", ARTabs, "K2Vestment", "additionalrecipe:k2vestment" ,ARMOR_PLATE);
+		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_LEGS, K2), "k2skirt", ARTabs, "K2Skirt", "additionalrecipe:k2skirt" ,ARMOR_LEGS);
+		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_BOOTS, K2), "k2boots", ARTabs, "K2Boots", "additionalrecipe:k2boots" ,ARMOR_BOOTS);
 
 		ARNewItemRegister(new DustNetherStar(), "dustnetherstar", ARTabs, "DustNetherStar");
 		ARNewItemRegister(new DustBedrock(), "dustbedrock", ARTabs, "DustBedrock");

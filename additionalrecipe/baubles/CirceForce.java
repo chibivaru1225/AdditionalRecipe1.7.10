@@ -1,6 +1,13 @@
 package chibivaru.additionalrecipe.baubles;
 
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
+
+import baubles.api.BaubleType;
+import baubles.api.IBauble;
+import chibivaru.additionalrecipe.AdditionalRecipe;
+import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
@@ -12,12 +19,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import baubles.api.BaubleType;
-import baubles.api.IBauble;
-import chibivaru.additionalrecipe.AdditionalRecipe;
-import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "baubles.api.IBauble", modid = "Baubles")
 public class CirceForce extends Item implements IBauble{
@@ -97,7 +98,7 @@ public class CirceForce extends Item implements IBauble{
 	{
 		if(player instanceof EntityPlayer)
 		{
-			if(AdditionalRecipe.getBaubles(ARGetItemRegister("circeforce"),(EntityPlayer)player))
+			if(AdditionalRecipe.hasBaubles(ARGetItemRegister("circeforce"),(EntityPlayer)player))
 			{
 				if(player.isInsideOfMaterial(Material.water))
 				{

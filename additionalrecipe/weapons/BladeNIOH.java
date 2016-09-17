@@ -1,11 +1,12 @@
 package chibivaru.additionalrecipe.weapons;
 
 import static chibivaru.additionalrecipe.common.ARConfiguration.*;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.item.ItemSword;
+
 import chibivaru.additionalrecipe.AdditionalRecipe;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.item.ItemSword;
 
 public class BladeNIOH extends ItemSword
 {
@@ -29,6 +30,6 @@ public class BladeNIOH extends ItemSword
 	@SideOnly(Side.CLIENT)
 	public void registerIcon(IIconRegister register)
 	{
-		this.itemIcon = register.registerIcon(AdditionalRecipe.MODID + ":" + this.getUnlocalizedName());
+		this.itemIcon = register.registerIcon(AdditionalRecipe.MODID + ":nioh");
 	}
 }

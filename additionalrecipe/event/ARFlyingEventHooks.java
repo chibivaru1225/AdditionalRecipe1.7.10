@@ -3,11 +3,12 @@ package chibivaru.additionalrecipe.event;
 import static chibivaru.additionalrecipe.AdditionalRecipe.*;
 import static chibivaru.additionalrecipe.common.ARConfiguration.*;
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
+
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class ARFlyingEventHooks
 {
@@ -37,8 +38,8 @@ public class ARFlyingEventHooks
 	//落下時ダメージ無効化処理。LivingFallEventが実装されたバージョンのみ
 	public void Flight(EntityPlayerSP player)
 	{
-		exchange = hasItem(ARGetItemRegister("exchangeiginiton"),player)||getBaubles(ARGetItemRegister("exchangeiginiton"),player);
-		ultimate = hasItem(ARGetItemRegister("ultimateexchangeiginiton"),player)||getBaubles(ARGetItemRegister("ultimateexchangeiginiton"),player);
+		exchange = searchItem(ARGetItemRegister("exchangeiginiton"),player);
+		ultimate = searchItem(ARGetItemRegister("ultimateexchangeiginiton"),player);
 		bedrock  = equipArmor(ARGetItemRegister("bedrockhelmet"),ARGetItemRegister("bedrockplate"),ARGetItemRegister("bedrocklegs"),ARGetItemRegister("bedrockboots"), player) && ARGetAnother("BedrockArmorFlying",false);
 		angelus  = equipArmor(ARGetItemRegister("angelushood"),ARGetItemRegister("angelusvestment"),ARGetItemRegister("angelusskirt"),ARGetItemRegister("angelusboots"), player,true);
 		angelus2 = equipArmor(ARGetItemRegister("angelushood"),ARGetItemRegister("angelusvestment"),ARGetItemRegister("angelusskirt"),ARGetItemRegister("angelusboots"), player);

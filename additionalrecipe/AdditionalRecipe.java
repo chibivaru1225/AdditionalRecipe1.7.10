@@ -5,6 +5,27 @@ import static chibivaru.additionalrecipe.common.ARItemHandler.*;
 
 import java.util.HashMap;
 
+import baubles.api.BaublesApi;
+import chibivaru.additionalrecipe.common.ARConfiguration;
+import chibivaru.additionalrecipe.common.ARCreativeTab;
+import chibivaru.additionalrecipe.common.ARModInfo;
+import chibivaru.additionalrecipe.event.ARAddChestGenHooks;
+import chibivaru.additionalrecipe.event.ARFlyingEventHooks;
+import chibivaru.additionalrecipe.event.ARNoFallDamageEventHooks;
+import chibivaru.additionalrecipe.event.AngelusArmorLivingEventHooks;
+import chibivaru.additionalrecipe.event.BedrockArmorLivingEventHooks;
+import chibivaru.additionalrecipe.event.CharmOfGuardianEventHooks;
+import chibivaru.additionalrecipe.event.CirceForceEventHooks;
+import chibivaru.additionalrecipe.event.K2ArmorLivingEventHooks;
+import chibivaru.additionalrecipe.event.TearOfCorpelEventHooks;
+import chibivaru.additionalrecipe.recipe.RecipeHandler;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.Metadata;
+import cpw.mods.fml.common.ModMetadata;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -15,25 +36,6 @@ import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
-import baubles.api.BaublesApi;
-import chibivaru.additionalrecipe.common.ARConfiguration;
-import chibivaru.additionalrecipe.common.ARCreativeTab;
-import chibivaru.additionalrecipe.common.ARModInfo;
-import chibivaru.additionalrecipe.event.ARAddChestGenHooks;
-import chibivaru.additionalrecipe.event.ARFlyingEventHooks;
-import chibivaru.additionalrecipe.event.ARNoFallDamageEventHooks;
-import chibivaru.additionalrecipe.event.AngelusArmorLivingEventHooks;
-import chibivaru.additionalrecipe.event.BedrockArmorLivingEventHooks;
-import chibivaru.additionalrecipe.event.CirceForceEventHooks;
-import chibivaru.additionalrecipe.event.TearOfCorpelEventHooks;
-import chibivaru.additionalrecipe.recipe.RecipeHandler;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.Metadata;
-import cpw.mods.fml.common.ModMetadata;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(
 		modid        = AdditionalRecipe.MODID,
@@ -70,7 +72,7 @@ public class AdditionalRecipe
 	public static int craftingDifficulty;
 	public static RecipeHandler recipehandler;
 	public static ARAddChestGenHooks addchestgenhooks;
-	public static ArmorMaterial ARMOR_BEDROCK,ARMOR_PRIDE,ARMOR_WRATH,ARMOR_ENVY,ARMOR_SLOTH,ARMOR_AVARICE,ARMOR_GLUTTONY,ARMOR_LUST,ARMOR_ANGELUS;
+	public static ArmorMaterial ARMOR_BEDROCK,ARMOR_PRIDE,ARMOR_WRATH,ARMOR_ENVY,ARMOR_SLOTH,ARMOR_AVARICE,ARMOR_GLUTTONY,ARMOR_LUST,ARMOR_ANGELUS,ARMOR_K2;
 	public static ToolMaterial WEAPON_ULTIMATE,WEAPON_BASIC,WEAPON_POOR,WEAPON_PHANTASM;
 	public static String BEDROCK          = "bedrock";
 	public static String PRIDE            = "pride";
@@ -81,6 +83,7 @@ public class AdditionalRecipe
 	public static String GLUTTONY         = "gluttony";
 	public static String LUST             = "lust";
 	public static String ANGELUS          = "angelus";
+	public static String K2               = "k2";
 	public static final int ARMOR_DEFAULT = 0;
 	public static final int ARMOR_HELMET  = 0;
 	public static final int ARMOR_PLATE   = 1;
@@ -102,6 +105,7 @@ public class AdditionalRecipe
 		ARMOR_GLUTTONY = EnumHelper.addArmorMaterial("GLUTTONY", 1, new int[] {15,15,15,15},30);
 		ARMOR_LUST     = EnumHelper.addArmorMaterial("LUST"    , 1, new int[] {15,15,15,15},30);
 		ARMOR_ANGELUS  = EnumHelper.addArmorMaterial("ANGELUS" , 1, new int[] {20,20,20,20},40);
+		ARMOR_K2       = EnumHelper.addArmorMaterial("K2"      , 1, new int[] {40,40,40,40},40);
 
 		WEAPON_POOR     = EnumHelper.addToolMaterial("POOR"     , 2, 1, 6.0f, 0,  100);
 		WEAPON_BASIC    = EnumHelper.addToolMaterial("BASIC"    , 3, 1, 6.0f, 5,  100);
@@ -131,6 +135,8 @@ public class AdditionalRecipe
 		MinecraftForge.EVENT_BUS.register(new AngelusArmorLivingEventHooks());
 		MinecraftForge.EVENT_BUS.register(new CirceForceEventHooks());
 		MinecraftForge.EVENT_BUS.register(new TearOfCorpelEventHooks());
+		MinecraftForge.EVENT_BUS.register(new K2ArmorLivingEventHooks());
+		MinecraftForge.EVENT_BUS.register(new CharmOfGuardianEventHooks());
 		//MinecraftForge.EVENT_BUS.register(new ReplaceBlock());
 		//MinecraftForge.EVENT_BUS.register(new WeaponsEventHooks());
 
@@ -211,7 +217,7 @@ public class AdditionalRecipe
 			return false;
 		}
 	}
-	public static boolean getBaubles(Item par1Item,EntityPlayer player)
+	public static boolean hasBaubles(Item par1Item,EntityPlayer player)
 	{
 		if(Loader.isModLoaded("Baubles"))
 		{
@@ -237,5 +243,9 @@ public class AdditionalRecipe
 	public static boolean hasItem(Item item,EntityPlayer player)
 	{
 		return player.inventory.hasItem(item);
+	}
+	public static boolean searchItem(Item item,EntityPlayer player)
+	{
+		return hasBaubles(item,player)||hasItem(item,player);
 	}
 }

@@ -29,7 +29,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 
-public class AngelusArmorLivingEventHooks
+public class K2ArmorLivingEventHooks
 {
 	private char timer = 0;
 	public boolean timer(boolean mode)
@@ -71,16 +71,16 @@ public class AngelusArmorLivingEventHooks
 		if(livingBase != null && (livingBase instanceof EntityPlayer))
 		{
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			Angelus(player);
+			K2(player);
 			timer(true);
 		}
 	}
-	private void Angelus(EntityPlayer player)
+	private void K2(EntityPlayer player)
 	{
-		boolean isHelmet = equipArmor(ARGetItemRegister("angelushood"), player, ARMOR_HELMET);
-		boolean isPlate  = equipArmor(ARGetItemRegister("angelusvestment"), player, ARMOR_PLATE);
-		boolean isLegs   = equipArmor(ARGetItemRegister("angelusskirt"), player, ARMOR_LEGS);
-		boolean isBoots  = equipArmor(ARGetItemRegister("angelusboots"), player, ARMOR_BOOTS);
+		boolean isHelmet = equipArmor(ARGetItemRegister("k2hood"), player, ARMOR_HELMET);
+		boolean isPlate  = equipArmor(ARGetItemRegister("k2vestment"), player, ARMOR_PLATE);
+		boolean isLegs   = equipArmor(ARGetItemRegister("k2skirt"), player, ARMOR_LEGS);
+		boolean isBoots  = equipArmor(ARGetItemRegister("k2boots"), player, ARMOR_BOOTS);
 		if(isHelmet)
 		{
 			if(player.isInsideOfMaterial(Material.water))
@@ -113,7 +113,7 @@ public class AngelusArmorLivingEventHooks
 		}
 		if(isLegs)
 		{
-			double width = player.experienceLevel / 2;
+			double width = player.experienceLevel;
 			List list = player.worldObj.getEntitiesWithinAABBExcludingEntity(player, player.boundingBox.expand(width, 1.5D, width));
 			Entity entity = null;
 			if(list != null && list.size() > 0)
@@ -159,7 +159,7 @@ public class AngelusArmorLivingEventHooks
 	{
 		EntityPlayer player = ((PlayerEvent)(event)).entityPlayer;
 		Entity entity       = event.target;
-		boolean isHelmet    = equipArmor(ARGetItemRegister("angelushood"), player, ARMOR_HELMET);
+		boolean isHelmet    = equipArmor(ARGetItemRegister("k2hood"), player, ARMOR_HELMET);
 		if(isHelmet && (entity instanceof EntityLivingBase))
 		{
 			EntityLivingBase target = (EntityLivingBase)entity;
@@ -178,7 +178,7 @@ public class AngelusArmorLivingEventHooks
 			if(entity instanceof EntityPlayer)
 			{
 				EntityPlayer player = (EntityPlayer)entity;
-				boolean isHelmet    = equipArmor(ARGetItemRegister("angelushood"), player, ARMOR_HELMET);
+				boolean isHelmet    = equipArmor(ARGetItemRegister("k2hood"), player, ARMOR_HELMET);
 				if(isHelmet)
 				{
 					Iterator i$ = event.drops.iterator();
@@ -192,7 +192,7 @@ public class AngelusArmorLivingEventHooks
 						ItemStack resultStack = input.getEntityItem();
 						if(1 < resultStack.stackSize)
 						{
-							EntityItem dropItem = new EntityItem(world, ((Entity) (target)).posX, ((Entity) (target)).posY, ((Entity) (target)).posZ, new ItemStack(resultStack.getItem(), player.experienceLevel/2, resultStack.getItemDamage()));
+							EntityItem dropItem = new EntityItem(world, ((Entity) (target)).posX, ((Entity) (target)).posY, ((Entity) (target)).posZ, new ItemStack(resultStack.getItem(), player.experienceLevel, resultStack.getItemDamage()));
 							if(!world.isRemote)
 							{
 								world.spawnEntityInWorld(dropItem);
@@ -214,14 +214,10 @@ public class AngelusArmorLivingEventHooks
 		if(livingBase instanceof EntityPlayer)
 		{
 			EntityPlayer player = (EntityPlayer)livingBase;
-			boolean isPlate     = equipArmor(ARGetItemRegister("angelusvestment"), player, ARMOR_PLATE);
+			boolean isPlate     = equipArmor(ARGetItemRegister("k2vestment"), player, ARMOR_PLATE);
 			if(isPlate && source != DamageSource.starve)
 			{
-				float damageResistant = damageAmount * (float)(player.experienceLevel);
-				if(damageAmount < damageResistant)
-				{
 					event.setCanceled(true);
-				}
 			}
 		}
 	}
@@ -234,10 +230,10 @@ public class AngelusArmorLivingEventHooks
 		if(livingBase instanceof EntityPlayer)
 		{
 			EntityPlayer player = (EntityPlayer)livingBase;
-			boolean isPlate     = equipArmor(ARGetItemRegister("angelusvestment"), player, ARMOR_PLATE);
+			boolean isPlate     = equipArmor(ARGetItemRegister("k2vestment"), player, ARMOR_PLATE);
 			if(isPlate && source != DamageSource.starve)
 			{
-				float damageResistant = damageAmount * (float)(player.experienceLevel) / 2;
+				float damageResistant = damageAmount * (float)(player.experienceLevel);
 				event.ammount = damageAmount - damageResistant;
 			}
 		}
@@ -252,11 +248,11 @@ public class AngelusArmorLivingEventHooks
 		if(livingBase instanceof EntityPlayer)
 		{
 			EntityPlayer player = (EntityPlayer)livingBase;
-			boolean isLegs = equipArmor(ARGetItemRegister("angelusskirt"), player, ARMOR_LEGS);
+			boolean isLegs = equipArmor(ARGetItemRegister("k2skirt"), player, ARMOR_LEGS);
 			if(isLegs && (source.getEntity() instanceof EntityLivingBase))
 			{
-				float reflectDamage = damageAmount * (float)(player.experienceLevel / 5);
-				double width = player.experienceLevel / 2;
+				float reflectDamage = damageAmount * (float)(player.experienceLevel);
+				double width = player.experienceLevel;
 				if(player == (EntityPlayer)source.getEntity())
 				{
 					return;

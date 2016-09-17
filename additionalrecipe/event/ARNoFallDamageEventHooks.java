@@ -2,11 +2,12 @@ package chibivaru.additionalrecipe.event;
 
 import static chibivaru.additionalrecipe.AdditionalRecipe.*;
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
+
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class ARNoFallDamageEventHooks
 {
@@ -36,19 +37,19 @@ public class ARNoFallDamageEventHooks
 				{
 					this.noFallDamage = true;
 				}
-				else if(hasItem(ARGetItemRegister("gravitationfeather"), player)||(hasItem(ARGetItemRegister("supergravitationfeather"), player)))
+				else if(equipArmor(ARGetItemRegister("k2boots"), player, ARMOR_BOOTS))
 				{
 					this.noFallDamage = true;
 				}
-				else if(hasItem(ARGetItemRegister("exchangeiginiton"), player)||(hasItem(ARGetItemRegister("ultimateexchangeiginiton"), player)))
+				else if(searchItem(ARGetItemRegister("gravitationfeather"), player)||(searchItem(ARGetItemRegister("supergravitationfeather"), player)))
 				{
 					this.noFallDamage = true;
 				}
-				else if(getBaubles(ARGetItemRegister("gravitationfeather"), player)||getBaubles(ARGetItemRegister("supergravitationfeather"), player))
+				else if(searchItem(ARGetItemRegister("exchangeiginiton"), player)||(searchItem(ARGetItemRegister("ultimateexchangeiginiton"), player)))
 				{
 					this.noFallDamage = true;
 				}
-				else if(getBaubles(ARGetItemRegister("exchangeiginiton"), player)||(getBaubles(ARGetItemRegister("ultimateexchangeiginiton"), player)))
+				else if(searchItem(ARGetItemRegister("charmofguardian"), player))
 				{
 					this.noFallDamage = true;
 				}

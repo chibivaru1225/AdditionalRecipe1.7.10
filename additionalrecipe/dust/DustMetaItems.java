@@ -2,6 +2,8 @@ package chibivaru.additionalrecipe.dust;
 
 import java.util.List;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -9,15 +11,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class DustMetaItems extends Item
 {
-	String[]  names   = {"DustBedrock","DustExchangeIgnition","DustNetherStar","DustCheaperExchangeIgnition"};
-	IIcon[]   icons   = {Items.gunpowder.getIconFromDamage(0),Items.sugar.getIconFromDamage(0),Items.sugar.getIconFromDamage(0),Items.gunpowder.getIconFromDamage(0)};
-	boolean[] effects = {true,true,true,true};
-	int[]     colors  = {0x777777,0xAAAAAA,0x777777,0xAAAAAA};
+	String[]  names   = {"DustBedrock","DustExchangeIgnition","DustNetherStar","DustCheaperExchangeIgnition","DustUltimanteExchangeIgnition"};
+	IIcon[]   icons   = {Items.gunpowder.getIconFromDamage(0),Items.sugar.getIconFromDamage(0),Items.sugar.getIconFromDamage(0),Items.gunpowder.getIconFromDamage(0),Items.gunpowder.getIconFromDamage(0)};
+	boolean[] effects = {true,true,true,true,true};
+	int[]     colors  = {0x777777,0xAAAAAA,0x777777,0xAAAAAA,0x999999};
 	int       metas   = names.length;
 	public DustMetaItems()
 	{
