@@ -2,13 +2,14 @@ package chibivaru.additionalrecipe.recipe;
 
 import static chibivaru.additionalrecipe.common.ARConfiguration.*;
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
+
+import chibivaru.additionalrecipe.common.ARLogger;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import chibivaru.additionalrecipe.common.ARLogger;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RecipeARItems {
 	public void init()
@@ -563,6 +564,13 @@ public class RecipeARItems {
 					//System.out.println(AdditionalRecipe.CONSOLE + "K2's Multi-Weapon" + RecipeHandler.RECIPE + RecipeHandler.NOTADDED);
 				}
 			}
+		}
+		if(ARGetCrafting("Charm Of Guardian",true))
+		{
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					ARGetItemRegister("charmofguardian"),
+					new Object[]{ARGetItemRegister("k2helmet"),ARGetItemRegister("k2plate"),ARGetItemRegister("k2legs"),ARGetItemRegister("k2boots")}));
 		}
 	}
 }

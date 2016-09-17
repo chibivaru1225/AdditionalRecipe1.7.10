@@ -13,6 +13,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
@@ -41,7 +42,7 @@ public class CharmOfGuardianEventHooks
 				timer++;
 				return true;
 			}
-			else if(timer == 10)
+			else if(timer == 5)
 			{
 				timer = 0;
 				return false;
@@ -62,6 +63,21 @@ public class CharmOfGuardianEventHooks
 			{
 				return false;
 			}
+		}
+	}
+	private int getlevel(EntityPlayer player)
+	{
+		return player.experienceLevel;
+	}
+	private int getlevel(EntityPlayer player,boolean mode,int defaultlevel)
+	{
+		if((mode)&&(getlevel(player) > defaultlevel))
+		{
+			return defaultlevel;
+		}
+		else
+		{
+			return getlevel(player);
 		}
 	}
 	@SubscribeEvent//(1.6までは@ForgeSubscribe)
@@ -86,7 +102,7 @@ public class CharmOfGuardianEventHooks
 			}
 			if(timer(false))
 			{
-				player.getFoodStats().addStats(1,0F);
+				player.getFoodStats().addStats(1,0.5F);
 			}
 			for(int i = 0; i < Potion.potionTypes.length; i++)
 			{
@@ -104,7 +120,7 @@ public class CharmOfGuardianEventHooks
 				((Entity) (player)).worldObj.playSoundAtEntity(player, "random.pop", 1.0F, 1.0F);
 				player.heal(1.0F);
 			}
-			List list = player.worldObj.getEntitiesWithinAABBExcludingEntity(player, player.boundingBox.expand(player.experienceLevel * player.experienceLevel, 1.5D, player.experienceLevel * player.experienceLevel));
+			List list = player.worldObj.getEntitiesWithinAABBExcludingEntity(player, player.boundingBox.expand(getlevel(player,true,6) * getlevel(player,true,6), 1.5D, getlevel(player,true,6) * getlevel(player,true,6)));
 			Entity entity = null;
 			if(list != null && list.size() > 0)
 			{
@@ -121,24 +137,6 @@ public class CharmOfGuardianEventHooks
 					target.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 20, 9));
 				}
 			}
-			double dashAmount = 1.0D;
-			if(player.onGround)
-			{
-				if(player.isInWater())
-				{
-					dashAmount = 1.1799999999999999D;
-				}
-				if(player.isSprinting())
-				{
-					dashAmount = 1.7999999523162842D;
-					if(player.isInWater())
-					{
-						dashAmount = 1.3999999999999999D;
-					}
-				}
-			}
-			player.motionX *= dashAmount;
-			player.motionZ *= dashAmount;
 		}
 	}
 	@SubscribeEvent
@@ -179,7 +177,7 @@ public class CharmOfGuardianEventHooks
 						ItemStack resultStack = input.getEntityItem();
 						if(1 < resultStack.stackSize)
 						{
-							EntityItem dropItem = new EntityItem(world, ((Entity) (target)).posX, ((Entity) (target)).posY, ((Entity) (target)).posZ, new ItemStack(resultStack.getItem(), player.experienceLevel * player.experienceLevel, resultStack.getItemDamage()));
+							EntityItem dropItem = new EntityItem(world, ((Entity) (target)).posX, ((Entity) (target)).posY, ((Entity) (target)).posZ, new ItemStack(resultStack.getItem(), resultStack.stackSize * getlevel(player,true,8) * getlevel(player,true,8), resultStack.getItemDamage()));
 							if(!world.isRemote)
 							{
 								world.spawnEntityInWorld(dropItem);
@@ -187,11 +185,16 @@ public class CharmOfGuardianEventHooks
 						}
 					}
 					while(true);
+					if(!world.isRemote)
+					{
+						world.spawnEntityInWorld(new EntityXPOrb(world, ((Entity) (target)).posX, ((Entity) (target)).posY, ((Entity) (target)).posZ, player.experienceLevel * player.experienceLevel));
+					}
 					world.playSoundAtEntity(target, "random.pop", 0.5F, 1.0F);
 				}
 			}
 		}
 	}
+	/*
 	@SubscribeEvent
 	public void onAttackedEvent(LivingAttackEvent event)
 	{
@@ -207,6 +210,7 @@ public class CharmOfGuardianEventHooks
 			}
 		}
 	}
+	*/
 	@SubscribeEvent
 	public void onLivingHurt(LivingHurtEvent event)
 	{
@@ -233,11 +237,15 @@ public class CharmOfGuardianEventHooks
 		{
 			EntityPlayer player = (EntityPlayer)livingBase;
 			boolean guardian     = searchItem(ARGetItemRegister("charmofguardian"), player);
+			if(guardian && source != DamageSource.starve)
+			{
+					event.setCanceled(true);
+			}
 			if(guardian && (source.getEntity() instanceof EntityLivingBase))
 			{
 				float reflectDamage = damageAmount * damageAmount;
-				double width = player.experienceLevel * player.experienceLevel;
-				if(player == (EntityPlayer)source.getEntity())
+				double width = getlevel(player,true,6) * getlevel(player,true,6);
+				if(player == source.getEntity())
 				{
 					return;
 				}

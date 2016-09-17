@@ -67,9 +67,9 @@ public class ARItemHandler
 		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_PLATE, ANGELUS), "angelusvestment", ARTabs, "AngelusVestment", "additionalrecipe:angelusvestment" ,ARMOR_PLATE);
 		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_LEGS, ANGELUS), "angelusskirt", ARTabs, "AngelusSkirt", "additionalrecipe:angelusskirt" ,ARMOR_LEGS);
 		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_BOOTS, ANGELUS), "angelusboots", ARTabs, "AngelusBoots", "additionalrecipe:angelusboots" ,ARMOR_BOOTS);
-		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_HELMET, K2), "k2hood", ARTabs, "K2Hood", "additionalrecipe:k2hood" ,ARMOR_HELMET);
-		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_PLATE, K2), "k2vestment", ARTabs, "K2Vestment", "additionalrecipe:k2vestment" ,ARMOR_PLATE);
-		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_LEGS, K2), "k2skirt", ARTabs, "K2Skirt", "additionalrecipe:k2skirt" ,ARMOR_LEGS);
+		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_HELMET, K2), "k2helmet", ARTabs, "K2Helmet", "additionalrecipe:k2helmet" ,ARMOR_HELMET);
+		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_PLATE, K2), "k2plate", ARTabs, "K2ChestPlate", "additionalrecipe:k2plate" ,ARMOR_PLATE);
+		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_LEGS, K2), "k2legs", ARTabs, "K2Leggings", "additionalrecipe:k2legs" ,ARMOR_LEGS);
 		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_BOOTS, K2), "k2boots", ARTabs, "K2Boots", "additionalrecipe:k2boots" ,ARMOR_BOOTS);
 
 		ARNewItemRegister(new DustNetherStar(), "dustnetherstar", ARTabs, "DustNetherStar");

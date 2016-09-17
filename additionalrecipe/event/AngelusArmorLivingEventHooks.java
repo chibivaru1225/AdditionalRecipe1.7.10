@@ -13,6 +13,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
@@ -62,6 +63,21 @@ public class AngelusArmorLivingEventHooks
 			{
 				return false;
 			}
+		}
+	}
+	private int getlevel(EntityPlayer player)
+	{
+		return player.experienceLevel;
+	}
+	private int getlevel(EntityPlayer player,boolean mode,int defaultlevel)
+	{
+		if((mode)&&(getlevel(player) > defaultlevel))
+		{
+			return defaultlevel;
+		}
+		else
+		{
+			return getlevel(player);
 		}
 	}
 	@SubscribeEvent//(1.6までは@ForgeSubscribe)
@@ -192,7 +208,7 @@ public class AngelusArmorLivingEventHooks
 						ItemStack resultStack = input.getEntityItem();
 						if(1 < resultStack.stackSize)
 						{
-							EntityItem dropItem = new EntityItem(world, ((Entity) (target)).posX, ((Entity) (target)).posY, ((Entity) (target)).posZ, new ItemStack(resultStack.getItem(), player.experienceLevel/2, resultStack.getItemDamage()));
+							EntityItem dropItem = new EntityItem(world, ((Entity) (target)).posX, ((Entity) (target)).posY, ((Entity) (target)).posZ, new ItemStack(resultStack.getItem(), player.experienceLevel / 2, resultStack.getItemDamage()));
 							if(!world.isRemote)
 							{
 								world.spawnEntityInWorld(dropItem);
@@ -200,6 +216,10 @@ public class AngelusArmorLivingEventHooks
 						}
 					}
 					while(true);
+					if(!world.isRemote)
+					{
+						world.spawnEntityInWorld(new EntityXPOrb(world, ((Entity) (target)).posX, ((Entity) (target)).posY, ((Entity) (target)).posZ, player.experienceLevel / 5));
+					}
 					world.playSoundAtEntity(target, "random.pop", 0.5F, 1.0F);
 				}
 			}
@@ -257,7 +277,7 @@ public class AngelusArmorLivingEventHooks
 			{
 				float reflectDamage = damageAmount * (float)(player.experienceLevel / 5);
 				double width = player.experienceLevel / 2;
-				if(player == (EntityPlayer)source.getEntity())
+				if(player == source.getEntity())
 				{
 					return;
 				}

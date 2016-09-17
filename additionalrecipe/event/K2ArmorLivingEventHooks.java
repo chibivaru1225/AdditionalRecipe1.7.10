@@ -13,6 +13,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
@@ -64,6 +65,21 @@ public class K2ArmorLivingEventHooks
 			}
 		}
 	}
+	private int getlevel(EntityPlayer player)
+	{
+		return player.experienceLevel;
+	}
+	private int getlevel(EntityPlayer player,boolean mode,int defaultlevel)
+	{
+		if((mode)&&(getlevel(player) > defaultlevel))
+		{
+			return defaultlevel;
+		}
+		else
+		{
+			return getlevel(player);
+		}
+	}
 	@SubscribeEvent//(1.6までは@ForgeSubscribe)
 	public void LivingUpdate(LivingUpdateEvent event)
 	{
@@ -113,7 +129,7 @@ public class K2ArmorLivingEventHooks
 		}
 		if(isLegs)
 		{
-			double width = player.experienceLevel;
+			double width = getlevel(player,true,25);
 			List list = player.worldObj.getEntitiesWithinAABBExcludingEntity(player, player.boundingBox.expand(width, 1.5D, width));
 			Entity entity = null;
 			if(list != null && list.size() > 0)
@@ -192,7 +208,7 @@ public class K2ArmorLivingEventHooks
 						ItemStack resultStack = input.getEntityItem();
 						if(1 < resultStack.stackSize)
 						{
-							EntityItem dropItem = new EntityItem(world, ((Entity) (target)).posX, ((Entity) (target)).posY, ((Entity) (target)).posZ, new ItemStack(resultStack.getItem(), player.experienceLevel, resultStack.getItemDamage()));
+							EntityItem dropItem = new EntityItem(world, ((Entity) (target)).posX, ((Entity) (target)).posY, ((Entity) (target)).posZ, new ItemStack(resultStack.getItem(), getlevel(player,true,25), resultStack.getItemDamage()));
 							if(!world.isRemote)
 							{
 								world.spawnEntityInWorld(dropItem);
@@ -200,11 +216,16 @@ public class K2ArmorLivingEventHooks
 						}
 					}
 					while(true);
+					if(!world.isRemote)
+					{
+						world.spawnEntityInWorld(new EntityXPOrb(world, ((Entity) (target)).posX, ((Entity) (target)).posY, ((Entity) (target)).posZ, player.experienceLevel));
+					}
 					world.playSoundAtEntity(target, "random.pop", 0.5F, 1.0F);
 				}
 			}
 		}
 	}
+	/*
 	@SubscribeEvent
 	public void onPlateAttackedEvent(LivingAttackEvent event)
 	{
@@ -221,6 +242,7 @@ public class K2ArmorLivingEventHooks
 			}
 		}
 	}
+	*/
 	@SubscribeEvent
 	public void onPlateLivingHurt(LivingHurtEvent event)
 	{
@@ -248,12 +270,22 @@ public class K2ArmorLivingEventHooks
 		if(livingBase instanceof EntityPlayer)
 		{
 			EntityPlayer player = (EntityPlayer)livingBase;
-			boolean isLegs = equipArmor(ARGetItemRegister("k2skirt"), player, ARMOR_LEGS);
+			boolean isPlate     = equipArmor(ARGetItemRegister("k2vestment"), player, ARMOR_PLATE);
+			if(isPlate && source != DamageSource.starve)
+			{
+					event.setCanceled(true);
+			}
+		}
+		if(livingBase instanceof EntityPlayer)
+		{
+			EntityPlayer player = (EntityPlayer)livingBase;
+			boolean isPlate = equipArmor(ARGetItemRegister("k2vestment"), player, ARMOR_PLATE);
+			boolean isLegs  = equipArmor(ARGetItemRegister("k2skirt"), player, ARMOR_LEGS);
 			if(isLegs && (source.getEntity() instanceof EntityLivingBase))
 			{
 				float reflectDamage = damageAmount * (float)(player.experienceLevel);
-				double width = player.experienceLevel;
-				if(player == (EntityPlayer)source.getEntity())
+				double width = getlevel(player,true,25);
+				if(player == source.getEntity())
 				{
 					return;
 				}
@@ -286,6 +318,10 @@ public class K2ArmorLivingEventHooks
 					otherMob.setTarget(mob);
 				}
 				world.playSoundAtEntity(player, "random.anvil_land", 1.0F, 1.0F);
+			}
+			if(isPlate && source != DamageSource.starve)
+			{
+				event.setCanceled(true);
 			}
 		}
 	}
