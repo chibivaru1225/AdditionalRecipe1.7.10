@@ -564,13 +564,58 @@ public class RecipeARItems {
 					//System.out.println(AdditionalRecipe.CONSOLE + "K2's Multi-Weapon" + RecipeHandler.RECIPE + RecipeHandler.NOTADDED);
 				}
 			}
-		}
-		if(ARGetCrafting("Charm Of Guardian",true))
-		{
-			GameRegistry.addRecipe(
-				new ShapelessOreRecipe(
-					ARGetItemRegister("charmofguardian"),
-					new Object[]{ARGetItemRegister("k2helmet"),ARGetItemRegister("k2plate"),ARGetItemRegister("k2legs"),ARGetItemRegister("k2boots")}));
+			if(ARGetCrafting("K2Armor",true))
+			{
+				GameRegistry.addRecipe(
+					new ShapelessOreRecipe(
+						ARGetItemRegister("k2hood"),
+						new Object[]{ARGetItemRegister("angelushood")}));
+				GameRegistry.addRecipe(
+					new ShapelessOreRecipe(
+						ARGetItemRegister("k2vestment"),
+						new Object[]{ARGetItemRegister("angelusvestment")}));
+				GameRegistry.addRecipe(
+					new ShapelessOreRecipe(
+						ARGetItemRegister("k2skirt"),
+						new Object[]{ARGetItemRegister("angelusskirt")}));
+				GameRegistry.addRecipe(
+					new ShapelessOreRecipe(
+						ARGetItemRegister("k2boots"),
+						new Object[]{ARGetItemRegister("angelusboots")}));
+				if(ARGetAnother("ConsoleOut",true))
+				{
+					ARLogger.logger.info("K2Armor" + RecipeHandler.RECIPE + RecipeHandler.ADDED);
+					//System.out.println(AdditionalRecipe.CONSOLE + "K2's Multi-Weapon" + RecipeHandler.RECIPE + RecipeHandler.ADDED);
+				}
+			}
+			else
+			{
+				if(ARGetAnother("ConsoleOut",true))
+				{
+					ARLogger.logger.info("K2Armor" + RecipeHandler.RECIPE + RecipeHandler.NOTADDED);
+					//System.out.println(AdditionalRecipe.CONSOLE + "K2's Multi-Weapon" + RecipeHandler.RECIPE + RecipeHandler.NOTADDED);
+				}
+			}
+			if(ARGetCrafting("Charm Of Guardian",true))
+			{
+				GameRegistry.addRecipe(
+					new ShapelessOreRecipe(
+						ARGetItemRegister("charmofguardian"),
+						new Object[]{ARGetItemRegister("k2helmet"),ARGetItemRegister("k2plate"),ARGetItemRegister("k2legs"),ARGetItemRegister("k2boots")}));
+				if(ARGetAnother("ConsoleOut",true))
+				{
+					ARLogger.logger.info("Charm Of Guardian" + RecipeHandler.RECIPE + RecipeHandler.ADDED);
+					//System.out.println(AdditionalRecipe.CONSOLE + "K2's Multi-Weapon" + RecipeHandler.RECIPE + RecipeHandler.ADDED);
+				}
+				else
+				{
+					if(ARGetAnother("ConsoleOut",true))
+					{
+						ARLogger.logger.info("Charm Of Guardian" + RecipeHandler.RECIPE + RecipeHandler.NOTADDED);
+						//System.out.println(AdditionalRecipe.CONSOLE + "K2's Multi-Weapon" + RecipeHandler.RECIPE + RecipeHandler.NOTADDED);
+					}
+				}
+			}
 		}
 	}
 }
