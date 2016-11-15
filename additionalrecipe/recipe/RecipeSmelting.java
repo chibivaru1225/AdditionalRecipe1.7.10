@@ -1,10 +1,11 @@
 package chibivaru.additionalrecipe.recipe;
 
 import static chibivaru.additionalrecipe.common.ARConfiguration.*;
+
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RecipeSmelting {
 	public void init()
@@ -36,6 +37,10 @@ public class RecipeSmelting {
 		if(ARGetSmelting("WoodDoor",true))
 		{
 			GameRegistry.addSmelting(Items.wooden_door,new ItemStack(Items.coal,2,1),0.0f);
+		}
+		if(ARGetSmelting("ExpBottle",true))
+		{
+			GameRegistry.addSmelting(Items.glass_bottle, new ItemStack(Items.experience_bottle,1),0.0f);
 		}
 		if(ARGetSmelting("RecycleTool",true))
 		{
