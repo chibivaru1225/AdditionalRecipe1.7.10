@@ -1,13 +1,14 @@
 package chibivaru.additionalrecipe.recipe;
 
 import static chibivaru.additionalrecipe.common.ARConfiguration.*;
+
+import chibivaru.additionalrecipe.AdditionalRecipe;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import chibivaru.additionalrecipe.AdditionalRecipe;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RecipeItems {
 	public void init()
@@ -320,6 +321,14 @@ public class RecipeItems {
 				new ShapelessOreRecipe(
 					new ItemStack(Items.clay_ball,4),
 					new Object[]{Blocks.clay}));
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					new ItemStack(Blocks.clay),
+					new Object[]{Blocks.stained_hardened_clay,"ExchangeIgnition"}));
+			GameRegistry.addRecipe(
+					new ShapelessOreRecipe(
+						new ItemStack(Blocks.clay),
+						new Object[]{Blocks.hardened_clay,"ExchangeIgnition"}));
 		}
 		if(ARGetCrafting("Flint",true))
 		{

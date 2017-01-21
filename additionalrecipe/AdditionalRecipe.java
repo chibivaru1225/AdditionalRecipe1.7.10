@@ -115,6 +115,7 @@ public class AdditionalRecipe
 		ARModInfo.loadInfo(meta);
 		//ARLogger.init(MODNAME);
 		ARConfiguration.init(event);
+		
 		craftingDifficulty = ARGetCfgOther("Difficulty",0);
 		if((craftingDifficulty < 0) && (4 < craftingDifficulty))
 		{
