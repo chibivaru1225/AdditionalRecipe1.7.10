@@ -321,10 +321,13 @@ public class RecipeItems {
 				new ShapelessOreRecipe(
 					new ItemStack(Items.clay_ball,4),
 					new Object[]{Blocks.clay}));
-			GameRegistry.addRecipe(
-				new ShapelessOreRecipe(
-					new ItemStack(Blocks.clay),
-					new Object[]{Blocks.stained_hardened_clay,"ExchangeIgnition"}));
+			for(int var = 0; var < 16; var ++)
+			{
+				GameRegistry.addRecipe(
+					new ShapelessOreRecipe(
+						new ItemStack(Blocks.clay),
+						new Object[]{new ItemStack(Blocks.stained_hardened_clay,1,var),"ExchangeIgnition"}));
+			}
 			GameRegistry.addRecipe(
 					new ShapelessOreRecipe(
 						new ItemStack(Blocks.clay),
