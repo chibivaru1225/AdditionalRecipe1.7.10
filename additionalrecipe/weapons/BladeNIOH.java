@@ -14,18 +14,11 @@ public class BladeNIOH extends ItemSword
 	private ToolMaterial toolMaterial;
 	public BladeNIOH(ToolMaterial par2ToolMaterial) {
 		super(par2ToolMaterial);
-		this.toolMaterial = par2ToolMaterial;
-		this.setMaxStackSize(1);
-		this.weaponDamage = (int) par2ToolMaterial.getDamageVsEntity();
-		this.setTextureName("additionalrecipe:" + this.getUnlocalizedName());
-		if(ARGetAnother("NIOHPreventDamage",true))
-		{
-			this.setMaxDamage(0);
-		}
-		else
-		{
-			this.setMaxDamage(ARGetCfgOther("NIOH",4));
-		}
+		toolMaterial = par2ToolMaterial;
+		setMaxStackSize(1);
+		weaponDamage = (int) par2ToolMaterial.getDamageVsEntity();
+		setTextureName("additionalrecipe:" + getUnlocalizedName());
+		setMaxDamage(ARGetAnother("NIOHPreventDamage",true) ? 0 : ARGetCfgOther("NIOH",4));
 	}
 	@SideOnly(Side.CLIENT)
 	public void registerIcon(IIconRegister register)

@@ -12,6 +12,7 @@ import chibivaru.additionalrecipe.common.ARModInfo;
 import chibivaru.additionalrecipe.event.ARAddChestGenHooks;
 import chibivaru.additionalrecipe.event.ARFlyingEventHooks;
 import chibivaru.additionalrecipe.event.ARNoFallDamageEventHooks;
+import chibivaru.additionalrecipe.event.ARNoFallDamageEventHooksServer;
 import chibivaru.additionalrecipe.event.AngelusArmorLivingEventHooks;
 import chibivaru.additionalrecipe.event.BedrockArmorLivingEventHooks;
 import chibivaru.additionalrecipe.event.CharmOfGuardianEventHooks;
@@ -26,6 +27,7 @@ import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.relauncher.Side;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -130,22 +132,28 @@ public class AdditionalRecipe
 		addchestgenhooks = new ARAddChestGenHooks();
 		addchestgenhooks.AddChestItems();
 
-		MinecraftForge.EVENT_BUS.register(new ARNoFallDamageEventHooks());
-		MinecraftForge.EVENT_BUS.register(new ARFlyingEventHooks());
-		MinecraftForge.EVENT_BUS.register(new BedrockArmorLivingEventHooks());
-		MinecraftForge.EVENT_BUS.register(new AngelusArmorLivingEventHooks());
-		MinecraftForge.EVENT_BUS.register(new CirceForceEventHooks());
-		MinecraftForge.EVENT_BUS.register(new TearOfCorpelEventHooks());
-		MinecraftForge.EVENT_BUS.register(new K2ArmorLivingEventHooks());
-		MinecraftForge.EVENT_BUS.register(new CharmOfGuardianEventHooks());
-		//MinecraftForge.EVENT_BUS.register(new ReplaceBlock());
-		//MinecraftForge.EVENT_BUS.register(new WeaponsEventHooks());
+		if(event.getSide() == Side.CLIENT)
+		{
+			MinecraftForge.EVENT_BUS.register(new ARFlyingEventHooks());
+			MinecraftForge.EVENT_BUS.register(new BedrockArmorLivingEventHooks());
+			MinecraftForge.EVENT_BUS.register(new AngelusArmorLivingEventHooks());
+			MinecraftForge.EVENT_BUS.register(new CirceForceEventHooks());
+			MinecraftForge.EVENT_BUS.register(new TearOfCorpelEventHooks());
+			MinecraftForge.EVENT_BUS.register(new K2ArmorLivingEventHooks());
+			MinecraftForge.EVENT_BUS.register(new CharmOfGuardianEventHooks());
+			MinecraftForge.EVENT_BUS.register(new ARNoFallDamageEventHooks());
+			//MinecraftForge.EVENT_BUS.register(new ReplaceBlock());
+			//MinecraftForge.EVENT_BUS.register(new WeaponsEventHooks());
+		}
+		else if(event.getSide() == Side.SERVER)
+		{
+			MinecraftForge.EVENT_BUS.register(new ARNoFallDamageEventHooksServer());
+		}
 
 		if(ARGetAnother("EndPortal",true))
 		{
 			Blocks.end_portal_frame.setHardness(60F);
 		}
-		//ItemStack PureCertus = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 10);
 	}
 
 	@Mod.EventHandler

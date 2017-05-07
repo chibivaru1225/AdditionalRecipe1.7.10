@@ -1,14 +1,15 @@
 package chibivaru.additionalrecipe.tools;
 
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 public class HandStamp extends Item
 {
@@ -18,7 +19,7 @@ public class HandStamp extends Item
     public HandStamp()
     {
         super();
-        this.setMaxStackSize(1);
+        setMaxStackSize(1);
     }
 
     //アイテムがクラフト後に戻らないようにする

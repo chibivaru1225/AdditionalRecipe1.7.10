@@ -1,11 +1,7 @@
 package chibivaru.additionalrecipe.tools;
 
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import cpw.mods.fml.common.Optional;
@@ -13,6 +9,11 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 @Optional.Interface(iface = "baubles.api.IBauble", modid = "Baubles")
 public class ExchangeIgnition extends Item implements IBauble
@@ -23,7 +24,7 @@ public class ExchangeIgnition extends Item implements IBauble
     public ExchangeIgnition()
     {
         super();
-        this.setMaxStackSize(1);
+        setMaxStackSize(1);
     }
 
     //アイテムがクラフト後に戻らないようにする

@@ -2,14 +2,14 @@ package chibivaru.additionalrecipe.weapons;
 
 import java.util.List;
 
+import chibivaru.additionalrecipe.AdditionalRecipe;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.EnumChatFormatting;
-import chibivaru.additionalrecipe.AdditionalRecipe;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class SwordYORU extends ItemSword
 {
@@ -18,10 +18,10 @@ public class SwordYORU extends ItemSword
     private boolean effect;
 	public SwordYORU(ToolMaterial par2EnumToolMaterial) {
 		super(par2EnumToolMaterial);
-		this.toolMaterial = par2EnumToolMaterial;
-		this.setMaxStackSize(1);
-		this.weaponDamage = (int) par2EnumToolMaterial.getDamageVsEntity();
-		this.setMaxDamage(0);
+		toolMaterial = par2EnumToolMaterial;
+		setMaxStackSize(1);
+		weaponDamage = (int) par2EnumToolMaterial.getDamageVsEntity();
+		setMaxDamage(0);
 	}
 	@SideOnly(Side.CLIENT)
 	public void registerIcon(IIconRegister register)

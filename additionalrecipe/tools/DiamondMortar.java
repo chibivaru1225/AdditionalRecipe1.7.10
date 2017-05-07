@@ -2,14 +2,15 @@ package chibivaru.additionalrecipe.tools;
 
 import static chibivaru.additionalrecipe.common.ARConfiguration.*;
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 public class DiamondMortar extends Item
 {
@@ -17,8 +18,8 @@ public class DiamondMortar extends Item
     public DiamondMortar()
     {
         super();
-        this.setMaxStackSize(1);
-        this.setMaxDamage(ARGetCfgOther("DiamondMortar",1561));
+        setMaxStackSize(1);
+        setMaxDamage(ARGetCfgOther("DiamondMortar",1561));
     }
 
     //アイテムがクラフト後に戻らないようにする

@@ -4,6 +4,9 @@ import static chibivaru.additionalrecipe.common.ARConfiguration.*;
 
 import java.util.List;
 
+import chibivaru.additionalrecipe.AdditionalRecipe;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -17,9 +20,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import chibivaru.additionalrecipe.AdditionalRecipe;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class SwordExelector extends ItemSword
 {
@@ -33,10 +33,10 @@ public class SwordExelector extends ItemSword
     private String str = "Exp = ";
 	public SwordExelector(ToolMaterial par2EnumToolMaterial) {
 		super(par2EnumToolMaterial);
-		this.setMaxStackSize(1);
-		this.setMaxDamage(6);
-		this.setContainerItem(this);
-		this.setTextureName("additionalrecipe:exelectorFirst");
+		setMaxStackSize(1);
+		setMaxDamage(6);
+		setContainerItem(this);
+		setTextureName("additionalrecipe:exelectorFirst");
 		//this.level = 0; 0 = Great Sword,1 = Long Sword,2 = Lapier,3 = Wand
 	}
 	@SideOnly(Side.CLIENT)

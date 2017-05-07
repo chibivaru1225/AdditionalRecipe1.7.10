@@ -4,6 +4,12 @@ import static chibivaru.additionalrecipe.common.ARItemHandler.*;
 
 import java.util.List;
 
+import baubles.api.BaubleType;
+import baubles.api.IBauble;
+import chibivaru.additionalrecipe.AdditionalRecipe;
+import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -20,12 +26,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import baubles.api.BaubleType;
-import baubles.api.IBauble;
-import chibivaru.additionalrecipe.AdditionalRecipe;
-import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @Optional.Interface(iface = "baubles.api.IBauble", modid = "Baubles")
 public class MultiK2 extends ItemSword implements IBauble
@@ -40,10 +40,10 @@ public class MultiK2 extends ItemSword implements IBauble
     public MultiK2(ToolMaterial par2toolMaterial)
 	{
 		super(par2toolMaterial);
-		this.setMaxStackSize(1);
-		this.setMaxDamage(0);
-		this.setTextureName("additionalrecipe:K2GS");
-		this.mode = 0;//0 = Great Sword,1 = Long Sword,2 = Wand
+		setMaxStackSize(1);
+		setMaxDamage(0);
+		setTextureName("additionalrecipe:K2GS");
+		mode = 0;//0 = Great Sword,1 = Long Sword,2 = Wand
 	}
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister register)

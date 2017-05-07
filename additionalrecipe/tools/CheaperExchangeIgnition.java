@@ -1,14 +1,15 @@
 package chibivaru.additionalrecipe.tools;
 
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 public class CheaperExchangeIgnition extends Item
 {
@@ -18,8 +19,8 @@ public class CheaperExchangeIgnition extends Item
 	public CheaperExchangeIgnition()
 	{
 		super();
-		this.setMaxDamage(128);
-		this.setMaxStackSize(1);
+		setMaxDamage(128);
+		setMaxStackSize(1);
 	}
 
 	public boolean doesContainerItemLeaveCraftingGrid(ItemStack par1ItemStack)
