@@ -9,6 +9,7 @@ import java.util.List;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -84,7 +85,7 @@ public class AngelusArmorLivingEventHooks
 	public void LivingUpdate(LivingUpdateEvent event)
 	{
 		EntityLivingBase livingBase = ((LivingEvent) (event)).entityLiving;
-		if(livingBase != null && (livingBase instanceof EntityPlayer))
+		if(livingBase != null && livingBase instanceof EntityPlayerSP)
 		{
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			Angelus(player);

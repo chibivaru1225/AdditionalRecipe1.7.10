@@ -15,7 +15,7 @@ public class ARNoFallDamageEventHooks
 	@SubscribeEvent//(1.6までは@ForgeSubscribe)
 	public void LivingUpdate(LivingUpdateEvent event)
 	{
-		if(event.entityLiving != null && event.entityLiving instanceof EntityPlayer && event.entityLiving .worldObj.isRemote)
+		if(event.entityLiving != null && event.entityLiving instanceof EntityPlayerSP && event.entityLiving .worldObj.isRemote)
 		{
 			EntityPlayerSP player = (EntityPlayerSP) event.entityLiving;
 			Falling(player);

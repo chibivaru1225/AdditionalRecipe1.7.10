@@ -13,12 +13,6 @@ import chibivaru.additionalrecipe.event.ARAddChestGenHooks;
 import chibivaru.additionalrecipe.event.ARFlyingEventHooks;
 import chibivaru.additionalrecipe.event.ARNoFallDamageEventHooks;
 import chibivaru.additionalrecipe.event.ARNoFallDamageEventHooksServer;
-import chibivaru.additionalrecipe.event.AngelusArmorLivingEventHooks;
-import chibivaru.additionalrecipe.event.BedrockArmorLivingEventHooks;
-import chibivaru.additionalrecipe.event.CharmOfGuardianEventHooks;
-import chibivaru.additionalrecipe.event.CirceForceEventHooks;
-import chibivaru.additionalrecipe.event.K2ArmorLivingEventHooks;
-import chibivaru.additionalrecipe.event.TearOfCorpelEventHooks;
 import chibivaru.additionalrecipe.recipe.RecipeHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -135,12 +129,12 @@ public class AdditionalRecipe
 		if(event.getSide() == Side.CLIENT)
 		{
 			MinecraftForge.EVENT_BUS.register(new ARFlyingEventHooks());
-			MinecraftForge.EVENT_BUS.register(new BedrockArmorLivingEventHooks());
-			MinecraftForge.EVENT_BUS.register(new AngelusArmorLivingEventHooks());
-			MinecraftForge.EVENT_BUS.register(new CirceForceEventHooks());
-			MinecraftForge.EVENT_BUS.register(new TearOfCorpelEventHooks());
-			MinecraftForge.EVENT_BUS.register(new K2ArmorLivingEventHooks());
-			MinecraftForge.EVENT_BUS.register(new CharmOfGuardianEventHooks());
+			//MinecraftForge.EVENT_BUS.register(new BedrockArmorLivingEventHooks());
+			//MinecraftForge.EVENT_BUS.register(new AngelusArmorLivingEventHooks());
+			//MinecraftForge.EVENT_BUS.register(new CirceForceEventHooks());
+			//MinecraftForge.EVENT_BUS.register(new TearOfCorpelEventHooks());
+			//MinecraftForge.EVENT_BUS.register(new K2ArmorLivingEventHooks());
+			//MinecraftForge.EVENT_BUS.register(new CharmOfGuardianEventHooks());
 			MinecraftForge.EVENT_BUS.register(new ARNoFallDamageEventHooks());
 			//MinecraftForge.EVENT_BUS.register(new ReplaceBlock());
 			//MinecraftForge.EVENT_BUS.register(new WeaponsEventHooks());

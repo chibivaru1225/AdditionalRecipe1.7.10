@@ -6,7 +6,6 @@ import static chibivaru.additionalrecipe.common.ARItemHandler.*;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 
@@ -29,7 +28,7 @@ public class ARFlyingEventHooks
 	@SubscribeEvent//(1.6までは@ForgeSubscribe)
 	public void LivingUpdate(LivingUpdateEvent event)
 	{
-		if(event.entityLiving != null && event.entityLiving instanceof EntityPlayer && event.entityLiving .worldObj.isRemote)
+		if(event.entityLiving != null && event.entityLiving instanceof EntityPlayerSP && event.entityLiving .worldObj.isRemote)
 		{
 			EntityPlayerSP player = (EntityPlayerSP) event.entityLiving;
 			Flight(player);
