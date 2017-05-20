@@ -2,13 +2,14 @@ package chibivaru.additionalrecipe.event;
 
 import static chibivaru.additionalrecipe.AdditionalRecipe.*;
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
+
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class BedrockArmorLivingEventHooks
 {
@@ -16,13 +17,13 @@ public class BedrockArmorLivingEventHooks
 	public void LivingUpdate(LivingUpdateEvent event)
 	{
 		EntityLivingBase livingBase = ((LivingEvent) (event)).entityLiving;
-		if(livingBase != null && (livingBase instanceof EntityPlayer))
+		if(livingBase != null && (livingBase instanceof EntityPlayerSP))
 		{
-			EntityPlayer player = (EntityPlayer) event.entityLiving;
+			EntityPlayerSP player = (EntityPlayerSP) event.entityLiving;
 			Bedrock(player);
 		}
 	}
-	private void Bedrock(EntityPlayer player)
+	private void Bedrock(EntityPlayerSP player)
 	{
 		boolean isHelmet = equipArmor(ARGetItemRegister("bedrockhelmet"), player, ARMOR_HELMET);
 		boolean isPlate  = equipArmor(ARGetItemRegister("bedrockplate"), player, ARMOR_PLATE);

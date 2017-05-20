@@ -432,7 +432,7 @@ public class RecipeARItems {
 			{
 				GameRegistry.addRecipe(
 					new ShapedOreRecipe(
-						ARGetItemRegister("exelector"),
+						new ItemStack(ARGetItemRegister("exelector"),1,4),
 						new Object[]{" XX","ZVX","YZ ",
 							Character.valueOf('X'),Items.quartz,
 							Character.valueOf('Y'),Items.stick,
@@ -440,7 +440,7 @@ public class RecipeARItems {
 							Character.valueOf('V'),Items.redstone}));
 				GameRegistry.addRecipe(
 						new ShapedOreRecipe(
-							ARGetItemRegister("exelector"),
+							new ItemStack(ARGetItemRegister("exelector"),1,4),
 							new Object[]{" XX","ZVX","YZ ",
 								Character.valueOf('X'),"crystalCertusQuartz",
 								Character.valueOf('Y'),Items.stick,

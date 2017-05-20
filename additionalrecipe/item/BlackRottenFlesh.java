@@ -1,5 +1,7 @@
 package chibivaru.additionalrecipe.item;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -8,8 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlackRottenFlesh extends Item
 {
@@ -23,13 +23,14 @@ public class BlackRottenFlesh extends Item
 	{
 		this.itemIcon = Items.rotten_flesh.getIconFromDamage(0);
 	}
+	@Override
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
     	if(par3EntityPlayer.getFoodStats().getFoodLevel() != 0)
     	{
     		PotionEffect Effect = new PotionEffect(Potion.regeneration.id,1200,49);
     		boolean isRegeneration = par3EntityPlayer.isPotionActive(Effect.getPotionID());
-    		if(!isRegeneration)
+    		if(!isRegeneration && par2World.isRemote)
     		{
     			par3EntityPlayer.swingItem();
     			par1ItemStack.stackSize--;

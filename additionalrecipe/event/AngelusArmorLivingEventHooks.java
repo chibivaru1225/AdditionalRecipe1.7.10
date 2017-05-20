@@ -87,12 +87,12 @@ public class AngelusArmorLivingEventHooks
 		EntityLivingBase livingBase = ((LivingEvent) (event)).entityLiving;
 		if(livingBase != null && livingBase instanceof EntityPlayerSP)
 		{
-			EntityPlayer player = (EntityPlayer) event.entityLiving;
+			EntityPlayerSP player = (EntityPlayerSP) event.entityLiving;
 			Angelus(player);
 			timer(true);
 		}
 	}
-	private void Angelus(EntityPlayer player)
+	private void Angelus(EntityPlayerSP player)
 	{
 		boolean isHelmet = equipArmor(ARGetItemRegister("angelushood"), player, ARMOR_HELMET);
 		boolean isPlate  = equipArmor(ARGetItemRegister("angelusvestment"), player, ARMOR_PLATE);
@@ -270,9 +270,9 @@ public class AngelusArmorLivingEventHooks
 		DamageSource source = event.source;
 		float damageAmount = event.ammount;
 		World world = ((Entity) (livingBase)).worldObj;
-		if(livingBase instanceof EntityPlayer)
+		if(livingBase instanceof EntityPlayerSP)
 		{
-			EntityPlayer player = (EntityPlayer)livingBase;
+			EntityPlayerSP player = (EntityPlayerSP)livingBase;
 			boolean isLegs = equipArmor(ARGetItemRegister("angelusskirt"), player, ARMOR_LEGS);
 			if(isLegs && (source.getEntity() instanceof EntityLivingBase))
 			{

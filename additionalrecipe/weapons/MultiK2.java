@@ -62,7 +62,6 @@ public class MultiK2 extends ItemSword implements IBauble
 			int mk2;
 			if(nbttagcompound == null)
 			{
-				System.out.println();
 				nbttagcompound = new NBTTagCompound();
 				itemStack.setTagCompound(nbttagcompound);
 				mk2 = 0;
@@ -175,11 +174,11 @@ public class MultiK2 extends ItemSword implements IBauble
 					{
 						if(!player.isPotionActive(Potion.moveSlowdown.id))
 						{
-							player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id,20*2,1));
+							player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id,20*4,1));
 						}
 						if(!player.isPotionActive(Potion.digSlowdown.id))
 						{
-							player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id,20*2,1));
+							player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id,20*4,1));
 						}
 						break;
 					}
@@ -187,7 +186,7 @@ public class MultiK2 extends ItemSword implements IBauble
 					{
 						if(!player.isPotionActive(Potion.moveSpeed.id))
 						{
-							player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id,20*2,1));
+							player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id,20*4,1));
 						}
 						break;
 					}
@@ -268,7 +267,7 @@ public class MultiK2 extends ItemSword implements IBauble
 				{
 					if(!player2.isPotionActive(Potion.resistance.id))
 					{
-						player2.addPotionEffect(new PotionEffect(Potion.resistance.id,20*2,1));
+						player2.addPotionEffect(new PotionEffect(Potion.resistance.id,20*4,1));
 					}
 					break;
 				}
@@ -276,7 +275,7 @@ public class MultiK2 extends ItemSword implements IBauble
 				{
 					if(!player2.isPotionActive(Potion.moveSpeed.id))
 					{
-						player2.addPotionEffect(new PotionEffect(Potion.moveSpeed.id,20*2,1));
+						player2.addPotionEffect(new PotionEffect(Potion.moveSpeed.id,20*4,1));
 					}
 					break;
 				}

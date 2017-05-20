@@ -50,6 +50,7 @@ public class SwordExelector extends ItemSword
 	}
 	public boolean doesContainerItemLeaveCraftingGrid(ItemStack itemstack)
 	{
+		itemstack.setItemDamage(4);
 		return true;
 	}
     @Override
