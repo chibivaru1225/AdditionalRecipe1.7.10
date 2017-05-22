@@ -17,7 +17,7 @@ public class BedrockMortar extends Item
     public BedrockMortar()
     {
         super();
-        this.setMaxStackSize(1);
+        setMaxStackSize(1);
     }
 
     public boolean doesContainerItemLeaveCraftingGrid(ItemStack par1ItemStack)

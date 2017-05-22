@@ -30,12 +30,12 @@ public class BlackRottenFlesh extends Item
     	{
     		PotionEffect Effect = new PotionEffect(Potion.regeneration.id,1200,49);
     		boolean isRegeneration = par3EntityPlayer.isPotionActive(Effect.getPotionID());
-    		if(!isRegeneration && par2World.isRemote)
+    		if(!isRegeneration)
     		{
     			par3EntityPlayer.swingItem();
     			par1ItemStack.stackSize--;
     			par3EntityPlayer.addPotionEffect(Effect);
-    			par3EntityPlayer.getFoodStats().setFoodLevel(0);
+    			par3EntityPlayer.getFoodStats().addStats(-par3EntityPlayer.getFoodStats().getFoodLevel(), -par3EntityPlayer.getFoodStats().getSaturationLevel());
     		}
     	}
     	return par1ItemStack;

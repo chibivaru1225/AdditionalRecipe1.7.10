@@ -9,7 +9,6 @@ import java.util.List;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -85,14 +84,14 @@ public class AngelusArmorLivingEventHooks
 	public void LivingUpdate(LivingUpdateEvent event)
 	{
 		EntityLivingBase livingBase = ((LivingEvent) (event)).entityLiving;
-		if(livingBase != null && livingBase instanceof EntityPlayerSP)
+		if(livingBase != null && livingBase instanceof EntityPlayer)
 		{
-			EntityPlayerSP player = (EntityPlayerSP) event.entityLiving;
+			EntityPlayer player = (EntityPlayer) event.entityLiving;
 			Angelus(player);
 			timer(true);
 		}
 	}
-	private void Angelus(EntityPlayerSP player)
+	private void Angelus(EntityPlayer player)
 	{
 		boolean isHelmet = equipArmor(ARGetItemRegister("angelushood"), player, ARMOR_HELMET);
 		boolean isPlate  = equipArmor(ARGetItemRegister("angelusvestment"), player, ARMOR_PLATE);
@@ -270,9 +269,9 @@ public class AngelusArmorLivingEventHooks
 		DamageSource source = event.source;
 		float damageAmount = event.ammount;
 		World world = ((Entity) (livingBase)).worldObj;
-		if(livingBase instanceof EntityPlayerSP)
+		if(livingBase instanceof EntityPlayer)
 		{
-			EntityPlayerSP player = (EntityPlayerSP)livingBase;
+			EntityPlayer player = (EntityPlayer)livingBase;
 			boolean isLegs = equipArmor(ARGetItemRegister("angelusskirt"), player, ARMOR_LEGS);
 			if(isLegs && (source.getEntity() instanceof EntityLivingBase))
 			{

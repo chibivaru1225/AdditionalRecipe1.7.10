@@ -10,7 +10,6 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -130,9 +129,9 @@ public class UltimateExchangeIgnition extends Item implements IBauble
 	}
 	public static void totick(ItemStack stack, EntityPlayer player)
 	{
-		if(player instanceof EntityPlayerSP)
+		if(player instanceof EntityPlayer)
 		{
-			EntityPlayerSP player2 = (EntityPlayerSP)player;
+			EntityPlayer player2 = (EntityPlayer)player;
 			if(ARGetAnother("UltimateExchangeIgnitionEffect",false))
 			{
 				player2.addPotionEffect(new PotionEffect(Potion.damageBoost.id,20*30,75));

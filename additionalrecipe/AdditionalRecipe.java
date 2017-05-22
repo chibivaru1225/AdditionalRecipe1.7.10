@@ -9,12 +9,14 @@ import baubles.api.BaublesApi;
 import chibivaru.additionalrecipe.common.ARConfiguration;
 import chibivaru.additionalrecipe.common.ARCreativeTab;
 import chibivaru.additionalrecipe.common.ARModInfo;
+import chibivaru.additionalrecipe.common.PotionHelper;
 import chibivaru.additionalrecipe.event.ARAddChestGenHooks;
 import chibivaru.additionalrecipe.event.ARFlyingEventHooks;
-import chibivaru.additionalrecipe.event.ARNoFallDamageEventHooks;
 import chibivaru.additionalrecipe.event.ARNoFallDamageEventHooksServer;
 import chibivaru.additionalrecipe.event.AngelusArmorLivingEventHooks;
 import chibivaru.additionalrecipe.event.BedrockArmorLivingEventHooks;
+import chibivaru.additionalrecipe.event.CharmOfGuardianEventHooks;
+import chibivaru.additionalrecipe.event.K2ArmorLivingEventHooks;
 import chibivaru.additionalrecipe.recipe.RecipeHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -52,7 +54,7 @@ public class AdditionalRecipe
 {
 	public static final String MODID   = "additionalrecipe";
 	public static final String MODNAME = "AdditionalRecipe";
-	public static final String VERSION = "0.01-11";
+	public static final String VERSION = "0.01-14";
 
 	public static final String CONSOLE = "[AdditionalRecipe]:";
 	public static final String ADDID = " added ID ";
@@ -127,23 +129,23 @@ public class AdditionalRecipe
 	{
 		addchestgenhooks = new ARAddChestGenHooks();
 		addchestgenhooks.AddChestItems();
-
+		
+		MinecraftForge.EVENT_BUS.register(new ARNoFallDamageEventHooksServer());
+		MinecraftForge.EVENT_BUS.register(new AngelusArmorLivingEventHooks());
+		MinecraftForge.EVENT_BUS.register(new BedrockArmorLivingEventHooks());
+		MinecraftForge.EVENT_BUS.register(new CharmOfGuardianEventHooks());
+		MinecraftForge.EVENT_BUS.register(new K2ArmorLivingEventHooks());
 		if(event.getSide() == Side.CLIENT)
 		{
 			MinecraftForge.EVENT_BUS.register(new ARFlyingEventHooks());
-			MinecraftForge.EVENT_BUS.register(new BedrockArmorLivingEventHooks());
-			MinecraftForge.EVENT_BUS.register(new AngelusArmorLivingEventHooks());
 			//MinecraftForge.EVENT_BUS.register(new CirceForceEventHooks());
 			//MinecraftForge.EVENT_BUS.register(new TearOfCorpelEventHooks());
-			//MinecraftForge.EVENT_BUS.register(new K2ArmorLivingEventHooks());
-			//MinecraftForge.EVENT_BUS.register(new CharmOfGuardianEventHooks());
-			MinecraftForge.EVENT_BUS.register(new ARNoFallDamageEventHooks());
+			//MinecraftForge.EVENT_BUS.register(new ARNoFallDamageEventHooks());
 			//MinecraftForge.EVENT_BUS.register(new ReplaceBlock());
 			//MinecraftForge.EVENT_BUS.register(new WeaponsEventHooks());
 		}
 		else if(event.getSide() == Side.SERVER)
 		{
-			MinecraftForge.EVENT_BUS.register(new ARNoFallDamageEventHooksServer());
 		}
 
 		if(ARGetAnother("EndPortal",true))
@@ -155,6 +157,7 @@ public class AdditionalRecipe
 	@Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event)
 	{
+		PotionHelper.healthInspection();
 		recipehandler = new RecipeHandler();
 		recipehandler.oredic();
 		recipehandler.init();

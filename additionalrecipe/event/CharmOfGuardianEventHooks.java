@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import chibivaru.additionalrecipe.common.PotionHelper;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -23,6 +24,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -106,7 +108,7 @@ public class CharmOfGuardianEventHooks
 			}
 			for(int i = 0; i < Potion.potionTypes.length; i++)
 			{
-				if(Potion.potionTypes[i] != null && player.isPotionActive(i) && Potion.potionTypes[i].isBadEffect())
+				if(Potion.potionTypes[i] != null && player.isPotionActive(i) && PotionHelper.badPotion(Potion.potionTypes[i]))
 				{
 					player.removePotionEffect(i);
 				}
@@ -211,6 +213,19 @@ public class CharmOfGuardianEventHooks
 		}
 	}
 	*/
+	@SubscribeEvent
+	public void onDeath(LivingDeathEvent event)
+	{
+		if(event.entityLiving instanceof EntityPlayer)
+		{
+			EntityPlayer player = (EntityPlayer)event.entityLiving;
+			if(searchItem(ARGetItemRegister("charmofguardian"),player))
+			{
+				event.setCanceled(true);
+				player.setHealth(player.getMaxHealth());
+			}
+		}
+	}
 	@SubscribeEvent
 	public void onLivingHurt(LivingHurtEvent event)
 	{
