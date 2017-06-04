@@ -11,6 +11,8 @@ import chibivaru.additionalrecipe.baubles.GravitationFeather;
 import chibivaru.additionalrecipe.baubles.NightVisionTorch;
 import chibivaru.additionalrecipe.baubles.SuperGravitationFeather;
 import chibivaru.additionalrecipe.baubles.TearOfCompel;
+import chibivaru.additionalrecipe.classes.AREnumValues;
+import chibivaru.additionalrecipe.classes.AREnumValues.ARItems;
 import chibivaru.additionalrecipe.dust.DustBedrock;
 import chibivaru.additionalrecipe.dust.DustExchangeIgnition;
 import chibivaru.additionalrecipe.dust.DustNetherStar;
@@ -23,7 +25,6 @@ import chibivaru.additionalrecipe.tools.ExchangeIgnition;
 import chibivaru.additionalrecipe.tools.HandStamp;
 import chibivaru.additionalrecipe.tools.IronMortar;
 import chibivaru.additionalrecipe.tools.UltimateExchangeIgnition;
-import chibivaru.additionalrecipe.weapons.BladeNIOH;
 import chibivaru.additionalrecipe.weapons.MultiK2;
 import chibivaru.additionalrecipe.weapons.SwordExelector;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -43,18 +44,20 @@ public class ARItemHandler
 		ARNewItemRegister(new ExchangeIgnition(), "exchangeiginiton", ARTabs, "ExchangeIgnition");
 		ARNewItemRegister(new UltimateExchangeIgnition(), "ultimateexchangeiginiton", ARTabs, "UltimateExchangeIgnition");
 		ARNewItemRegister(new CheaperExchangeIgnition(), "cheaperexchangeiginiton", ARTabs, "CheaperExchangeIgnition",true);
+		
 		ARNewItemRegister(new GravitationFeather(), "gravitationfeather", ARTabs, "GravitationFeather");
 		ARNewItemRegister(new SuperGravitationFeather(), "supergravitationfeather" , ARTabs, "SuperGravitationFeather");
-		ARNewItemRegister(new BlackRottenFlesh(), "blackrottenflesh", ARTabs, "BlackRottenFlesh");
 		ARNewItemRegister(new NightVisionTorch(), "nightvisiontorch", ARTabs, "NightVisionTorch");
-		ARNewItemRegister(new ForceBall(), "forceball", ARTabs, "ForceBall");
 		ARNewItemRegister(new CirceForce(), "circeforce", ARTabs, "CirceForce");
 		ARNewItemRegister(new HandStamp(), "handstamp", ARTabs, "HandStamp");
 		ARNewItemRegister(new TearOfCompel(),"tearofcompel",ARTabs,"TearOfCompel");
 		ARNewItemRegister(new CharmOfGuardian(),"charmofguardian",ARTabs,"CharmOfGuardian");
 
+		ARNewItemRegister(new BlackRottenFlesh(), "blackrottenflesh", ARTabs, "BlackRottenFlesh");
+		ARNewItemRegister(new ForceBall(), "forceball", ARTabs, "ForceBall");
+		
 		ARNewItemRegister(new SwordExelector(WEAPON_POOR), "exelector", ARTabs, "Exelector",new StringBuilder().append(EnumChatFormatting.WHITE).append("Exelector").toString());
-		ARNewItemRegister(new BladeNIOH(WEAPON_PHANTASM), "nioh", ARTabs, "NIOH");
+		//ARNewItemRegister(new BladeNIOH(WEAPON_PHANTASM), "nioh", ARTabs, "NIOH");
 		//ARNewItemRegister(new SwordYORU(WEAPON_ULTIMATE), "yoru", ARTabs, "Villainy Sword 'YORU'","ja_JP","邪剣「夜」");
 		//ARNewItemRegister(new SpearDAYO(WEAPON_ULTIMATE), "dayo", ARTabs, "Evil Spear 'DAYO'","ja_JP","悪槍「堕那」");
 		ARNewItemRegister(new MultiK2(WEAPON_POOR), "toolk2", ARTabs, "K2",new StringBuilder().append(EnumChatFormatting.LIGHT_PURPLE).append("K2's Multi-Weapon").toString());
@@ -121,6 +124,26 @@ public class ARItemHandler
 		GameRegistry.registerItem(par1Item, par4Name);
 		LanguageRegistry.addName(par1Item, par4Name);
 		LanguageRegistry.instance().addNameForObject(par1Item, par5Lang, par6OtherName);
+	}
+	public static void ARNewItemRegister(Item par1Item,CreativeTabs par2CreativeTab,ARItems par3ARItems)
+	{
+		par1Item.setUnlocalizedName(AREnumValues.GetConfirmStr(par3ARItems));
+		par1Item.setCreativeTab(par2CreativeTab);
+		ARItem.put(AREnumValues.GetConfirmStr(par3ARItems), par1Item);
+		GameRegistry.registerItem(par1Item, AREnumValues.GetNameStr(par3ARItems));
+		LanguageRegistry.addName(par1Item, AREnumValues.GetNameStr(par3ARItems));
+	}
+	public static void ARNewItemRegister(Item par1Item,CreativeTabs par2CreativeTab,ARItems par3ARItems,Boolean par4CraftingRegister)
+	{
+		par1Item.setUnlocalizedName(AREnumValues.GetConfirmStr(par3ARItems));
+		par1Item.setCreativeTab(par2CreativeTab);
+		ARItem.put(AREnumValues.GetConfirmStr(par3ARItems), par1Item);
+		GameRegistry.registerItem(par1Item, AREnumValues.GetNameStr(par3ARItems));
+		LanguageRegistry.addName(par1Item, AREnumValues.GetNameStr(par3ARItems));
+		if(par4CraftingRegister)
+		{
+			FMLCommonHandler.instance().bus().register(par1Item);
+		}
 	}
 	public static Item ARGetItemRegister(String par1Name)
 	{

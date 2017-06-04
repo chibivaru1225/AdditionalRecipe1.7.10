@@ -568,15 +568,15 @@ public class RecipeARItems {
 			{
 				GameRegistry.addRecipe(
 					new ShapelessOreRecipe(
-						ARGetItemRegister("k2hood"),
+						ARGetItemRegister("k2helmet"),
 						new Object[]{ARGetItemRegister("angelushood")}));
 				GameRegistry.addRecipe(
 					new ShapelessOreRecipe(
-						ARGetItemRegister("k2vestment"),
+						ARGetItemRegister("k2plate"),
 						new Object[]{ARGetItemRegister("angelusvestment")}));
 				GameRegistry.addRecipe(
 					new ShapelessOreRecipe(
-						ARGetItemRegister("k2skirt"),
+						ARGetItemRegister("k2legs"),
 						new Object[]{ARGetItemRegister("angelusskirt")}));
 				GameRegistry.addRecipe(
 					new ShapelessOreRecipe(

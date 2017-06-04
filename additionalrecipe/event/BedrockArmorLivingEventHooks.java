@@ -3,6 +3,7 @@ package chibivaru.additionalrecipe.event;
 import static chibivaru.additionalrecipe.AdditionalRecipe.*;
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
 
+import chibivaru.additionalrecipe.common.PotionHelper;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -42,7 +43,7 @@ public class BedrockArmorLivingEventHooks
 		{
 			for(int i = 0; i < Potion.potionTypes.length; i++)
 			{
-				if(Potion.potionTypes[i] != null && player.isPotionActive(i) && Potion.potionTypes[i].isBadEffect())
+				if(Potion.potionTypes[i] != null && player.isPotionActive(i) && PotionHelper.badPotion(Potion.potionTypes[i]))
 				{
 					player.removePotionEffect(i);
 				}

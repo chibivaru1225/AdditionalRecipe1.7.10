@@ -95,9 +95,9 @@ public class K2ArmorLivingEventHooks
 	}
 	private void K2(EntityPlayer player)
 	{
-		boolean isHelmet = equipArmor(ARGetItemRegister("k2hood"), player, ARMOR_HELMET);
-		boolean isPlate  = equipArmor(ARGetItemRegister("k2vestment"), player, ARMOR_PLATE);
-		boolean isLegs   = equipArmor(ARGetItemRegister("k2skirt"), player, ARMOR_LEGS);
+		boolean isHelmet = equipArmor(ARGetItemRegister("k2helmet"), player, ARMOR_HELMET);
+		boolean isPlate  = equipArmor(ARGetItemRegister("k2plate"), player, ARMOR_PLATE);
+		boolean isLegs   = equipArmor(ARGetItemRegister("k2legs"), player, ARMOR_LEGS);
 		boolean isBoots  = equipArmor(ARGetItemRegister("k2boots"), player, ARMOR_BOOTS);
 		if(isHelmet)
 		{
@@ -177,7 +177,7 @@ public class K2ArmorLivingEventHooks
 	{
 		EntityPlayer player = ((PlayerEvent)(event)).entityPlayer;
 		Entity entity       = event.target;
-		boolean isHelmet    = equipArmor(ARGetItemRegister("k2hood"), player, ARMOR_HELMET);
+		boolean isHelmet    = equipArmor(ARGetItemRegister("k2helmet"), player, ARMOR_HELMET);
 		if(isHelmet && (entity instanceof EntityLivingBase))
 		{
 			EntityLivingBase target = (EntityLivingBase)entity;
@@ -196,7 +196,7 @@ public class K2ArmorLivingEventHooks
 			if(entity instanceof EntityPlayer)
 			{
 				EntityPlayer player = (EntityPlayer)entity;
-				boolean isHelmet    = equipArmor(ARGetItemRegister("k2hood"), player, ARMOR_HELMET);
+				boolean isHelmet    = equipArmor(ARGetItemRegister("k2helmet"), player, ARMOR_HELMET);
 				if(isHelmet)
 				{
 					Iterator i$ = event.drops.iterator();
@@ -251,9 +251,9 @@ public class K2ArmorLivingEventHooks
 		if(event.entityLiving instanceof EntityPlayer)
 		{
 			EntityPlayer player = (EntityPlayer)event.entityLiving;
-			boolean isHelmet = equipArmor(ARGetItemRegister("k2hood"), player, ARMOR_HELMET);
-			boolean isPlate  = equipArmor(ARGetItemRegister("k2vestment"), player, ARMOR_PLATE);
-			boolean isLegs   = equipArmor(ARGetItemRegister("k2skirt"), player, ARMOR_LEGS);
+			boolean isHelmet = equipArmor(ARGetItemRegister("k2helmet"), player, ARMOR_HELMET);
+			boolean isPlate  = equipArmor(ARGetItemRegister("k2plate"), player, ARMOR_PLATE);
+			boolean isLegs   = equipArmor(ARGetItemRegister("k2legs"), player, ARMOR_LEGS);
 			boolean isBoots  = equipArmor(ARGetItemRegister("k2boots"), player, ARMOR_BOOTS);
 			if(isHelmet && isPlate && isLegs && isBoots)
 			{
@@ -271,7 +271,7 @@ public class K2ArmorLivingEventHooks
 		if(livingBase instanceof EntityPlayer)
 		{
 			EntityPlayer player = (EntityPlayer)livingBase;
-			boolean isPlate     = equipArmor(ARGetItemRegister("k2vestment"), player, ARMOR_PLATE);
+			boolean isPlate     = equipArmor(ARGetItemRegister("k2plate"), player, ARMOR_PLATE);
 			if(isPlate && source != DamageSource.starve)
 			{
 				float damageResistant = damageAmount * (float)(player.experienceLevel);
@@ -289,7 +289,7 @@ public class K2ArmorLivingEventHooks
 		if(livingBase instanceof EntityPlayer)
 		{
 			EntityPlayer player = (EntityPlayer)livingBase;
-			boolean isPlate     = equipArmor(ARGetItemRegister("k2vestment"), player, ARMOR_PLATE);
+			boolean isPlate     = equipArmor(ARGetItemRegister("k2plate"), player, ARMOR_PLATE);
 			if(isPlate && source != DamageSource.starve)
 			{
 					event.setCanceled(true);
@@ -298,8 +298,8 @@ public class K2ArmorLivingEventHooks
 		if(livingBase instanceof EntityPlayer)
 		{
 			EntityPlayer player = (EntityPlayer)livingBase;
-			boolean isPlate = equipArmor(ARGetItemRegister("k2vestment"), player, ARMOR_PLATE);
-			boolean isLegs  = equipArmor(ARGetItemRegister("k2skirt"), player, ARMOR_LEGS);
+			boolean isPlate = equipArmor(ARGetItemRegister("k2plate"), player, ARMOR_PLATE);
+			boolean isLegs  = equipArmor(ARGetItemRegister("k2legs"), player, ARMOR_LEGS);
 			if(isLegs && (source.getEntity() instanceof EntityLivingBase))
 			{
 				float reflectDamage = damageAmount * (float)(player.experienceLevel);
