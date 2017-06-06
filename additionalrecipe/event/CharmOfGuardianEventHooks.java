@@ -256,14 +256,10 @@ public class CharmOfGuardianEventHooks
 			{
 					event.setCanceled(true);
 			}
-			if(guardian && (source.getEntity() instanceof EntityLivingBase))
+			if(guardian && (source.getEntity() instanceof EntityLivingBase) && !(source.getEntity() instanceof EntityPlayer))
 			{
 				float reflectDamage = damageAmount * damageAmount;
 				double width = getlevel(player,true,6) * getlevel(player,true,6);
-				if(player == source.getEntity())
-				{
-					return;
-				}
 				source.getEntity().attackEntityFrom(DamageSource.causeMobDamage(player), reflectDamage);
 				List list = source.getEntity().worldObj.getEntitiesWithinAABBExcludingEntity(source.getEntity(), source.getEntity().boundingBox.expand(width, width, width));
 				ArrayList arraylist = new ArrayList();
