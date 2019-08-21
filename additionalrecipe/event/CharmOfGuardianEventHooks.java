@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import chibivaru.additionalrecipe.common.PotionHelper;
+import chibivaru.additionalrecipe.common.ClassHelper;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -108,7 +108,7 @@ public class CharmOfGuardianEventHooks
 			}
 			for(int i = 0; i < Potion.potionTypes.length; i++)
 			{
-				if(Potion.potionTypes[i] != null && player.isPotionActive(i) && PotionHelper.badPotion(Potion.potionTypes[i]))
+				if(Potion.potionTypes[i] != null && player.isPotionActive(i) && ClassHelper.badPotion(Potion.potionTypes[i]))
 				{
 					player.removePotionEffect(i);
 				}

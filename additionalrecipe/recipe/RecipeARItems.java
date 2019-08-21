@@ -206,6 +206,12 @@ public class RecipeARItems {
 						new Object[]{"XYX"," X ",
 							Character.valueOf('X'),Items.diamond,
 							Character.valueOf('Y'),Items.iron_ingot}));
+				GameRegistry.addRecipe(
+					new ShapedOreRecipe(
+						ARGetItemRegister("diamondmortar"),
+						new Object[]{"XYX"," X ",
+							Character.valueOf('X'),"ingotElectrum",
+							Character.valueOf('Y'),Items.iron_ingot}));
 				if(ARGetAnother("ConsoleOut",true))
 				{
 					ARLogger.logger.info("DiamondMortar" + RecipeHandler.RECIPE + RecipeHandler.ADDED);
@@ -227,6 +233,24 @@ public class RecipeARItems {
 						ARGetItemRegister("ironmortar"),
 						new Object[]{"XYX"," X ",
 							Character.valueOf('X'),Items.iron_ingot,
+							Character.valueOf('Y'),Items.flint}));
+				GameRegistry.addRecipe(
+					new ShapedOreRecipe(
+						ARGetItemRegister("ironmortar"),
+						new Object[]{"XYX"," X ",
+							Character.valueOf('X'),"ingotCopper",
+							Character.valueOf('Y'),Items.flint}));
+				GameRegistry.addRecipe(
+					new ShapedOreRecipe(
+						ARGetItemRegister("ironmortar"),
+						new Object[]{"XYX"," X ",
+							Character.valueOf('X'),"ingotTin",
+							Character.valueOf('Y'),Items.flint}));
+				GameRegistry.addRecipe(
+					new ShapedOreRecipe(
+						ARGetItemRegister("ironmortar"),
+						new Object[]{"XYX"," X ",
+							Character.valueOf('X'),"ingotBronse",
 							Character.valueOf('Y'),Items.flint}));
 				if(ARGetAnother("ConsoleOut",true))
 				{

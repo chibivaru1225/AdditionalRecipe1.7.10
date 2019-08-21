@@ -25,6 +25,30 @@ public class RecipeItems {
 					new Object[]{"XXX","XYX","XXX",
 						Character.valueOf('X'),Items.ender_pearl,
 						Character.valueOf('Y'),"ExchangeIgnition"}));
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					new ItemStack(Items.bone,64,0),
+					new Object[]{
+						new ItemStack(Items.skull,1,0),
+						"MortarTier01"}));
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					new ItemStack(Items.bone,64,0),
+					new Object[]{
+						new ItemStack(Items.skull,1,1),
+						"MortarTier01"}));
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					new ItemStack(Items.rotten_flesh,64,0),
+					new Object[]{
+						new ItemStack(Items.skull,1,2),
+						"MortarTier01"}));
+			GameRegistry.addRecipe(
+				new ShapelessOreRecipe(
+					new ItemStack(Items.gunpowder,64,0),
+					new Object[]{
+						new ItemStack(Items.skull,1,4),
+						"MortarTier01"}));
 		}
 		if(ARGetCrafting("DragonEgg",true))
 		{
@@ -339,6 +363,14 @@ public class RecipeItems {
 				new ShapelessOreRecipe(
 					new ItemStack(Items.flint,1),
 					new Object[]{Blocks.gravel,Blocks.gravel,Blocks.gravel,Blocks.gravel}));
+		}
+		if(ARGetCrafting("Leather",true))
+		{
+			GameRegistry.addRecipe(
+				new ShapedOreRecipe(
+					new ItemStack(Items.rotten_flesh,1),
+					new Object[]{"XXX","X X","XXX",
+						Character.valueOf('X'),Items.string}));
 		}
 	}
 }

@@ -1,15 +1,16 @@
 package chibivaru.additionalrecipe.event;
 
 import static chibivaru.additionalrecipe.common.ARConfiguration.*;
+
+import cpw.mods.fml.common.eventhandler.EventPriority;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.world.ChunkEvent;
-import cpw.mods.fml.common.eventhandler.EventPriority;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ReplaceBlock
 {
@@ -120,9 +121,14 @@ public class ReplaceBlock
 						{
 							for (int y = 0; y < 128; ++y)
 							{
-								if (chunk.getBlock(x, y, z) == Blocks.lava)
+								if (chunk.getBlock(x, y, z) == Blocks.lava && 
+									chunk.getBlock(x + 1, y, z) != Blocks.lava && 
+									chunk.getBlock(x - 1, y, z) != Blocks.lava &&
+									chunk.getBlock(x, y, z + 1) != Blocks.lava &&
+									chunk.getBlock(x, y, z - 1) != Blocks.lava &&
+									chunk.getBlock(x, y + 1, z) != Blocks.lava)
 								{
-									chunk.func_150807_a(x, y, z, Blocks.obsidian, 0);
+									chunk.func_150807_a(x, y, z, Blocks.netherrack, 0);
 								}
 							}
 						}
