@@ -105,7 +105,7 @@ public class AdditionalRecipe
         WEAPON_BASIC = EnumHelper.addToolMaterial("BASIC", 3, 1, 6.0f, 5, 100);
         WEAPON_ULTIMATE = EnumHelper.addToolMaterial("ULTIMATE", 4, 1, 6.0f, 15, 100);
         WEAPON_PHANTASM = EnumHelper.addToolMaterial("PHANTASM", 4, 1, 6.0f, 95, 100);
-
+        
         ARModInfo.loadInfo(meta);
         // ARLogger.init(MODNAME);
         ARConfiguration.init(event);
@@ -147,17 +147,6 @@ public class AdditionalRecipe
         {
             Blocks.end_portal_frame.setHardness(60F);
         }
-
-        if (ARGetAnother("Enderman", true))
-        {
-            for (Block keyblock : ClassHelper.endermanCarriable().keySet())
-            {
-                if (ClassHelper.endermanCarriable().get(keyblock) == true)
-                {
-                    EntityEnderman.setCarriable(keyblock, false);
-                }
-            }
-        }
     }
 
     @Mod.EventHandler
@@ -165,9 +154,24 @@ public class AdditionalRecipe
     {
         ClassHelper.healthInspection();
         ClassHelper.endermanInspection();
+        
         recipehandler = new RecipeHandler();
         recipehandler.oredic();
         recipehandler.init();
+        
+        ARConfiguration.postinit(event);
+        
+        if (ARGetAnother("Enderman", true))
+        {
+            for (Block keyblock : ClassHelper.endermanCarriable().keySet())
+            {
+                if (ClassHelper.endermanCarriable().get(keyblock) == true
+                        && ARGetAnother("Enderman:" + keyblock.getUnlocalizedName(), false) == false)
+                {
+                    EntityEnderman.setCarriable(keyblock, false);
+                }
+            }
+        }
     }
 
     public static boolean equipArmor(Item armor, EntityPlayer player, int armorType)

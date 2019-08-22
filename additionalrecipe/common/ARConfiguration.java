@@ -2,7 +2,9 @@ package chibivaru.additionalrecipe.common;
 
 import static chibivaru.additionalrecipe.AdditionalRecipe.*;
 
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraft.block.Block;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 
@@ -71,13 +73,38 @@ public class ARConfiguration
             ARAnother.put("UltimateExchangeIgnitionEffect", ARSet("Another", "UltimateExchangeIgnitionEffect", false));
             ARAnother.put("NIOHPreventDamage", ARSet("Another", "NIOHPreventDamage", true));
             ARAnother.put("BedrockArmorFlying", ARSet("Another", "BedrockArmorFlying", false));
-            ARAnother.put("Enderman", ARSet("Another", "Enderman Dont Pick Up Vanila Block", true));
+            ARAnother.put("Enderman", ARSet("Another", "Enderman", true, "Enderman Dont Pick Up Vanila Block"));
             // ARAnother.put("ReplaceOverworldSpring",ARSet("Another","ReplaceOverworldSpring",true));
             // ARAnother.put("ReplaceNetherLava",ARSet("Another","ReplaceNetherLava",false));
         }
         catch (Exception e)
         {
-            ARLogger.logger.warn("Config Load Failure.");
+            ARLogger.logger.warn("Config Init Load Failure.");
+            // FMLLog.log(Level.SEVERE, e, AdditionalRecipe.CONSOLE + "Config
+            // Load Failure.");
+        }
+        finally
+        {
+            cfg.save();
+        }
+    }
+
+    public static void postinit(FMLPostInitializationEvent event)
+    {
+        try
+        {
+            for (Block keyblock : ClassHelper.endermanCarriable().keySet())
+            {
+                if (ClassHelper.endermanCarriable().get(keyblock) == true)
+                {
+                    ARAnother.put("Enderman:" + keyblock.getUnlocalizedName(),
+                            ARSet("Enderman", keyblock.getUnlocalizedName(), false));
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            ARLogger.logger.warn("Config PostInit Load Failure.");
             // FMLLog.log(Level.SEVERE, e, AdditionalRecipe.CONSOLE + "Config
             // Load Failure.");
         }
