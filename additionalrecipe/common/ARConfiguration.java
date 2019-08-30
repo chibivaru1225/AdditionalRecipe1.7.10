@@ -74,6 +74,8 @@ public class ARConfiguration
             ARAnother.put("NIOHPreventDamage", ARSet("Another", "NIOHPreventDamage", true));
             ARAnother.put("BedrockArmorFlying", ARSet("Another", "BedrockArmorFlying", false));
             ARAnother.put("Enderman", ARSet("Another", "Enderman", true, "Enderman Dont Pick Up Vanila Block"));
+            ARAnother.put("AvaritiaCrafting", ARSet("Another", "AvaritiaCrafting", false, "Craft With Avaritia Machines And Workbenches."));
+            
             // ARAnother.put("ReplaceOverworldSpring",ARSet("Another","ReplaceOverworldSpring",true));
             // ARAnother.put("ReplaceNetherLava",ARSet("Another","ReplaceNetherLava",false));
         }

@@ -1,20 +1,29 @@
 package chibivaru.additionalrecipe.common;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.IdentityHashMap;
 
 import org.apache.logging.log4j.Level;
 
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 
 public class ClassHelper
 {
     private static ArrayList<Potion>               badPotions;
     private static IdentityHashMap<Block, Boolean> endermanCarriable;
+
+    private static Object                          AvaritiaExtrameCraftingManagerInstance;
+    private static Object                          AvaritiaCompressorManagerInstance;
+
+    private static Class<?>                        AvaritiaExtremeCraftingManager;
+    private static Class<?>                        AvaritiaCompressorManager;
 
     public static void healthInspection()
     {
@@ -50,6 +59,69 @@ public class ClassHelper
         {
             ARLogger.logger.log(Level.ERROR, "Failure to Enderman Pickable");
             e.printStackTrace();
+        }
+    }
+
+    private static void getAvaritiaExtremeCraftingManagerInstance()
+    {
+        if (AvaritiaExtremeCraftingManager == null)
+        {
+            try
+            {
+                AvaritiaExtremeCraftingManager = Class.forName("fox.spiteful.avaritia.crafting.ExtremeCraftingManager");
+            }
+            catch (Exception ex)
+            {
+                FMLLog.warning("[AdditionalRecipe] Not found fox.spiteful.avaritia.crafting.ExtremeCraftingManager");
+            }
+        }
+
+        if (AvaritiaExtrameCraftingManagerInstance == null)
+        {
+            try
+            {
+                Method inm = AvaritiaExtremeCraftingManager.getMethod("getInstance");
+                AvaritiaExtrameCraftingManagerInstance = inm.invoke(null);
+            }
+            catch (Exception ex)
+            {
+                FMLLog.warning(
+                        "[AdditionalRecipe] Could not invoke fox.spiteful.avaritia.crafting.ExtremeCraftingManager method getInstance");
+            }
+        }
+    }
+
+    public static void AvaritiaAddExtremeShapedOreRecipe(ItemStack result, Object... recipe)
+    {
+        getAvaritiaExtremeCraftingManagerInstance();
+
+        try
+        {
+            Method met = AvaritiaExtremeCraftingManager.getMethod("addExtremeShapedOreRecipe", ItemStack.class,
+                    Object[].class);
+            met.invoke(AvaritiaExtrameCraftingManagerInstance, result, recipe);
+        }
+        catch (Exception ex)
+        {
+            FMLLog.warning(
+                    "[AdditionalRecipe] Could not invoke fox.spiteful.avaritia.crafting.ExtremeCraftingManager method addExtremeShapedOreRecipe");
+        }
+    }
+
+    public static void AvaritiaAddExtrameShapelessOreRecipe(ItemStack result, Object... recipe)
+    {
+        getAvaritiaExtremeCraftingManagerInstance();
+
+        try
+        {
+            Method met = AvaritiaExtremeCraftingManager.getMethod("addShapelessOreRecipe", ItemStack.class,
+                    Object[].class);
+            met.invoke(AvaritiaExtrameCraftingManagerInstance, result, recipe);
+        }
+        catch (Exception ex)
+        {
+            FMLLog.warning(
+                    "[AdditionalRecipe] Could not invoke fox.spiteful.avaritia.crafting.ExtremeCraftingManager method addShapelessOreRecipe");
         }
     }
 
