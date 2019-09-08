@@ -58,8 +58,7 @@ public class ARConfiguration
             ARCfgOther.put("ExelectorFirstExp", ARSet("Another", "ExelectorFirstExp", 100));
             ARCfgOther.put("ExelectorSecondExp", ARSet("Another", "ExelectorSecondExp", 250));
             ARCfgOther.put("ExelectorLastExp", ARSet("Another", "ExelectorLastExp", 500));
-            ARCfgOther.put("Difficulty", ARSet("Another", "Difficulty", 0,
-                    "0=easy 1=normal 2=hard 3=lunatic 4=ultimate The others are easy."));
+            ARCfgOther.put("Difficulty", ARSet("Another", "Difficulty", 0, "0=easy 1=normal 2=hard 3=lunatic 4=ultimate The others are easy."));
 
             ARCrafting.put("AppliedEnergistics2", ARSet("AnotherMod", "AppliedEnergistics2", true));
             ARCrafting.put("StorageDrawers", ARSet("AnotherMod", "StorageDrawers", true));
@@ -75,7 +74,12 @@ public class ARConfiguration
             ARAnother.put("BedrockArmorFlying", ARSet("Another", "BedrockArmorFlying", false));
             ARAnother.put("Enderman", ARSet("Another", "Enderman", true, "Enderman Dont Pick Up Vanila Block"));
             ARAnother.put("AvaritiaCrafting", ARSet("Another", "AvaritiaCrafting", false, "Craft With Avaritia Machines And Workbenches."));
-            
+
+            ARAnother.put("Mineshaft", ARSet("AddChest", "Mineshaft", true));
+            ARAnother.put("Stronghold", ARSet("AddChest", "Stronghold", true));
+            ARAnother.put("Pyramid", ARSet("AddChest", "Pyramid", true));
+            ARAnother.put("Dungeon", ARSet("AddChest", "Dungeon", true));
+            ARAnother.put("Bonus", ARSet("AddChest", "Bonus", true));
             // ARAnother.put("ReplaceOverworldSpring",ARSet("Another","ReplaceOverworldSpring",true));
             // ARAnother.put("ReplaceNetherLava",ARSet("Another","ReplaceNetherLava",false));
         }
@@ -99,8 +103,8 @@ public class ARConfiguration
             {
                 if (ClassHelper.endermanCarriable().get(keyblock) == true)
                 {
-                    ARAnother.put("Enderman:" + keyblock.getUnlocalizedName(),
-                            ARSet("Enderman", keyblock.getUnlocalizedName(), false));
+                    ARAnother.put("Enderman:"
+                            + keyblock.getUnlocalizedName(), ARSet("Enderman", keyblock.getUnlocalizedName(), false));
                 }
             }
         }
