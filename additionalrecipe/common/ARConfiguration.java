@@ -72,7 +72,7 @@ public class ARConfiguration
             ARAnother.put("UltimateExchangeIgnitionEffect", ARSet("Another", "UltimateExchangeIgnitionEffect", false));
             ARAnother.put("NIOHPreventDamage", ARSet("Another", "NIOHPreventDamage", true));
             ARAnother.put("BedrockArmorFlying", ARSet("Another", "BedrockArmorFlying", false));
-            ARAnother.put("Enderman", ARSet("Another", "Enderman", true, "Enderman Dont Pick Up Vanila Block"));
+            //ARAnother.put("Enderman", ARSet("Another", "Enderman", true, "Enderman Dont Pick Up Vanila Block"));
             ARAnother.put("AvaritiaCrafting", ARSet("Another", "AvaritiaCrafting", false, "Craft With Avaritia Machines And Workbenches."));
 
             ARAnother.put("Mineshaft", ARSet("AddChest", "Mineshaft", true));

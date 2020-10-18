@@ -18,6 +18,7 @@ import chibivaru.additionalrecipe.dust.DustExchangeIgnition;
 import chibivaru.additionalrecipe.dust.DustNetherStar;
 import chibivaru.additionalrecipe.item.BlackRottenFlesh;
 import chibivaru.additionalrecipe.item.ForceBall;
+import chibivaru.additionalrecipe.item.IngotNetherQuartzite;
 import chibivaru.additionalrecipe.tools.BedrockMortar;
 import chibivaru.additionalrecipe.tools.CheaperExchangeIgnition;
 import chibivaru.additionalrecipe.tools.DiamondMortar;
@@ -38,23 +39,23 @@ public class ARItemHandler
 {
 	public static void ARItemRegister()
 	{
-		ARNewItemRegister(new BedrockMortar(), "bedrockmortar", ARTabs, "BedrockMortar");
-		ARNewItemRegister(new DiamondMortar(), "diamondmortar", ARTabs, "DiamondMortar");
-		ARNewItemRegister(new IronMortar(), "ironmortar", ARTabs, "IronMortar");
-		ARNewItemRegister(new ExchangeIgnition(), "exchangeiginiton", ARTabs, "ExchangeIgnition");
-		ARNewItemRegister(new UltimateExchangeIgnition(), "ultimateexchangeiginiton", ARTabs, "UltimateExchangeIgnition");
-		ARNewItemRegister(new CheaperExchangeIgnition(), "cheaperexchangeiginiton", ARTabs, "CheaperExchangeIgnition",true);
+		ARNewItemRegister(new BedrockMortar(), "bedrockmortar", ARTabs, "Bedrock Mortar");
+		ARNewItemRegister(new DiamondMortar(), "diamondmortar", ARTabs, "Diamond Mortar");
+		ARNewItemRegister(new IronMortar(), "ironmortar", ARTabs, "Iron Mortar");
+		ARNewItemRegister(new ExchangeIgnition(), "exchangeiginiton", ARTabs, "Exchange Ignition");
+		ARNewItemRegister(new UltimateExchangeIgnition(), "ultimateexchangeiginiton", ARTabs, "Ultimate Exchange Ignition");
+		ARNewItemRegister(new CheaperExchangeIgnition(), "cheaperexchangeiginiton", ARTabs, "Cheaper Exchange Ignition",true);
 		
-		ARNewItemRegister(new GravitationFeather(), "gravitationfeather", ARTabs, "GravitationFeather");
-		ARNewItemRegister(new SuperGravitationFeather(), "supergravitationfeather" , ARTabs, "SuperGravitationFeather");
-		ARNewItemRegister(new NightVisionTorch(), "nightvisiontorch", ARTabs, "NightVisionTorch");
-		ARNewItemRegister(new CirceForce(), "circeforce", ARTabs, "CirceForce");
-		ARNewItemRegister(new HandStamp(), "handstamp", ARTabs, "HandStamp");
-		ARNewItemRegister(new TearOfCompel(),"tearofcompel",ARTabs,"TearOfCompel");
-		ARNewItemRegister(new CharmOfGuardian(),"charmofguardian",ARTabs,"CharmOfGuardian");
+		ARNewItemRegister(new GravitationFeather(), "gravitationfeather", ARTabs, "Gravitation Feather");
+		ARNewItemRegister(new SuperGravitationFeather(), "supergravitationfeather" , ARTabs, "Super Gravitation Feather");
+		ARNewItemRegister(new NightVisionTorch(), "nightvisiontorch", ARTabs, "NightVision Torch");
+		ARNewItemRegister(new CirceForce(), "circeforce", ARTabs, "Circe Force");
+		ARNewItemRegister(new HandStamp(), "handstamp", ARTabs, "Hand Stamp");
+		ARNewItemRegister(new TearOfCompel(),"tearofcompel",ARTabs,"Tear Of Compel");
+		ARNewItemRegister(new CharmOfGuardian(),"charmofguardian",ARTabs,"Charm Of Guardian");
 
-		ARNewItemRegister(new BlackRottenFlesh(), "blackrottenflesh", ARTabs, "BlackRottenFlesh");
-		ARNewItemRegister(new ForceBall(), "forceball", ARTabs, "ForceBall");
+		ARNewItemRegister(new BlackRottenFlesh(), "blackrottenflesh", ARTabs, "Black RottenFlesh");
+		ARNewItemRegister(new ForceBall(), "forceball", ARTabs, "Force Ball");
 		
 		ARNewItemRegister(new SwordExelector(WEAPON_POOR), "exelector", ARTabs, "Exelector",new StringBuilder().append(EnumChatFormatting.WHITE).append("Exelector").toString());
 		//ARNewItemRegister(new BladeNIOH(WEAPON_PHANTASM), "nioh", ARTabs, "NIOH");
@@ -62,22 +63,24 @@ public class ARItemHandler
 		//ARNewItemRegister(new SpearDAYO(WEAPON_ULTIMATE), "dayo", ARTabs, "Evil Spear 'DAYO'","ja_JP","悪槍「堕那」");
 		ARNewItemRegister(new MultiK2(WEAPON_POOR), "toolk2", ARTabs, "K2",new StringBuilder().append(EnumChatFormatting.LIGHT_PURPLE).append("K2's Multi-Weapon").toString());
 
-		ARNewItemRegister(new BedrockArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_HELMET, BEDROCK), "bedrockhelmet", ARTabs, "BedrockHelmet", "additionalrecipe:bedrockhelmet" ,ARMOR_HELMET);
-		ARNewItemRegister(new BedrockArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_PLATE, BEDROCK), "bedrockplate", ARTabs, "BedrockChestplate", "additionalrecipe:bedrockplate" ,ARMOR_PLATE);
-		ARNewItemRegister(new BedrockArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_LEGS, BEDROCK), "bedrocklegs", ARTabs, "BedrockLeggings", "additionalrecipe:bedrocklegs" ,ARMOR_LEGS);
-		ARNewItemRegister(new BedrockArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_BOOTS, BEDROCK), "bedrockboots", ARTabs, "BedrockBoots", "additionalrecipe:bedrockboots" ,ARMOR_BOOTS);
-		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_HELMET, ANGELUS), "angelushood", ARTabs, "AngelusHood", "additionalrecipe:angelushood" ,ARMOR_HELMET);
-		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_PLATE, ANGELUS), "angelusvestment", ARTabs, "AngelusVestment", "additionalrecipe:angelusvestment" ,ARMOR_PLATE);
-		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_LEGS, ANGELUS), "angelusskirt", ARTabs, "AngelusSkirt", "additionalrecipe:angelusskirt" ,ARMOR_LEGS);
-		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_BOOTS, ANGELUS), "angelusboots", ARTabs, "AngelusBoots", "additionalrecipe:angelusboots" ,ARMOR_BOOTS);
-		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_HELMET, K2), "k2helmet", ARTabs, "K2Helmet", "additionalrecipe:k2helmet" ,ARMOR_HELMET);
-		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_PLATE, K2), "k2plate", ARTabs, "K2ChestPlate", "additionalrecipe:k2plate" ,ARMOR_PLATE);
-		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_LEGS, K2), "k2legs", ARTabs, "K2Leggings", "additionalrecipe:k2legs" ,ARMOR_LEGS);
-		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_BOOTS, K2), "k2boots", ARTabs, "K2Boots", "additionalrecipe:k2boots" ,ARMOR_BOOTS);
+		ARNewItemRegister(new BedrockArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_HELMET, BEDROCK), "bedrockhelmet", ARTabs, "Bedrock Helmet", "additionalrecipe:bedrockhelmet" ,ARMOR_HELMET);
+		ARNewItemRegister(new BedrockArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_PLATE, BEDROCK), "bedrockplate", ARTabs, "Bedrock Chestplate", "additionalrecipe:bedrockplate" ,ARMOR_PLATE);
+		ARNewItemRegister(new BedrockArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_LEGS, BEDROCK), "bedrocklegs", ARTabs, "Bedrock Leggings", "additionalrecipe:bedrocklegs" ,ARMOR_LEGS);
+		ARNewItemRegister(new BedrockArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_BOOTS, BEDROCK), "bedrockboots", ARTabs, "Bedrock Boots", "additionalrecipe:bedrockboots" ,ARMOR_BOOTS);
+		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_HELMET, ANGELUS), "angelushood", ARTabs, "Angelus Hood", "additionalrecipe:angelushood" ,ARMOR_HELMET);
+		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_PLATE, ANGELUS), "angelusvestment", ARTabs, "Angelus Vestment", "additionalrecipe:angelusvestment" ,ARMOR_PLATE);
+		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_LEGS, ANGELUS), "angelusskirt", ARTabs, "Angelus Skirt", "additionalrecipe:angelusskirt" ,ARMOR_LEGS);
+		ARNewItemRegister(new AngelusArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_BOOTS, ANGELUS), "angelusboots", ARTabs, "Angelus Boots", "additionalrecipe:angelusboots" ,ARMOR_BOOTS);
+		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_HELMET, K2), "k2helmet", ARTabs, "K2 Helmet", "additionalrecipe:k2helmet" ,ARMOR_HELMET);
+		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_PLATE, K2), "k2plate", ARTabs, "K2 ChestPlate", "additionalrecipe:k2plate" ,ARMOR_PLATE);
+		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_LEGS, K2), "k2legs", ARTabs, "K2 Leggings", "additionalrecipe:k2legs" ,ARMOR_LEGS);
+		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_BOOTS, K2), "k2boots", ARTabs, "K2 Boots", "additionalrecipe:k2boots" ,ARMOR_BOOTS);
 
-		ARNewItemRegister(new DustNetherStar(), "dustnetherstar", ARTabs, "DustNetherStar");
-		ARNewItemRegister(new DustBedrock(), "dustbedrock", ARTabs, "DustBedrock");
-		ARNewItemRegister(new DustExchangeIgnition(), "dustexchangeignition", ARTabs, "DustExchangeIgnition");
+		ARNewItemRegister(new DustNetherStar(), "dustnetherstar", ARTabs, "NetherStar Dust");
+		ARNewItemRegister(new DustBedrock(), "dustbedrock", ARTabs, "Bedrock Dust");
+		ARNewItemRegister(new DustExchangeIgnition(), "dustexchangeignition", ARTabs, "ExchangeIgnition Dust");
+		
+		ARNewItemRegister(new IngotNetherQuartzite(), "ingotnetherquartzite", ARTabs, "NetherQuartzite Ingot");
 	}
 	public static void ARNewItemRegister(Item par1Item,String par2UnlocalizedName,CreativeTabs par3CreativeTab,String par4Name)
 	{

@@ -14,6 +14,17 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 public class RecipeARItems {
 	public void init()
 	{
+        GameRegistry.addRecipe(
+                new ShapelessOreRecipe(
+                    ARGetItemRegister("ingotnetherquartzite"),
+                    new Object[]{Items.gold_ingot,
+                                 Items.gold_ingot,
+                                 Items.gold_ingot,
+                                 Items.gold_ingot,
+                                 Items.quartz,
+                                 Items.quartz,
+                                 Items.quartz,
+                                 Items.quartz}));
 		if(ARGetCrafting("AlchemicItem",true))
 		{
 			if(ARGetCrafting("ExchangeIgnition",true))
@@ -26,6 +37,12 @@ public class RecipeARItems {
 								new Object[]{" X ","XYX"," X ",
 									Character.valueOf('X'),Items.nether_star,
 									Character.valueOf('Y'),ARGetItemRegister("forceball")}));
+                    GameRegistry.addRecipe(
+                            new ShapedOreRecipe(
+                                ARGetItemRegister("exchangeiginiton"),
+                                new Object[]{"XXX","XYX","XXX",
+                                    Character.valueOf('X'),ARGetItemRegister("ingotnetherquartzite"),
+                                    Character.valueOf('Y'),ARGetItemRegister("forceball")}));
 				}
 				GameRegistry.addRecipe(
 					new ShapedOreRecipe(
@@ -410,7 +427,7 @@ public class RecipeARItems {
 					new Object[]{"ZYZ","ZXZ","ZWZ",
 						Character.valueOf('X'),ARGetItemRegister("bedrockhelmet"),
 						Character.valueOf('Y'),ARGetItemRegister("dustexchangeignition"),
-						Character.valueOf('Z'),Blocks.diamond_block,
+						Character.valueOf('Z'),ARGetItemRegister("ingotnetherquartzite"),
 						Character.valueOf('W'),ARGetItemRegister("ultimateexchangeiginiton")}));
 			GameRegistry.addRecipe(
 				new ShapedOreRecipe(
@@ -418,7 +435,7 @@ public class RecipeARItems {
 					new Object[]{"ZYZ","ZXZ","ZWZ",
 						Character.valueOf('X'),ARGetItemRegister("bedrockplate"),
 						Character.valueOf('Y'),ARGetItemRegister("dustexchangeignition"),
-						Character.valueOf('Z'),Blocks.diamond_block,
+						Character.valueOf('Z'),ARGetItemRegister("ingotnetherquartzite"),
 						Character.valueOf('W'),ARGetItemRegister("ultimateexchangeiginiton")}));
 			GameRegistry.addRecipe(
 				new ShapedOreRecipe(
@@ -426,7 +443,7 @@ public class RecipeARItems {
 					new Object[]{"ZYZ","ZXZ","ZWZ",
 						Character.valueOf('X'),ARGetItemRegister("bedrocklegs"),
 						Character.valueOf('Y'),ARGetItemRegister("dustexchangeignition"),
-						Character.valueOf('Z'),Blocks.diamond_block,
+						Character.valueOf('Z'),ARGetItemRegister("ingotnetherquartzite"),
 						Character.valueOf('W'),ARGetItemRegister("ultimateexchangeiginiton")}));
 			GameRegistry.addRecipe(
 				new ShapedOreRecipe(
@@ -434,7 +451,7 @@ public class RecipeARItems {
 					new Object[]{"ZYZ","ZXZ","ZWZ",
 						Character.valueOf('X'),ARGetItemRegister("bedrockboots"),
 						Character.valueOf('Y'),ARGetItemRegister("dustexchangeignition"),
-						Character.valueOf('Z'),Blocks.diamond_block,
+						Character.valueOf('Z'),ARGetItemRegister("ingotnetherquartzite"),
 						Character.valueOf('W'),ARGetItemRegister("ultimateexchangeiginiton")}));
 			if(ARGetAnother("ConsoleOut",true))
 			{
