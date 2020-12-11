@@ -121,14 +121,20 @@ public class ReplaceBlock
 						{
 							for (int y = 0; y < 128; ++y)
 							{
-								if (chunk.getBlock(x, y, z) == Blocks.lava && 
-									chunk.getBlock(x + 1, y, z) != Blocks.lava && 
-									chunk.getBlock(x - 1, y, z) != Blocks.lava &&
-									chunk.getBlock(x, y, z + 1) != Blocks.lava &&
-									chunk.getBlock(x, y, z - 1) != Blocks.lava &&
-									chunk.getBlock(x, y + 1, z) != Blocks.lava)
+								if (chunk.getBlock(x, y, z) == Blocks.lava)
 								{
-									chunk.func_150807_a(x, y, z, Blocks.netherrack, 0);
+								    int lavacount = 0;
+								    lavacount += (chunk.getBlock(x + 1, y, z) == Blocks.lava ? 0 : 1);
+                                    lavacount += (chunk.getBlock(x - 1, y, z) == Blocks.lava ? 0 : 1);
+                                    lavacount += (chunk.getBlock(x, y + 1, z) == Blocks.lava ? 0 : 1);
+                                    lavacount += (chunk.getBlock(x, y - 1, z) == Blocks.lava ? 0 : 1);
+                                    lavacount += (chunk.getBlock(x, y, z + 1) == Blocks.lava ? 0 : 1);
+                                    lavacount += (chunk.getBlock(x, y, z - 1) == Blocks.lava ? 0 : 1);
+                                    
+                                    if(lavacount == 4)
+                                    {
+                                        chunk.func_150807_a(x, y, z, Blocks.netherrack, 0);
+                                    }
 								}
 							}
 						}

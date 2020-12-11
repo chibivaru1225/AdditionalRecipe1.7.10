@@ -73,7 +73,7 @@ public class K2ArmorLivingEventHooks
 	}
 	private int getlevel(EntityPlayer player,boolean mode,int defaultlevel)
 	{
-		if((mode)&&(getlevel(player) > defaultlevel))
+		if((mode) && (getlevel(player) > defaultlevel))
 		{
 			return defaultlevel;
 		}

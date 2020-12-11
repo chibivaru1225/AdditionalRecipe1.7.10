@@ -6,6 +6,7 @@ import static chibivaru.additionalrecipe.common.ARItemHandler.*;
 import java.util.HashMap;
 
 import baubles.api.BaublesApi;
+import chibivaru.additionalrecipe.armor.InsaneArmorBase;
 import chibivaru.additionalrecipe.common.ARConfiguration;
 import chibivaru.additionalrecipe.common.ARCreativeTab;
 import chibivaru.additionalrecipe.common.ARModInfo;
@@ -16,7 +17,9 @@ import chibivaru.additionalrecipe.event.ARNoFallDamageEventHooksServer;
 import chibivaru.additionalrecipe.event.AngelusArmorLivingEventHooks;
 import chibivaru.additionalrecipe.event.BedrockArmorLivingEventHooks;
 import chibivaru.additionalrecipe.event.CharmOfGuardianEventHooks;
+import chibivaru.additionalrecipe.event.InsaneArmorBaseLivingEventHooks;
 import chibivaru.additionalrecipe.event.K2ArmorLivingEventHooks;
+import chibivaru.additionalrecipe.event.ReplaceBlock;
 import chibivaru.additionalrecipe.recipe.RecipeHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -47,7 +50,7 @@ public class AdditionalRecipe
 {
     public static final String             MODID         = "additionalrecipe";
     public static final String             MODNAME       = "AdditionalRecipe";
-    public static final String             VERSION       = "0.01-16-d";
+    public static final String             VERSION       = "0.01-17";
 
     public static final String             CONSOLE       = "[AdditionalRecipe]:";
     public static final String             ADDID         = " added ID ";
@@ -65,24 +68,18 @@ public class AdditionalRecipe
     public static int                      craftingDifficulty;
     public static RecipeHandler            recipehandler;
     public static ARAddChestGenHooks       addchestgenhooks;
-    public static ArmorMaterial            ARMOR_BEDROCK, ARMOR_PRIDE, ARMOR_WRATH, ARMOR_ENVY, ARMOR_SLOTH,
-            ARMOR_AVARICE, ARMOR_GLUTTONY, ARMOR_LUST, ARMOR_ANGELUS, ARMOR_K2;
+    public static ArmorMaterial            ARMOR_BEDROCK, ARMOR_ANGELUS, ARMOR_K2, ARMOR_SHION;
     public static ToolMaterial             WEAPON_ULTIMATE, WEAPON_BASIC, WEAPON_POOR, WEAPON_PHANTASM;
     public static String                   BEDROCK       = "bedrock";
-    public static String                   PRIDE         = "pride";
-    public static String                   WRATH         = "wrath";
-    public static String                   ENVY          = "envy";
-    public static String                   SLOTH         = "sloth";
-    public static String                   AVARICE       = "avarice";
-    public static String                   GLUTTONY      = "gluttony";
-    public static String                   LUST          = "lust";
     public static String                   ANGELUS       = "angelus";
     public static String                   K2            = "k2";
+    public static String                   SHION         = "shion";
     public static final int                ARMOR_DEFAULT = 0;
     public static final int                ARMOR_HELMET  = 0;
     public static final int                ARMOR_PLATE   = 1;
     public static final int                ARMOR_LEGS    = 2;
     public static final int                ARMOR_BOOTS   = 3;
+    public static boolean                  Bedlock_Flying;
 
     // @Mod.Instance("AdditionalRecipe")
     // public static AdditionalRecipe instance;
@@ -90,16 +87,10 @@ public class AdditionalRecipe
     @Mod.EventHandler
     public void preinit(FMLPreInitializationEvent event)
     {
-        ARMOR_BEDROCK = EnumHelper.addArmorMaterial("BEDROCK", 1, new int[] { 10, 10, 10, 10 }, 20);
-        ARMOR_PRIDE = EnumHelper.addArmorMaterial("PRIDE", 1, new int[] { 15, 15, 15, 15 }, 30);
-        ARMOR_WRATH = EnumHelper.addArmorMaterial("WRATH", 1, new int[] { 15, 15, 15, 15 }, 30);
-        ARMOR_ENVY = EnumHelper.addArmorMaterial("ENVY", 1, new int[] { 15, 15, 15, 15 }, 30);
-        ARMOR_SLOTH = EnumHelper.addArmorMaterial("SLOTH", 1, new int[] { 15, 15, 15, 15 }, 30);
-        ARMOR_AVARICE = EnumHelper.addArmorMaterial("AVARICE", 1, new int[] { 15, 15, 15, 15 }, 30);
-        ARMOR_GLUTTONY = EnumHelper.addArmorMaterial("GLUTTONY", 1, new int[] { 15, 15, 15, 15 }, 30);
-        ARMOR_LUST = EnumHelper.addArmorMaterial("LUST", 1, new int[] { 15, 15, 15, 15 }, 30);
-        ARMOR_ANGELUS = EnumHelper.addArmorMaterial("ANGELUS", 1, new int[] { 20, 20, 20, 20 }, 40);
-        ARMOR_K2 = EnumHelper.addArmorMaterial("K2", 1, new int[] { 40, 40, 40, 40 }, 40);
+        ARMOR_BEDROCK = EnumHelper.addArmorMaterial("BEDROCK", 1, new int[] { 20, 20, 20, 20 }, 20);
+        ARMOR_ANGELUS = EnumHelper.addArmorMaterial("ANGELUS", 1, new int[] { 40, 40, 40, 40 }, 40);
+        ARMOR_K2      = EnumHelper.addArmorMaterial("K2", 1, new int[] { 40, 40, 40, 40 }, 40);
+        ARMOR_SHION   = EnumHelper.addArmorMaterial("SHION", 1, new int[] { 40, 40, 40, 40 }, 40);
 
         WEAPON_POOR = EnumHelper.addToolMaterial("POOR", 2, 1, 6.0f, 0, 100);
         WEAPON_BASIC = EnumHelper.addToolMaterial("BASIC", 3, 1, 6.0f, 5, 100);
@@ -109,6 +100,7 @@ public class AdditionalRecipe
         ARModInfo.loadInfo(meta);
         // ARLogger.init(MODNAME);
         ARConfiguration.init(event);
+        Bedlock_Flying = ARGetAnother("BedrockArmorFlying", false);
 
         craftingDifficulty = ARGetCfgOther("Difficulty", 0);
         if ((craftingDifficulty < 0) && (4 < craftingDifficulty))
@@ -123,24 +115,29 @@ public class AdditionalRecipe
     {
         addchestgenhooks = new ARAddChestGenHooks();
         addchestgenhooks.AddChestItems();
+        
+        Side side = event.getSide();
 
         MinecraftForge.EVENT_BUS.register(new ARNoFallDamageEventHooksServer());
         MinecraftForge.EVENT_BUS.register(new AngelusArmorLivingEventHooks());
         MinecraftForge.EVENT_BUS.register(new BedrockArmorLivingEventHooks());
         MinecraftForge.EVENT_BUS.register(new CharmOfGuardianEventHooks());
         MinecraftForge.EVENT_BUS.register(new K2ArmorLivingEventHooks());
-        // MinecraftForge.EVENT_BUS.register(new ReplaceBlock());
-        if (event.getSide() == Side.CLIENT)
+        MinecraftForge.EVENT_BUS.register(new InsaneArmorBaseLivingEventHooks());
+        MinecraftForge.EVENT_BUS.register(new ReplaceBlock());
+        
+        switch(side)
         {
-            MinecraftForge.EVENT_BUS.register(new ARFlyingEventHooks());
-            // MinecraftForge.EVENT_BUS.register(new CirceForceEventHooks());
-            // MinecraftForge.EVENT_BUS.register(new TearOfCorpelEventHooks());
-            // MinecraftForge.EVENT_BUS.register(new
-            // ARNoFallDamageEventHooks());
-            // MinecraftForge.EVENT_BUS.register(new WeaponsEventHooks());
-        }
-        else if (event.getSide() == Side.SERVER)
-        {
+            case CLIENT:
+                MinecraftForge.EVENT_BUS.register(new ARFlyingEventHooks());
+                // MinecraftForge.EVENT_BUS.register(new CirceForceEventHooks());
+                // MinecraftForge.EVENT_BUS.register(new TearOfCorpelEventHooks());
+                // MinecraftForge.EVENT_BUS.register(new
+                // ARNoFallDamageEventHooks());
+                // MinecraftForge.EVENT_BUS.register(new WeaponsEventHooks());
+                break;
+            case SERVER:
+                break;
         }
 
         if (ARGetAnother("EndPortal", true))
@@ -200,6 +197,84 @@ public class AdditionalRecipe
             }
         }
         return false;
+    }
+    
+    public static boolean equipInsaneFullArmor(EntityPlayer player, InsaneArmorBase.ADRArmorTypes armortype)
+    {
+        InsaneArmorBase iabHelmet = getEquippingInsaneArmor(player, ARMOR_HELMET);
+        InsaneArmorBase iabPlate = getEquippingInsaneArmor(player, ARMOR_PLATE);
+        InsaneArmorBase iabLegs = getEquippingInsaneArmor(player, ARMOR_LEGS);
+        InsaneArmorBase iabBoots = getEquippingInsaneArmor(player, ARMOR_BOOTS);
+        
+        return iabHelmet != null && iabHelmet.getADRArmorType() == armortype && 
+               iabPlate != null && iabPlate.getADRArmorType() == armortype && 
+               iabLegs != null && iabLegs.getADRArmorType() == armortype && 
+               iabBoots != null && iabBoots.getADRArmorType() == armortype;
+    }
+    
+    public static boolean equipInsaneAnyArmor(EntityPlayer player, InsaneArmorBase.ADRArmorTypes armortype)
+    {
+        InsaneArmorBase iabHelmet = getEquippingInsaneArmor(player, ARMOR_HELMET);
+        InsaneArmorBase iabPlate = getEquippingInsaneArmor(player, ARMOR_PLATE);
+        InsaneArmorBase iabLegs = getEquippingInsaneArmor(player, ARMOR_LEGS);
+        InsaneArmorBase iabBoots = getEquippingInsaneArmor(player, ARMOR_BOOTS);
+
+        return (iabHelmet != null && iabHelmet.getADRArmorType() == armortype) || 
+               (iabPlate != null && iabPlate.getADRArmorType() == armortype) || 
+               (iabLegs != null && iabLegs.getADRArmorType() == armortype) || 
+               (iabBoots != null && iabBoots.getADRArmorType() == armortype);
+    }
+    
+    public static boolean equipInsaneArmor(EntityPlayer player, int armorType)
+    {
+        switch (armorType)
+        {
+            case ARMOR_HELMET:
+            {
+                return player.inventory.armorItemInSlot(3) != null && player.inventory.armorItemInSlot(3).getItem() instanceof InsaneArmorBase;
+            }
+            case ARMOR_PLATE:
+            {
+                return player.inventory.armorItemInSlot(2) != null && player.inventory.armorItemInSlot(2).getItem() instanceof InsaneArmorBase;
+            }
+            case ARMOR_LEGS:
+            {
+                return player.inventory.armorItemInSlot(1) != null && player.inventory.armorItemInSlot(1).getItem() instanceof InsaneArmorBase;
+            }
+            case ARMOR_BOOTS:
+            {
+                return player.inventory.armorItemInSlot(0) != null && player.inventory.armorItemInSlot(0).getItem() instanceof InsaneArmorBase;
+            }
+        }
+        return false;
+    }
+    
+    public static InsaneArmorBase getEquippingInsaneArmor(EntityPlayer player, int armorType)
+    {
+        switch (armorType)
+        {
+            case ARMOR_HELMET:
+            {
+                return (InsaneArmorBase) (player.inventory.armorItemInSlot(3) != null && player.inventory.armorItemInSlot(3).getItem() instanceof InsaneArmorBase ? 
+                       player.inventory.armorItemInSlot(3).getItem() : null);
+            }
+            case ARMOR_PLATE:
+            {
+                return (InsaneArmorBase) (player.inventory.armorItemInSlot(2) != null && player.inventory.armorItemInSlot(2).getItem() instanceof InsaneArmorBase ? 
+                        player.inventory.armorItemInSlot(2).getItem() : null);
+            }
+            case ARMOR_LEGS:
+            {
+                return (InsaneArmorBase) (player.inventory.armorItemInSlot(1) != null && player.inventory.armorItemInSlot(1).getItem() instanceof InsaneArmorBase ? 
+                        player.inventory.armorItemInSlot(1).getItem() : null);
+            }
+            case ARMOR_BOOTS:
+            {
+                return (InsaneArmorBase) (player.inventory.armorItemInSlot(0) != null && player.inventory.armorItemInSlot(0).getItem() instanceof InsaneArmorBase ? 
+                        player.inventory.armorItemInSlot(0).getItem() : null);
+            }
+        }
+        return null;
     }
 
     public static boolean equipArmor(Item par1Head, Item par2Plate, Item par3Leg, Item par4Boots, EntityPlayer player)

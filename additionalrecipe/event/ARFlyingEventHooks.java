@@ -1,9 +1,9 @@
 package chibivaru.additionalrecipe.event;
 
 import static chibivaru.additionalrecipe.AdditionalRecipe.*;
-import static chibivaru.additionalrecipe.common.ARConfiguration.*;
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
 
+import chibivaru.additionalrecipe.armor.InsaneArmorBase;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.potion.Potion;
@@ -24,6 +24,7 @@ public class ARFlyingEventHooks
 	private boolean bedrock          = false;
 	private boolean angelus          = false;
 	private boolean angelus2         = false;
+	private boolean shion            = false;
 
 	@SubscribeEvent//(1.6までは@ForgeSubscribe)
 	public void LivingUpdate(LivingUpdateEvent event)
@@ -37,18 +38,21 @@ public class ARFlyingEventHooks
 	//落下時ダメージ無効化処理。LivingFallEventが実装されたバージョンのみ
 	public void Flight(EntityPlayerSP player)
 	{
-		exchange = searchItem(ARGetItemRegister("exchangeiginiton"),player);
-		ultimate = searchItem(ARGetItemRegister("ultimateexchangeiginiton"),player);
-		bedrock  = equipArmor(ARGetItemRegister("bedrockhelmet"),ARGetItemRegister("bedrockplate"),ARGetItemRegister("bedrocklegs"),ARGetItemRegister("bedrockboots"), player) && ARGetAnother("BedrockArmorFlying",false);
-		angelus  = equipArmor(ARGetItemRegister("angelushood"),ARGetItemRegister("angelusvestment"),ARGetItemRegister("angelusskirt"),ARGetItemRegister("angelusboots"), player,true);
-		angelus2 = equipArmor(ARGetItemRegister("angelushood"),ARGetItemRegister("angelusvestment"),ARGetItemRegister("angelusskirt"),ARGetItemRegister("angelusboots"), player);
+		exchange = searchItem(ARGetItemRegister("exchangeiginiton"), player);
+		ultimate = searchItem(ARGetItemRegister("ultimateexchangeiginiton"), player);
+		bedrock = equipInsaneFullArmor(player, InsaneArmorBase.ADRArmorTypes.Bedrock);
+		angelus = equipInsaneAnyArmor(player, InsaneArmorBase.ADRArmorTypes.Angelus);
+		angelus2 = equipInsaneFullArmor(player, InsaneArmorBase.ADRArmorTypes.Angelus);
+		shion = equipInsaneFullArmor(player, InsaneArmorBase.ADRArmorTypes.Shion);
+		//angelus  = equipArmor(ARGetItemRegister("angelushood"), ARGetItemRegister("angelusvestment"), ARGetItemRegister("angelusskirt"), ARGetItemRegister("angelusboots"), player, true);
+		//angelus2 = equipArmor(ARGetItemRegister("angelushood"),ARGetItemRegister("angelusvestment"),ARGetItemRegister("angelusskirt"),ARGetItemRegister("angelusboots"), player);
 		//クリエイティブでないなら
 		if(!player.capabilities.isCreativeMode)
 		{
 			//飛行が許可されていないなら
 			if(!player.capabilities.allowFlying)
 			{
-				if(exchange||ultimate||bedrock||angelus||angelus2)
+				if(exchange||ultimate||bedrock||angelus||angelus2||shion)
 				{
 					this.allowLevitatiton = true;
 				}
@@ -129,10 +133,10 @@ public class ARFlyingEventHooks
 		}
 		if (this.isLevitation)//飛行中の処理
 		{
-			if(exchange||bedrock||angelus)
+			if(exchange||bedrock||angelus||shion)
 			{
 				player.motionY = 0D;//Y軸方向への移動量は入力なしでは滞空
-				player.jumpMovementFactor = 0.1f;//滞空時の滞空移動速度．クリエイティブより少し早い
+				player.jumpMovementFactor = 0.05F;//滞空時の滞空移動速度．クリエイティブより少し早い
 				if (((EntityPlayerSP)player).movementInput.sneak)
 				{
 					//player.motionY -= 0.4D;//スニークで下降．クリエイティブより少し早い
@@ -147,14 +151,14 @@ public class ARFlyingEventHooks
 			if(ultimate||angelus2)
 			{
 				player.motionY = 0D;//Y軸方向への移動量は入力なしでは滞空
-				player.jumpMovementFactor = 0.15f;//滞空時の滞空移動速度．クリエイティブより少し早い
+				player.jumpMovementFactor = 0.07f;//滞空時の滞空移動速度．クリエイティブより少し早い
 				if (((EntityPlayerSP)player).movementInput.sneak)
 				{
-					player.motionY -= 0.6D;//スニークで下降．クリエイティブより少し早い
+					player.motionY -= 0.4D;//スニークで下降．クリエイティブより少し早い
 				}
 				if (((EntityPlayerSP)player).movementInput.jump)
 				{
-					player.motionY += 0.6D;//Jumpキーで上昇．クリエ〈略〉
+					player.motionY += 0.4D;//Jumpキーで上昇．クリエ〈略〉
 				}
 			}
 		}

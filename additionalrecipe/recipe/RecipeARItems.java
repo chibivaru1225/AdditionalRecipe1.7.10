@@ -4,6 +4,7 @@ import static chibivaru.additionalrecipe.common.ARConfiguration.*;
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
 
 import chibivaru.additionalrecipe.common.ARLogger;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -637,6 +638,47 @@ public class RecipeARItems {
 					//System.out.println(AdditionalRecipe.CONSOLE + "K2's Multi-Weapon" + RecipeHandler.RECIPE + RecipeHandler.NOTADDED);
 				}
 			}
+	        if(Loader.isModLoaded("ShionOnlyWins") && ARGetCrafting("ShionArmor",true))
+	        {
+                GameRegistry.addRecipe(
+                        new ShapelessOreRecipe(
+                            ARGetItemRegister("shionhood"),
+                            new Object[]{
+                                    ARGetItemRegister("angelushood"),
+                                    "shionsClairvoyance"}));
+                    GameRegistry.addRecipe(
+                        new ShapelessOreRecipe(
+                            ARGetItemRegister("shionvestment"),
+                            new Object[]{
+                                    ARGetItemRegister("angelusvestment"),
+                                    "shionsClairvoyance"}));
+                    GameRegistry.addRecipe(
+                        new ShapelessOreRecipe(
+                            ARGetItemRegister("shionskirt"),
+                            new Object[]{
+                                    ARGetItemRegister("angelusskirt"),
+                                    "shionsClairvoyance"}));
+                    GameRegistry.addRecipe(
+                        new ShapelessOreRecipe(
+                            ARGetItemRegister("shionboots"),
+                            new Object[]{
+                                    ARGetItemRegister("angelusboots"),
+                                    "shionsClairvoyance"}));
+                    
+                    if(ARGetAnother("ConsoleOut",true))
+                    {
+                        ARLogger.logger.info("ShionArmor" + RecipeHandler.RECIPE + RecipeHandler.ADDED);
+                        //System.out.println(AdditionalRecipe.CONSOLE + "K2's Multi-Weapon" + RecipeHandler.RECIPE + RecipeHandler.ADDED);
+                    }
+	        }
+            else
+            {
+                if(ARGetAnother("ConsoleOut",true))
+                {
+                    ARLogger.logger.info("ShionArmor" + RecipeHandler.RECIPE + RecipeHandler.NOTADDED);
+                    //System.out.println(AdditionalRecipe.CONSOLE + "K2's Multi-Weapon" + RecipeHandler.RECIPE + RecipeHandler.NOTADDED);
+                }
+            }
 			if(ARGetCrafting("Charm Of Guardian",true))
 			{
 				GameRegistry.addRecipe(

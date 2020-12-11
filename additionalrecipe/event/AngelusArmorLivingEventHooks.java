@@ -98,6 +98,7 @@ public class AngelusArmorLivingEventHooks
 		boolean isPlate  = equipArmor(ARGetItemRegister("angelusvestment"), player, ARMOR_PLATE);
 		boolean isLegs   = equipArmor(ARGetItemRegister("angelusskirt"), player, ARMOR_LEGS);
 		boolean isBoots  = equipArmor(ARGetItemRegister("angelusboots"), player, ARMOR_BOOTS);
+		
 		if(isHelmet)
 		{
 			if(player.isInsideOfMaterial(Material.water))

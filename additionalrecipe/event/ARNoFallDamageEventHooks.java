@@ -3,6 +3,7 @@ package chibivaru.additionalrecipe.event;
 import static chibivaru.additionalrecipe.AdditionalRecipe.*;
 import static chibivaru.additionalrecipe.common.ARItemHandler.*;
 
+import chibivaru.additionalrecipe.armor.InsaneArmorBase;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,15 +30,8 @@ public class ARNoFallDamageEventHooks
 			//飛行が許可されていないなら
 			if(!player.capabilities.allowFlying)
 			{
-				if(equipArmor(ARGetItemRegister("bedrockboots"), player, ARMOR_BOOTS))
-				{
-					this.noFallDamage = true;
-				}
-				else if(equipArmor(ARGetItemRegister("angelusboots"), player, ARMOR_BOOTS))
-				{
-					this.noFallDamage = true;
-				}
-				else if(equipArmor(ARGetItemRegister("k2boots"), player, ARMOR_BOOTS))
+		        InsaneArmorBase iabBoots = getEquippingInsaneArmor(player, ARMOR_BOOTS);
+				if(iabBoots != null && iabBoots.getFeatherFalling())
 				{
 					this.noFallDamage = true;
 				}

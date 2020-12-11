@@ -5,6 +5,7 @@ import static chibivaru.additionalrecipe.AdditionalRecipe.*;
 import chibivaru.additionalrecipe.armor.AngelusArmor;
 import chibivaru.additionalrecipe.armor.BedrockArmor;
 import chibivaru.additionalrecipe.armor.K2Armor;
+import chibivaru.additionalrecipe.armor.ShionArmor;
 import chibivaru.additionalrecipe.baubles.CharmOfGuardian;
 import chibivaru.additionalrecipe.baubles.CirceForce;
 import chibivaru.additionalrecipe.baubles.GravitationFeather;
@@ -75,6 +76,10 @@ public class ARItemHandler
 		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_PLATE, K2), "k2plate", ARTabs, "K2 ChestPlate", "additionalrecipe:k2plate" ,ARMOR_PLATE);
 		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_LEGS, K2), "k2legs", ARTabs, "K2 Leggings", "additionalrecipe:k2legs" ,ARMOR_LEGS);
 		ARNewItemRegister(new K2Armor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_BOOTS, K2), "k2boots", ARTabs, "K2 Boots", "additionalrecipe:k2boots" ,ARMOR_BOOTS);
+        ARNewItemRegister(new ShionArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_HELMET, SHION), "shionhood", ARTabs, "Shion's Hood", "additionalrecipe:shionhood" ,ARMOR_HELMET);
+        ARNewItemRegister(new ShionArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_PLATE, SHION), "shionvestment", ARTabs, "Shion's Vestment", "additionalrecipe:shionvestment" ,ARMOR_PLATE);
+        ARNewItemRegister(new ShionArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_LEGS, SHION), "shionskirt", ARTabs, "Shion's Skirt", "additionalrecipe:shionskirt" ,ARMOR_LEGS);
+        ARNewItemRegister(new ShionArmor(ARMOR_BEDROCK, ARMOR_DEFAULT, ARMOR_BOOTS, SHION), "shionboots", ARTabs, "Shion's Boots", "additionalrecipe:shionboots" ,ARMOR_BOOTS);
 
 		ARNewItemRegister(new DustNetherStar(), "dustnetherstar", ARTabs, "NetherStar Dust");
 		ARNewItemRegister(new DustBedrock(), "dustbedrock", ARTabs, "Bedrock Dust");
