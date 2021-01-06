@@ -26,6 +26,7 @@ import chibivaru.additionalrecipe.tools.DiamondMortar;
 import chibivaru.additionalrecipe.tools.ExchangeIgnition;
 import chibivaru.additionalrecipe.tools.HandStamp;
 import chibivaru.additionalrecipe.tools.IronMortar;
+import chibivaru.additionalrecipe.tools.LavaStreamRemover;
 import chibivaru.additionalrecipe.tools.UltimateExchangeIgnition;
 import chibivaru.additionalrecipe.weapons.MultiK2;
 import chibivaru.additionalrecipe.weapons.SwordExelector;
@@ -86,6 +87,7 @@ public class ARItemHandler
 		ARNewItemRegister(new DustExchangeIgnition(), "dustexchangeignition", ARTabs, "ExchangeIgnition Dust");
 		
 		ARNewItemRegister(new IngotNetherQuartzite(), "ingotnetherquartzite", ARTabs, "NetherQuartzite Ingot");
+		ARNewItemRegister(new LavaStreamRemover(), "lavastreamremover", ARTabs, "Lava Stream Remover");
 	}
 	public static void ARNewItemRegister(Item par1Item,String par2UnlocalizedName,CreativeTabs par3CreativeTab,String par4Name)
 	{

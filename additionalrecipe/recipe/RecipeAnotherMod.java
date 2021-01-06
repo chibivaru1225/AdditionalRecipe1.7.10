@@ -129,18 +129,18 @@ public class RecipeAnotherMod
             }
             if (Silicon != null && GChip != null && GCircuit != null)
             {
-                GameRegistry
-                        .addRecipe(new ShapelessOreRecipe(GChip, new Object[] { GCircuit, Silicon, Items.redstone }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(GChip, new Object[] { GCircuit, Silicon, Items.redstone }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(GChip, new Object[] { ARGetItemRegister("handstamp"), Items.gold_ingot, Silicon, Items.redstone }));
             }
             if (Silicon != null && DChip != null && DCircuit != null)
             {
-                GameRegistry
-                        .addRecipe(new ShapelessOreRecipe(DChip, new Object[] { DCircuit, Silicon, Items.redstone }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(DChip, new Object[] { DCircuit, Silicon, Items.redstone }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(DChip, new Object[] { ARGetItemRegister("handstamp"), Items.diamond, Silicon, Items.redstone }));
             }
             if (Silicon != null && CChip != null && CCircuit != null)
             {
-                GameRegistry
-                        .addRecipe(new ShapelessOreRecipe(CChip, new Object[] { CCircuit, Silicon, Items.redstone }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(CChip, new Object[] { CCircuit, Silicon, Items.redstone }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(CChip, new Object[] { ARGetItemRegister("handstamp"), Certus, Silicon, Items.redstone }));
             }
             if (CPress != null && Certus != null && PureCertus != null)
             {

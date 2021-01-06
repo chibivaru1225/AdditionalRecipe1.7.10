@@ -638,7 +638,7 @@ public class RecipeARItems {
 					//System.out.println(AdditionalRecipe.CONSOLE + "K2's Multi-Weapon" + RecipeHandler.RECIPE + RecipeHandler.NOTADDED);
 				}
 			}
-	        if(Loader.isModLoaded("ShionOnlyWins") && ARGetCrafting("ShionArmor",true))
+	        if((Loader.isModLoaded("ShionOnlyWins") || Loader.isModLoaded("shiononlywins")) && ARGetCrafting("ShionArmor", true))
 	        {
                 GameRegistry.addRecipe(
                         new ShapelessOreRecipe(
@@ -699,6 +699,10 @@ public class RecipeARItems {
 					}
 				}
 			}
+                GameRegistry.addRecipe(
+                    new ShapelessOreRecipe(
+                        ARGetItemRegister("lavastreamremover"),
+                        new Object[]{Items.emerald,Items.ender_pearl}));
 		}
 	}
 }

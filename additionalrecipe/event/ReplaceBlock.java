@@ -113,7 +113,7 @@ public class ReplaceBlock
 			}
 			case -1:
 			{
-				if(ARGetAnother("ReplaceNetherLava",true))
+				if(ARGetAnother("ReplaceNetherLava", true))
 				{
 					for (int x = 0; x < 16; ++x)
 					{
