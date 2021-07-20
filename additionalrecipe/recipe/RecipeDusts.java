@@ -1,12 +1,13 @@
 package chibivaru.additionalrecipe.recipe;
 
 import static chibivaru.additionalrecipe.common.ARConfiguration.*;
+
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RecipeDusts {
 	public void init()
@@ -83,6 +84,57 @@ public class RecipeDusts {
 			new ShapelessOreRecipe(
 				new ItemStack(Items.emerald,ARGetCfgOther("BedrockMortarDust",8)),
 				new Object[]{"MortarOreTier03",Blocks.emerald_ore}));
+        GameRegistry.addRecipe(
+            new ShapelessOreRecipe(
+                new ItemStack(Items.paper, 2),
+                new Object[]{"dustWood", "dustWood"}));
+        GameRegistry.addRecipe(
+                new ShapelessOreRecipe(
+                    new ItemStack(Items.paper, 2),
+                    new Object[]{"pulpWood", "pulpWood"}));
+        
+        for(int i = 1; i <= 8; i++)
+        {
+            Object[] recipe = new Object[i + 1];
+            
+            for(int l = 1; l <= i; l++)
+            {
+                recipe[l - 1] = "dustWood";
+            }
+            
+            recipe[i] = "ExchangeIgnition";
+            
+            GameRegistry.addRecipe(
+                    new ShapelessOreRecipe(
+                        new ItemStack(Items.paper, i),
+                        recipe));
+        }
+        GameRegistry.addRecipe(
+                new ShapelessOreRecipe(
+                    Items.paper,
+                    new Object[]{"dustWood", "ExchangeIgnition"}));
+
+        for(int i = 1; i <= 8; i++)
+        {
+            Object[] recipe = new Object[i + 1];
+            
+            for(int l = 1; l <= i; l++)
+            {
+                recipe[l - 1] = "pulpWood";
+            }
+            
+            recipe[i] = "ExchangeIgnition";
+            
+            GameRegistry.addRecipe(
+                    new ShapelessOreRecipe(
+                        new ItemStack(Items.paper, i),
+                        recipe));
+        }
+        GameRegistry.addRecipe(
+                new ShapelessOreRecipe(
+                    Items.paper,
+                    new Object[]{"pulpWood", "ExchangeIgnition"}));
+        
 		//Mod鉱石+バニラ鉱石粉
 		if(ARGetCrafting("CraftingOreDust",true))
 		{

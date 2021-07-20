@@ -1,8 +1,8 @@
 package chibivaru.additionalrecipe.recipe;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RecipeOreDic {
 	public void init()
@@ -64,5 +64,31 @@ public class RecipeOreDic {
 					OreDictionary.getOres("dustGold").get(0),
 					new Object[]{"dustGold"}));
 		}
+		
+
+//        if(OreDictionary.getOres("shardPrismarine").size() > 1)
+//        {
+//            GameRegistry.addRecipe(
+//                new ShapelessOreRecipe(
+//                    new ItemStack(OreDictionary.getOres("shardPrismarine").get(0).getItem(), 2, OreDictionary.getOres("shardPrismarine").get(0).getItemDamage()),
+//                    new Object[]{Items.quartz, Items.quartz}));
+//            ARLogger.logger.info("shardPrismarine" + RecipeHandler.RECIPE + RecipeHandler.ADDED);
+//        }
+//        else
+//        {
+//            ARLogger.logger.info("shardPrismarine" + RecipeHandler.RECIPE + RecipeHandler.NOTADDED);
+//        }
+//        if(OreDictionary.getOres("crystalPrismarine").size() > 1)
+//        {
+//            GameRegistry.addRecipe(
+//                new ShapelessOreRecipe(
+//                    new ItemStack(OreDictionary.getOres("crystalPrismarine").get(0).getItem(), 2, OreDictionary.getOres("crystalPrismarine").get(0).getItemDamage()),
+//                    new Object[]{Items.quartz, Items.coal}));
+//            ARLogger.logger.info("crystalPrismarine" + RecipeHandler.RECIPE + RecipeHandler.ADDED);
+//        }
+//        else
+//        {
+//            ARLogger.logger.info("crystalPrismarine" + RecipeHandler.RECIPE + RecipeHandler.NOTADDED);
+//        }
 	}
 }

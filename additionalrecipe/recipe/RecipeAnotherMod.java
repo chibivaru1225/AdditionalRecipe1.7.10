@@ -113,14 +113,17 @@ public class RecipeAnotherMod
             if ((PureCertus != null) && (SeedCertus != null))
             {
                 GameRegistry.addRecipe(new ShapelessOreRecipe(PureCertus, new Object[] { SeedCertus, Blocks.sand }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(PureCertus, new Object[] { "dustCertusQuartz", Blocks.sand, Blocks.sand }));
             }
             if ((PureNether != null) && (SeedNether != null))
             {
                 GameRegistry.addRecipe(new ShapelessOreRecipe(PureNether, new Object[] { SeedNether, Blocks.sand }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(PureNether, new Object[] { "dustNetherQuartz", Blocks.sand, Blocks.sand }));
             }
             if ((PureFluix != null) && (SeedFluix != null))
             {
                 GameRegistry.addRecipe(new ShapelessOreRecipe(PureFluix, new Object[] { SeedFluix, Blocks.sand }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(PureFluix, new Object[] { "dustFluix", Blocks.sand, Blocks.sand }));
             }
             if (Fluix != null)
             {
@@ -130,17 +133,17 @@ public class RecipeAnotherMod
             if (Silicon != null && GChip != null && GCircuit != null)
             {
                 GameRegistry.addRecipe(new ShapelessOreRecipe(GChip, new Object[] { GCircuit, Silicon, Items.redstone }));
-                GameRegistry.addRecipe(new ShapelessOreRecipe(GChip, new Object[] { ARGetItemRegister("handstamp"), Items.gold_ingot, Silicon, Items.redstone }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(GChip, new Object[] { ARGetItemRegister("handstamp"), Items.gold_ingot, "itemSilicon", Items.redstone }));
             }
             if (Silicon != null && DChip != null && DCircuit != null)
             {
                 GameRegistry.addRecipe(new ShapelessOreRecipe(DChip, new Object[] { DCircuit, Silicon, Items.redstone }));
-                GameRegistry.addRecipe(new ShapelessOreRecipe(DChip, new Object[] { ARGetItemRegister("handstamp"), Items.diamond, Silicon, Items.redstone }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(DChip, new Object[] { ARGetItemRegister("handstamp"), Items.diamond, "itemSilicon", Items.redstone }));
             }
             if (Silicon != null && CChip != null && CCircuit != null)
             {
                 GameRegistry.addRecipe(new ShapelessOreRecipe(CChip, new Object[] { CCircuit, Silicon, Items.redstone }));
-                GameRegistry.addRecipe(new ShapelessOreRecipe(CChip, new Object[] { ARGetItemRegister("handstamp"), Certus, Silicon, Items.redstone }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(CChip, new Object[] { ARGetItemRegister("handstamp"), Certus, "itemSilicon", Items.redstone }));
             }
             if (CPress != null && Certus != null && PureCertus != null)
             {
@@ -237,6 +240,30 @@ public class RecipeAnotherMod
                 GameRegistry.addRecipe(new ShapelessOreRecipe(GHeart, new Object[] { YHeart, Items.ender_pearl }));
                 GameRegistry.addRecipe(new ShapelessOreRecipe(GCanister,
                         new Object[] { YCanister, GHeart, Blocks.diamond_block, Items.ender_pearl }));
+            }
+        }
+        if (ARGetCrafting("Et Futurum", true))
+        {
+            ItemStack Shard   = new ItemStack(GameRegistry.findItem("etfuturum", "prismarine_shard"), 2, 0);
+            ItemStack Crystal = new ItemStack(GameRegistry.findItem("etfuturum", "prismarine_crystals"), 2, 0);
+            
+            if(Shard != null)
+            {
+                GameRegistry.addRecipe(
+                    new ShapelessOreRecipe(
+                        Shard,
+                        new Object[]{Items.quartz, Items.quartz}));
+            }
+            if(Crystal != null)
+            {
+                GameRegistry.addRecipe(
+                    new ShapelessOreRecipe(
+                        Crystal,
+                        new Object[]{Items.quartz, Items.coal}));
+                GameRegistry.addRecipe(
+                    new ShapelessOreRecipe(
+                        Items.glowstone_dust,
+                        new Object[]{GameRegistry.findItem("etfuturum", "prismarine_crystals")}));
             }
         }
         /*
