@@ -510,6 +510,7 @@ public class RecipeARItems {
 					//System.out.println(AdditionalRecipe.CONSOLE + "ForceBall" + RecipeHandler.RECIPE + RecipeHandler.NOTADDED);
 				}
 			}
+			/*
 			if(ARGetCrafting("NIOH",true))
 			{
 				GameRegistry.addRecipe(
@@ -578,6 +579,7 @@ public class RecipeARItems {
 					//System.out.println(AdditionalRecipe.CONSOLE + "Villany Sword 'YORU'" + RecipeHandler.RECIPE + RecipeHandler.NOTADDED);
 				}
 			}
+			*/
 		}
 		if(ARGetCrafting("K2 Items",true))
 		{
@@ -703,6 +705,10 @@ public class RecipeARItems {
                     new ShapelessOreRecipe(
                         ARGetItemRegister("lavastreamremover"),
                         new Object[]{Items.emerald,Items.ender_pearl}));
+                GameRegistry.addRecipe(
+                        new ShapelessOreRecipe(
+                            ARGetItemRegister("lavaobsidianexchanger"),
+                            new Object[]{ARGetItemRegister("lavastreamremover"), Items.nether_star}));
 		}
 	}
 }

@@ -140,10 +140,11 @@ public class RecipeAnotherMod
                 GameRegistry.addRecipe(new ShapelessOreRecipe(DChip, new Object[] { DCircuit, Silicon, Items.redstone }));
                 GameRegistry.addRecipe(new ShapelessOreRecipe(DChip, new Object[] { ARGetItemRegister("handstamp"), Items.diamond, "itemSilicon", Items.redstone }));
             }
-            if (Silicon != null && CChip != null && CCircuit != null)
+            if (Silicon != null && CChip != null && CCircuit != null && PureCertus != null)
             {
                 GameRegistry.addRecipe(new ShapelessOreRecipe(CChip, new Object[] { CCircuit, Silicon, Items.redstone }));
                 GameRegistry.addRecipe(new ShapelessOreRecipe(CChip, new Object[] { ARGetItemRegister("handstamp"), Certus, "itemSilicon", Items.redstone }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(CChip, new Object[] { ARGetItemRegister("handstamp"), PureCertus, "itemSilicon", Items.redstone }));
             }
             if (CPress != null && Certus != null && PureCertus != null)
             {
