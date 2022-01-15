@@ -80,7 +80,7 @@ public class ARConfiguration
             ARAnother.put("Pyramid", ARSet("AddChest", "Pyramid", true));
             ARAnother.put("Dungeon", ARSet("AddChest", "Dungeon", true));
             ARAnother.put("Bonus", ARSet("AddChest", "Bonus", true));
-            // ARAnother.put("ReplaceOverworldSpring",ARSet("Another","ReplaceOverworldSpring",true));
+            ARAnother.put("ReplaceOverworldSpring",ARSet("Another","ReplaceOverworldSpring",true));
             // ARAnother.put("ReplaceNetherLava",ARSet("Another","ReplaceNetherLava",false));
         }
         catch (Exception e)

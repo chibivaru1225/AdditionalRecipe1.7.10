@@ -19,6 +19,7 @@ import chibivaru.additionalrecipe.event.BedrockArmorLivingEventHooks;
 import chibivaru.additionalrecipe.event.CharmOfGuardianEventHooks;
 import chibivaru.additionalrecipe.event.InsaneArmorBaseLivingEventHooks;
 import chibivaru.additionalrecipe.event.K2ArmorLivingEventHooks;
+import chibivaru.additionalrecipe.event.ReplaceBlock;
 import chibivaru.additionalrecipe.recipe.RecipeHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -49,7 +50,7 @@ public class AdditionalRecipe
 {
     public static final String             MODID         = "additionalrecipe";
     public static final String             MODNAME       = "AdditionalRecipe";
-    public static final String             VERSION       = "0.01-17-e";
+    public static final String             VERSION       = "0.01-17-f";
 
     public static final String             CONSOLE       = "[AdditionalRecipe]:";
     public static final String             ADDID         = " added ID ";
@@ -123,7 +124,7 @@ public class AdditionalRecipe
         MinecraftForge.EVENT_BUS.register(new CharmOfGuardianEventHooks());
         MinecraftForge.EVENT_BUS.register(new K2ArmorLivingEventHooks());
         MinecraftForge.EVENT_BUS.register(new InsaneArmorBaseLivingEventHooks());
-        //MinecraftForge.EVENT_BUS.register(new ReplaceBlock());
+        MinecraftForge.EVENT_BUS.register(new ReplaceBlock());
         
         switch(side)
         {
