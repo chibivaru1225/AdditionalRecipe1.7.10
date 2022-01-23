@@ -29,7 +29,7 @@ public class LavaObsidianExchanger extends Item
         
         for(int i = -32; i <= 32; i++)
         {
-            for(int l = 0; l <= 128; l++)
+            for(int l = 0; l <= 256; l++)
             {
                 for(int j = -32; j <= 32; j++)
                 {

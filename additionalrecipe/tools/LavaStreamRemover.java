@@ -23,19 +23,18 @@ public class LavaStreamRemover extends Item
     {
         par3EntityPlayer.swingItem();
         int posx = (int) par3EntityPlayer.posX;
-        int posy = (int) par3EntityPlayer.posY;
         int posz = (int) par3EntityPlayer.posZ;
         
         for(int i = -16; i <= 16; i++)
         {
-            for(int l = -16; l <= 16; l++)
+            for(int l = 0; l <= 256; l++)
             {
                 for(int j = -16; j <= 16; j++)
                 {
-                    if (par2World.getBlock(posx + i, posy + l, posz + j).getMaterial() == Material.lava &&
-                        par2World.getBlockMetadata(posx + i, posy + l, posz + j) != 0)
+                    if (par2World.getBlock(posx + i, l, posz + j).getMaterial() == Material.lava &&
+                        par2World.getBlockMetadata(posx + i, l, posz + j) != 0)
                     {
-                        par2World.setBlockToAir(posx + i, posy + l, posz + j);
+                        par2World.setBlockToAir(posx + i, l, posz + j);
                     }
                 }
             }
