@@ -36,7 +36,7 @@ public class MultiK2 extends ItemSword implements IBauble
     private ToolMaterial toolMaterial;
     private IIcon[] icons = new IIcon[3];
     private String[] str = {"Great Sword","Long Sword","Wand"};
-    private float[] dmg = {toolMaterial.EMERALD.getDamageVsEntity() * 4.0f,toolMaterial.IRON.getDamageVsEntity() * 2.0f,toolMaterial.WOOD.getDamageVsEntity()};
+    private float[] dmg = {toolMaterial.EMERALD.getDamageVsEntity() * 10.0f, toolMaterial.IRON.getDamageVsEntity() * 4.0f, toolMaterial.WOOD.getDamageVsEntity()};
     public MultiK2(ToolMaterial par2toolMaterial)
 	{
 		super(par2toolMaterial);

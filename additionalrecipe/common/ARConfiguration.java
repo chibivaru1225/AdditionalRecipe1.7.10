@@ -63,6 +63,8 @@ public class ARConfiguration
             ARCrafting.put("AppliedEnergistics2", ARSet("AnotherMod", "AppliedEnergistics2", true));
             ARCrafting.put("StorageDrawers", ARSet("AnotherMod", "StorageDrawers", true));
             ARCrafting.put("TinkersConstruct", ARSet("AnotherMod", "TinkersConstruct", true));
+            
+            ARCrafting.put("Flour", ARSet("Crafting", "Flour", true));
 
             ARAnother.put("ExpBottle", ARSet("OreDicitionary", "ExpBottle", false));
             ARAnother.put("BuildCraft_Spring", ARSet("Dig", "BuildCraft_Spring", true));
@@ -81,6 +83,8 @@ public class ARConfiguration
             ARAnother.put("Dungeon", ARSet("AddChest", "Dungeon", true));
             ARAnother.put("Bonus", ARSet("AddChest", "Bonus", true));
             ARAnother.put("ReplaceOverworldSpring",ARSet("Another","ReplaceOverworldSpring",true));
+            
+            ARAnother.put("Bat", ARSet("MobExlie", "Bat", true));
             // ARAnother.put("ReplaceNetherLava",ARSet("Another","ReplaceNetherLava",false));
         }
         catch (Exception e)

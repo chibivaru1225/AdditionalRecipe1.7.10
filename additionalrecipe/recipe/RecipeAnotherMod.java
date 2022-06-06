@@ -83,6 +83,12 @@ public class RecipeAnotherMod
                     1, 11);
             ItemStack PureFluix = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
                     1, 12);
+            ItemStack PureCertus2 = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
+                    2, 10);
+            ItemStack PureNether2 = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
+                    2, 11);
+            ItemStack PureFluix2 = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
+                    2, 12);
             ItemStack Certus = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1,
                     0);
             ItemStack Fluix = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 2,
@@ -113,17 +119,17 @@ public class RecipeAnotherMod
             if ((PureCertus != null) && (SeedCertus != null))
             {
                 GameRegistry.addRecipe(new ShapelessOreRecipe(PureCertus, new Object[] { SeedCertus, Blocks.sand }));
-                GameRegistry.addRecipe(new ShapelessOreRecipe(PureCertus, new Object[] { "dustCertusQuartz", Blocks.sand, Blocks.sand }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(PureCertus2, new Object[] { "dustCertusQuartz", Blocks.sand, Blocks.sand, Blocks.sand }));
             }
             if ((PureNether != null) && (SeedNether != null))
             {
                 GameRegistry.addRecipe(new ShapelessOreRecipe(PureNether, new Object[] { SeedNether, Blocks.sand }));
-                GameRegistry.addRecipe(new ShapelessOreRecipe(PureNether, new Object[] { "dustNetherQuartz", Blocks.sand, Blocks.sand }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(PureNether2, new Object[] { "dustNetherQuartz", Blocks.sand, Blocks.sand, Blocks.sand }));
             }
             if ((PureFluix != null) && (SeedFluix != null))
             {
                 GameRegistry.addRecipe(new ShapelessOreRecipe(PureFluix, new Object[] { SeedFluix, Blocks.sand }));
-                GameRegistry.addRecipe(new ShapelessOreRecipe(PureFluix, new Object[] { "dustFluix", Blocks.sand, Blocks.sand }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(PureFluix2, new Object[] { "dustFluix", Blocks.sand, Blocks.sand, Blocks.sand }));
             }
             if (Fluix != null)
             {
@@ -215,7 +221,7 @@ public class RecipeAnotherMod
                                 Character.valueOf('Y'), Items.stick, Character.valueOf('Z'), Temp }));
             }
         }
-        if (ARGetCrafting("TinkersConstruct", true))
+        if (ARGetCrafting("TinkersConstruct", true) && Loader.isModLoaded("TinkersConstruct"))
         {
             ItemStack Creative = new ItemStack(GameRegistry.findItem("TConstruct", "creativeModifier"), 1, 0);
             ItemStack ExBush = new ItemStack(GameRegistry.findItem("TConstruct", "ore.berries.two"), 1, 9);
@@ -243,7 +249,7 @@ public class RecipeAnotherMod
                         new Object[] { YCanister, GHeart, Blocks.diamond_block, Items.ender_pearl }));
             }
         }
-        if (ARGetCrafting("Et Futurum", true))
+        if (ARGetCrafting("Et Futurum", true) && Loader.isModLoaded("Et Futurum"))
         {
             ItemStack Shard   = new ItemStack(GameRegistry.findItem("etfuturum", "prismarine_shard"), 2, 0);
             ItemStack Crystal = new ItemStack(GameRegistry.findItem("etfuturum", "prismarine_crystals"), 2, 0);

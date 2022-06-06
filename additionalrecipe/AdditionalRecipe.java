@@ -14,11 +14,9 @@ import chibivaru.additionalrecipe.common.ClassHelper;
 import chibivaru.additionalrecipe.event.ARAddChestGenHooks;
 import chibivaru.additionalrecipe.event.ARFlyingEventHooks;
 import chibivaru.additionalrecipe.event.ARNoFallDamageEventHooksServer;
-import chibivaru.additionalrecipe.event.AngelusArmorLivingEventHooks;
-import chibivaru.additionalrecipe.event.BedrockArmorLivingEventHooks;
 import chibivaru.additionalrecipe.event.CharmOfGuardianEventHooks;
 import chibivaru.additionalrecipe.event.InsaneArmorBaseLivingEventHooks;
-import chibivaru.additionalrecipe.event.K2ArmorLivingEventHooks;
+import chibivaru.additionalrecipe.event.MobExlieEventHooks;
 import chibivaru.additionalrecipe.event.ReplaceBlock;
 import chibivaru.additionalrecipe.recipe.RecipeHandler;
 import cpw.mods.fml.common.Loader;
@@ -50,7 +48,7 @@ public class AdditionalRecipe
 {
     public static final String             MODID         = "additionalrecipe";
     public static final String             MODNAME       = "AdditionalRecipe";
-    public static final String             VERSION       = "0.01-17-f";
+    public static final String             VERSION       = "0.02";
 
     public static final String             CONSOLE       = "[AdditionalRecipe]:";
     public static final String             ADDID         = " added ID ";
@@ -119,12 +117,13 @@ public class AdditionalRecipe
         Side side = event.getSide();
 
         MinecraftForge.EVENT_BUS.register(new ARNoFallDamageEventHooksServer());
-        MinecraftForge.EVENT_BUS.register(new AngelusArmorLivingEventHooks());
-        MinecraftForge.EVENT_BUS.register(new BedrockArmorLivingEventHooks());
+        //MinecraftForge.EVENT_BUS.register(new AngelusArmorLivingEventHooks());
+        //MinecraftForge.EVENT_BUS.register(new BedrockArmorLivingEventHooks());
         MinecraftForge.EVENT_BUS.register(new CharmOfGuardianEventHooks());
-        MinecraftForge.EVENT_BUS.register(new K2ArmorLivingEventHooks());
+        //MinecraftForge.EVENT_BUS.register(new K2ArmorLivingEventHooks());
         MinecraftForge.EVENT_BUS.register(new InsaneArmorBaseLivingEventHooks());
         MinecraftForge.EVENT_BUS.register(new ReplaceBlock());
+        MinecraftForge.EVENT_BUS.register(new MobExlieEventHooks());
         
         switch(side)
         {
