@@ -221,7 +221,7 @@ public class RecipeAnotherMod
                                 Character.valueOf('Y'), Items.stick, Character.valueOf('Z'), Temp }));
             }
         }
-        if (ARGetCrafting("TinkersConstruct", true) && Loader.isModLoaded("TinkersConstruct"))
+        if (ARGetCrafting("TinkersConstruct", true) && Loader.isModLoaded("TConstruct"))
         {
             ItemStack Creative = new ItemStack(GameRegistry.findItem("TConstruct", "creativeModifier"), 1, 0);
             ItemStack ExBush = new ItemStack(GameRegistry.findItem("TConstruct", "ore.berries.two"), 1, 9);
