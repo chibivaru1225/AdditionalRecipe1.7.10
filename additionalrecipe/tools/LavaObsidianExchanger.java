@@ -13,32 +13,42 @@ import net.minecraft.world.World;
 
 public class LavaObsidianExchanger extends Item
 {
+    private boolean effect;
+    
     public LavaObsidianExchanger()
     {
         super();
         setMaxStackSize(1);
+        effect = true;
     }
     
     @Override
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
-        par3EntityPlayer.swingItem();
-        int posx = (int) par3EntityPlayer.posX;
-        int posy = (int) par3EntityPlayer.posY;
-        int posz = (int) par3EntityPlayer.posZ;
-        
-        for(int i = -32; i <= 32; i++)
+        if (par3EntityPlayer.isSneaking())
         {
-            for(int l = 0; l <= 256; l++)
+            effect = !effect;
+        }
+        else
+        {
+            par3EntityPlayer.swingItem();
+            int posx = (int) par3EntityPlayer.posX;
+            int posy = (int) par3EntityPlayer.posY;
+            int posz = (int) par3EntityPlayer.posZ;
+            
+            for(int i = -64; i <= 64; i++)
             {
-                for(int j = -32; j <= 32; j++)
+                for(int l = 0; l <= 256; l++)
                 {
-                    if (par2World.getBlock(posx + i, l, posz + j).getMaterial() == Material.lava)
+                    for(int j = -64; j <= 64; j++)
                     {
-                        if (par2World.getBlockMetadata(posx + i, l, posz + j) != 0) {
-                            par2World.setBlockToAir(posx + i, l, posz + j);
-                        } else if (l > 32){
-                            par2World.setBlock(posx + i, l, posz + j, Blocks.obsidian);
+                        if (par2World.getBlock(posx + i, l, posz + j).getMaterial() == Material.lava)
+                        {
+                            if (par2World.getBlockMetadata(posx + i, l, posz + j) != 0) {
+                                par2World.setBlockToAir(posx + i, l, posz + j);
+                            } else if (effect || l > 32){
+                                par2World.setBlock(posx + i, l, posz + j, Blocks.obsidian);
+                            }
                         }
                     }
                 }
@@ -57,6 +67,6 @@ public class LavaObsidianExchanger extends Item
     @SideOnly(Side.CLIENT)
     public boolean hasEffect(ItemStack par1ItemStack)
     {
-        return true;
+        return effect;
     }
 }

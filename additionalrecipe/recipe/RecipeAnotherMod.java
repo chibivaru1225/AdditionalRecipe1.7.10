@@ -249,7 +249,7 @@ public class RecipeAnotherMod
                         new Object[] { YCanister, GHeart, Blocks.diamond_block, Items.ender_pearl }));
             }
         }
-        if (ARGetCrafting("Et Futurum", true) && Loader.isModLoaded("Et Futurum"))
+        if (ARGetCrafting("Et Futurum", true) && Loader.isModLoaded("etfuturum"))
         {
             ItemStack Shard   = new ItemStack(GameRegistry.findItem("etfuturum", "prismarine_shard"), 2, 0);
             ItemStack Crystal = new ItemStack(GameRegistry.findItem("etfuturum", "prismarine_crystals"), 2, 0);
