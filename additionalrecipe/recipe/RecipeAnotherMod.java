@@ -249,6 +249,18 @@ public class RecipeAnotherMod
                         new Object[] { YCanister, GHeart, Blocks.diamond_block, Items.ender_pearl }));
             }
         }
+        if (Loader.isModLoaded("EnderIO")) {
+            ItemStack EnderSkull = new ItemStack(GameRegistry.findItem("EnderIO", "blockEndermanSkull"), 1, 0);
+            GameRegistry.addRecipe(
+                new ShapelessOreRecipe(
+                    new ItemStack(Items.ender_pearl, 16, 0),
+                    new Object[]{"ExchangeIgnition", EnderSkull}));
+            
+            for (int var1 = 0; var1 < 5; ++var1)
+            {
+                GameRegistry.addRecipe(new ShapelessOreRecipe(EnderSkull, new Object[]{"ExchangeIgnition", new ItemStack(Items.skull, 1, var1)}));
+            }
+        }
         if (ARGetCrafting("Et Futurum", true) && Loader.isModLoaded("etfuturum"))
         {
             ItemStack Shard   = new ItemStack(GameRegistry.findItem("etfuturum", "prismarine_shard"), 2, 0);

@@ -372,5 +372,60 @@ public class RecipeItems {
 					new Object[]{"XXX","X X","XXX",
 						Character.valueOf('X'),Items.string}));
 		}
+        if(ARGetCrafting("Wood", true))
+        {
+            GameRegistry.addRecipe(
+                new ShapelessOreRecipe(
+                    new ItemStack(Blocks.sapling, 1, 0),
+                    new Object[]{"ExchangeIgnition", Blocks.dirt}));
+            GameRegistry.addRecipe(
+                    new ShapelessOreRecipe(
+                        new ItemStack(Blocks.sapling, 1, 1),
+                        new Object[]{"ExchangeIgnition", new ItemStack(Blocks.sapling, 1, 0)}));
+            GameRegistry.addRecipe(
+                    new ShapelessOreRecipe(
+                        new ItemStack(Blocks.sapling, 1, 2),
+                        new Object[]{"ExchangeIgnition", new ItemStack(Blocks.sapling, 1, 1)}));
+            GameRegistry.addRecipe(
+                    new ShapelessOreRecipe(
+                        new ItemStack(Blocks.sapling, 1, 3),
+                        new Object[]{"ExchangeIgnition", new ItemStack(Blocks.sapling, 1, 2)}));
+            GameRegistry.addRecipe(
+                    new ShapelessOreRecipe(
+                        new ItemStack(Blocks.sapling, 1, 4),
+                        new Object[]{"ExchangeIgnition", new ItemStack(Blocks.sapling, 1, 3)}));
+            GameRegistry.addRecipe(
+                    new ShapelessOreRecipe(
+                        new ItemStack(Blocks.sapling, 1, 5),
+                        new Object[]{"ExchangeIgnition", new ItemStack(Blocks.sapling, 1, 4)}));
+            GameRegistry.addRecipe(
+                    new ShapelessOreRecipe(
+                        new ItemStack(Blocks.sapling, 1, 0),
+                        new Object[]{"ExchangeIgnition", new ItemStack(Blocks.sapling, 1, 5)}));
+            GameRegistry.addRecipe(
+                    new ShapelessOreRecipe(
+                        new ItemStack(Blocks.log, 64, 0),
+                        new Object[]{"ExchangeIgnition", new ItemStack(Blocks.sapling, 1, 0), new ItemStack(Items.dye, 1, 15)}));
+            GameRegistry.addRecipe(
+                    new ShapelessOreRecipe(
+                        new ItemStack(Blocks.log, 64, 1),
+                        new Object[]{"ExchangeIgnition", new ItemStack(Blocks.sapling, 1, 1), new ItemStack(Items.dye, 1, 15)}));
+            GameRegistry.addRecipe(
+                    new ShapelessOreRecipe(
+                        new ItemStack(Blocks.log, 64, 2),
+                        new Object[]{"ExchangeIgnition", new ItemStack(Blocks.sapling, 1, 2), new ItemStack(Items.dye, 1, 15)}));
+            GameRegistry.addRecipe(
+                    new ShapelessOreRecipe(
+                        new ItemStack(Blocks.log, 64, 3),
+                        new Object[]{"ExchangeIgnition", new ItemStack(Blocks.sapling, 1, 3), new ItemStack(Items.dye, 1, 15)}));
+            GameRegistry.addRecipe(
+                    new ShapelessOreRecipe(
+                        new ItemStack(Blocks.log, 64, 4),
+                        new Object[]{"ExchangeIgnition", new ItemStack(Blocks.sapling, 1, 4), new ItemStack(Items.dye, 1, 15)}));
+            GameRegistry.addRecipe(
+                    new ShapelessOreRecipe(
+                        new ItemStack(Blocks.log, 64, 5),
+                        new Object[]{"ExchangeIgnition", new ItemStack(Blocks.sapling, 1, 5), new ItemStack(Items.dye, 1, 15)}));
+        }
 	}
 }
