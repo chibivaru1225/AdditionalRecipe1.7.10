@@ -1,6 +1,7 @@
 package chibivaru.additionalrecipe.recipe;
 
 import static chibivaru.additionalrecipe.common.ARConfiguration.*;
+import static chibivaru.additionalrecipe.common.ARItemHandler.ARGetItemRegister;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
@@ -41,6 +42,10 @@ public class RecipeSmelting {
 			for (ItemStack wood : OreDictionary.getOres("dustWood")) {
 				GameRegistry.addSmelting(wood, new ItemStack(Items.paper), 0.0f);
 			}
+		}
+		if (ARGetSmelting("Bread", true)) {
+			GameRegistry.addSmelting(Items.wheat, new ItemStack(Items.bread), 0.01f);
+			GameRegistry.addSmelting(ARGetItemRegister("dustbread"), new ItemStack(Items.bread), 0.01f);
 		}
 		if (ARGetSmelting("RecycleTool", true)) {
 			if (ARGetSmelting("WoodTool", true)) {

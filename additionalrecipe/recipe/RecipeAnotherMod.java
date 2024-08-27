@@ -15,18 +15,14 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
-public class RecipeAnotherMod
-{
+public class RecipeAnotherMod {
     private static Class MFR;
     private static Class BC;
     private static Class MoInv;
 
-    public void init()
-    {
-        if (Loader.isModLoaded("Mystcraft"))
-        {
-            if (ARGetCrafting("LinkModifer", true))
-            {
+    public void init() {
+        if (Loader.isModLoaded("Mystcraft")) {
+            if (ARGetCrafting("LinkModifer", true)) {
                 /*
                  * GameRegistry.addRecipe( new ShapedOreRecipe( new
                  * ItemStack(MystObjects.link_modifer), new
@@ -34,255 +30,324 @@ public class RecipeAnotherMod
                  * Character.valueOf('X'),Block.blockDiamond,
                  * Character.valueOf('Y'),Block.blockGold}));
                  */
-                if (ARGetAnother("ConsoleOut", true))
-                {
+                if (ARGetAnother("ConsoleOut", true)) {
                     System.out.println(
-                            AdditionalRecipe.CONSOLE + "Link Modifer" + RecipeHandler.RECIPE + RecipeHandler.ADDED);
+                            AdditionalRecipe.CONSOLE + "Link Modifer" + RecipeHandler.RECIPE
+                                    + RecipeHandler.ADDED);
                 }
-            }
-            else
-            {
-                if (ARGetAnother("ConsoleOut", true))
-                {
+            } else {
+                if (ARGetAnother("ConsoleOut", true)) {
                     System.out.println(
-                            AdditionalRecipe.CONSOLE + "Link Modifer" + RecipeHandler.RECIPE + RecipeHandler.NOTADDED);
+                            AdditionalRecipe.CONSOLE + "Link Modifer" + RecipeHandler.RECIPE
+                                    + RecipeHandler.NOTADDED);
                 }
             }
         }
-        if (OreDictionary.getOres("dustWheat").size() > 0)
-        {
-            if (ARGetCrafting("Flour", true))
-            {
-                GameRegistry.addRecipe(new ShapelessOreRecipe(OreDictionary.getOres("dustWheat").get(0),
-                        new Object[] { Items.wheat }));
-                if (ARGetAnother("ConsoleOut", true))
-                {
-                    System.out.println(AdditionalRecipe.CONSOLE + "Flour" + RecipeHandler.RECIPE + RecipeHandler.ADDED);
+        if (OreDictionary.getOres("dustWheat").size() > 0) {
+            if (ARGetCrafting("Flour", true)) {
+                if (Loader.isModLoaded("GregTech")) {
+                    GameRegistry.addRecipe(new ShapelessOreRecipe(Items.bread,
+                            new Object[] { Items.wheat }));
+                } else {
+                    GameRegistry.addRecipe(new ShapelessOreRecipe(
+                            OreDictionary.getOres("dustWheat").get(0),
+                            new Object[] { Items.wheat }));
                 }
-            }
-            else
-            {
-                if (ARGetAnother("ConsoleOut", true))
-                {
+                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.bread, 8),
+                        new Object[] { Items.coal, "dustWheat", "dustWheat", "dustWheat",
+                                "dustWheat", "dustWheat",
+                                "dustWheat", "dustWheat", "dustWheat" }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.bread, 8),
+                        new Object[] { new ItemStack(Items.coal, 1, 1), "dustWheat",
+                                "dustWheat", "dustWheat",
+                                "dustWheat", "dustWheat",
+                                "dustWheat", "dustWheat", "dustWheat" }));
+                if (ARGetAnother("ConsoleOut", true)) {
+                    System.out.println(AdditionalRecipe.CONSOLE + "Flour" + RecipeHandler.RECIPE
+                            + RecipeHandler.ADDED);
+                }
+            } else {
+                if (ARGetAnother("ConsoleOut", true)) {
                     System.out.println(
-                            AdditionalRecipe.CONSOLE + "Flour" + RecipeHandler.RECIPE + RecipeHandler.NOTADDED);
+                            AdditionalRecipe.CONSOLE + "Flour" + RecipeHandler.RECIPE
+                                    + RecipeHandler.NOTADDED);
                 }
             }
         }
-        if (ARGetCrafting("AppliedEnergistics2", true))
-        {
-            ItemStack SeedCertus = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"),
+        if (ARGetCrafting("AppliedEnergistics2", true)) {
+            ItemStack SeedCertus = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"),
                     1, 0);
-            ItemStack SeedNether = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"),
+            ItemStack SeedNether = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"),
                     1, 600);
-            ItemStack SeedFluix = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"), 1,
+            ItemStack SeedFluix = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemCrystalSeed"), 1,
                     1200);
-            ItemStack PureCertus = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
+            ItemStack PureCertus = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
                     1, 10);
-            ItemStack PureNether = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
+            ItemStack PureNether = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
                     1, 11);
-            ItemStack PureFluix = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
+            ItemStack PureFluix = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
                     1, 12);
-            ItemStack PureCertus2 = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
+            ItemStack PureCertus2 = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
                     2, 10);
-            ItemStack PureNether2 = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
+            ItemStack PureNether2 = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
                     2, 11);
-            ItemStack PureFluix2 = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
+            ItemStack PureFluix2 = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
                     2, 12);
-            ItemStack Certus = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1,
+            ItemStack Certus = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1,
                     0);
-            ItemStack Fluix = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 2,
+            ItemStack Fluix = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 2,
                     7);
-            ItemStack Silicon = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1,
+            ItemStack Silicon = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1,
                     20);
-            ItemStack GChip = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1,
+            ItemStack GChip = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1,
                     22);
-            ItemStack DChip = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1,
+            ItemStack DChip = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1,
                     24);
-            ItemStack CChip = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1,
+            ItemStack CChip = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1,
                     23);
-            ItemStack GCircuit = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
+            ItemStack GCircuit = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
                     1, 18);
-            ItemStack DCircuit = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
+            ItemStack DCircuit = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
                     1, 17);
-            ItemStack CCircuit = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
+            ItemStack CCircuit = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"),
                     1, 16);
-            ItemStack CPress = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1,
+            ItemStack CPress = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1,
                     13);
-            ItemStack EPress = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1,
+            ItemStack EPress = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1,
                     14);
-            ItemStack LPress = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1,
+            ItemStack LPress = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1,
                     15);
-            ItemStack SPress = new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1,
+            ItemStack SPress = new ItemStack(
+                    GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1,
                     19);
 
-            if ((PureCertus != null) && (SeedCertus != null))
-            {
-                GameRegistry.addRecipe(new ShapelessOreRecipe(PureCertus, new Object[] { SeedCertus, Blocks.sand }));
-                GameRegistry.addRecipe(new ShapelessOreRecipe(PureCertus2, new Object[] { "dustCertusQuartz", Blocks.sand, Blocks.sand, Blocks.sand }));
+            if ((PureCertus != null) && (SeedCertus != null)) {
+                GameRegistry.addRecipe(new ShapelessOreRecipe(PureCertus,
+                        new Object[] { SeedCertus, Blocks.sand }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(PureCertus2, new Object[] {
+                        "dustCertusQuartz", Blocks.sand, Blocks.sand, Blocks.sand }));
             }
-            if ((PureNether != null) && (SeedNether != null))
-            {
-                GameRegistry.addRecipe(new ShapelessOreRecipe(PureNether, new Object[] { SeedNether, Blocks.sand }));
-                GameRegistry.addRecipe(new ShapelessOreRecipe(PureNether2, new Object[] { "dustNetherQuartz", Blocks.sand, Blocks.sand, Blocks.sand }));
+            if ((PureNether != null) && (SeedNether != null)) {
+                GameRegistry.addRecipe(new ShapelessOreRecipe(PureNether,
+                        new Object[] { SeedNether, Blocks.sand }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(PureNether2, new Object[] {
+                        "dustNetherQuartz", Blocks.sand, Blocks.sand, Blocks.sand }));
             }
-            if ((PureFluix != null) && (SeedFluix != null))
-            {
-                GameRegistry.addRecipe(new ShapelessOreRecipe(PureFluix, new Object[] { SeedFluix, Blocks.sand }));
-                GameRegistry.addRecipe(new ShapelessOreRecipe(PureFluix2, new Object[] { "dustFluix", Blocks.sand, Blocks.sand, Blocks.sand }));
+            if ((PureFluix != null) && (SeedFluix != null)) {
+                GameRegistry.addRecipe(new ShapelessOreRecipe(PureFluix,
+                        new Object[] { SeedFluix, Blocks.sand }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(PureFluix2,
+                        new Object[] { "dustFluix", Blocks.sand, Blocks.sand, Blocks.sand }));
             }
-            if (Fluix != null)
-            {
+            if (Fluix != null) {
                 GameRegistry.addRecipe(new ShapelessOreRecipe(Fluix,
                         new Object[] { "crystalCertusQuartz", Items.quartz, Items.redstone }));
             }
-            if (Silicon != null && GChip != null && GCircuit != null)
-            {
-                GameRegistry.addRecipe(new ShapelessOreRecipe(GChip, new Object[] { GCircuit, Silicon, Items.redstone }));
-                GameRegistry.addRecipe(new ShapelessOreRecipe(GChip, new Object[] { ARGetItemRegister("handstamp"), Items.gold_ingot, "itemSilicon", Items.redstone }));
+            if (Silicon != null && GChip != null && GCircuit != null) {
+                GameRegistry.addRecipe(new ShapelessOreRecipe(GChip,
+                        new Object[] { GCircuit, Silicon, Items.redstone }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(GChip,
+                        new Object[] { ARGetItemRegister("handstamp"), Items.gold_ingot,
+                                "itemSilicon", Items.redstone }));
             }
-            if (Silicon != null && DChip != null && DCircuit != null)
-            {
-                GameRegistry.addRecipe(new ShapelessOreRecipe(DChip, new Object[] { DCircuit, Silicon, Items.redstone }));
-                GameRegistry.addRecipe(new ShapelessOreRecipe(DChip, new Object[] { ARGetItemRegister("handstamp"), Items.diamond, "itemSilicon", Items.redstone }));
+            if (Silicon != null && DChip != null && DCircuit != null) {
+                GameRegistry.addRecipe(new ShapelessOreRecipe(DChip,
+                        new Object[] { DCircuit, Silicon, Items.redstone }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(DChip,
+                        new Object[] { ARGetItemRegister("handstamp"), Items.diamond,
+                                "itemSilicon", Items.redstone }));
             }
-            if (Silicon != null && CChip != null && CCircuit != null && PureCertus != null)
-            {
-                GameRegistry.addRecipe(new ShapelessOreRecipe(CChip, new Object[] { CCircuit, Silicon, Items.redstone }));
-                GameRegistry.addRecipe(new ShapelessOreRecipe(CChip, new Object[] { ARGetItemRegister("handstamp"), Certus, "itemSilicon", Items.redstone }));
-                GameRegistry.addRecipe(new ShapelessOreRecipe(CChip, new Object[] { ARGetItemRegister("handstamp"), PureCertus, "itemSilicon", Items.redstone }));
+            if (Silicon != null && CChip != null && CCircuit != null && PureCertus != null) {
+                GameRegistry.addRecipe(new ShapelessOreRecipe(CChip,
+                        new Object[] { CCircuit, Silicon, Items.redstone }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(CChip,
+                        new Object[] { ARGetItemRegister("handstamp"), Certus, "itemSilicon",
+                                Items.redstone }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(CChip,
+                        new Object[] { ARGetItemRegister("handstamp"), PureCertus,
+                                "itemSilicon", Items.redstone }));
             }
-            if (CPress != null && Certus != null && PureCertus != null)
-            {
-                GameRegistry.addRecipe(new ShapelessOreRecipe(CPress, new Object[] { Blocks.iron_block, Certus }));
-                GameRegistry.addRecipe(new ShapelessOreRecipe(CPress, new Object[] { Blocks.iron_block, PureCertus }));
+            if (CPress != null && Certus != null && PureCertus != null) {
+                GameRegistry.addRecipe(new ShapelessOreRecipe(CPress,
+                        new Object[] { Blocks.iron_block, Certus }));
+                GameRegistry.addRecipe(new ShapelessOreRecipe(CPress,
+                        new Object[] { Blocks.iron_block, PureCertus }));
             }
-            if (EPress != null)
-            {
+            if (EPress != null) {
                 GameRegistry
-                        .addRecipe(new ShapelessOreRecipe(EPress, new Object[] { Blocks.iron_block, Items.diamond }));
+                        .addRecipe(new ShapelessOreRecipe(EPress,
+                                new Object[] { Blocks.iron_block, Items.diamond }));
             }
-            if (LPress != null)
-            {
+            if (LPress != null) {
                 GameRegistry.addRecipe(
-                        new ShapelessOreRecipe(LPress, new Object[] { Blocks.iron_block, Items.gold_ingot }));
+                        new ShapelessOreRecipe(LPress,
+                                new Object[] { Blocks.iron_block, Items.gold_ingot }));
             }
-            if (SPress != null)
-            {
+            if (SPress != null) {
                 GameRegistry
-                        .addRecipe(new ShapelessOreRecipe(SPress, new Object[] { Blocks.iron_block, "itemSilicon" }));
+                        .addRecipe(new ShapelessOreRecipe(SPress,
+                                new Object[] { Blocks.iron_block, "itemSilicon" }));
             }
-            if (CPress != null && EPress != null && LPress != null && SPress != null)
-            {
+            if (CPress != null && EPress != null && LPress != null && SPress != null) {
                 GameRegistry.addRecipe(new ShapelessOreRecipe(ARGetItemRegister("handstamp"),
                         new Object[] { CPress, EPress, LPress, SPress }));
             }
-            if (CCircuit != null && Certus != null && PureCertus != null)
-            {
+            if (CCircuit != null && Certus != null && PureCertus != null) {
                 GameRegistry.addRecipe(
-                        new ShapelessOreRecipe(CCircuit, new Object[] { ARGetItemRegister("handstamp"), Certus }));
+                        new ShapelessOreRecipe(CCircuit, new Object[] {
+                                ARGetItemRegister("handstamp"), Certus }));
                 GameRegistry.addRecipe(
-                        new ShapelessOreRecipe(CCircuit, new Object[] { ARGetItemRegister("handstamp"), PureCertus }));
+                        new ShapelessOreRecipe(CCircuit, new Object[] {
+                                ARGetItemRegister("handstamp"), PureCertus }));
             }
-            if (GCircuit != null)
-            {
+            if (GCircuit != null) {
                 GameRegistry.addRecipe(new ShapelessOreRecipe(GCircuit,
                         new Object[] { ARGetItemRegister("handstamp"), Items.gold_ingot }));
             }
-            if (DCircuit != null)
-            {
+            if (DCircuit != null) {
                 GameRegistry.addRecipe(new ShapelessOreRecipe(DCircuit,
                         new Object[] { ARGetItemRegister("handstamp"), Items.diamond }));
             }
-            if (Silicon != null)
-            {
+            if (Silicon != null) {
                 GameRegistry.addRecipe(new ShapelessOreRecipe(Silicon,
                         new Object[] { ARGetItemRegister("handstamp"), "itemSilicon" }));
             }
         }
-        if (ARGetCrafting("StorageDrawers", true))
-        {
-            ItemStack Creative = new ItemStack(GameRegistry.findItem("StorageDrawers", "upgradeCreative"), 1, 0);
-            ItemStack Temp = new ItemStack(GameRegistry.findItem("StorageDrawers", "upgradeTemplate"), 1, 0);
+        if (ARGetCrafting("StorageDrawers", true)) {
+            ItemStack Creative = new ItemStack(GameRegistry.findItem("StorageDrawers", "upgradeCreative"),
+                    1, 0);
+            ItemStack Temp = new ItemStack(GameRegistry.findItem("StorageDrawers", "upgradeTemplate"), 1,
+                    0);
 
-            if (Creative != null && Temp != null)
-            {
+            if (Creative != null && Temp != null) {
                 GameRegistry.addRecipe(new ShapedOreRecipe(Creative,
-                        new Object[] { "XYX", "YZY", "XYX", Character.valueOf('X'), "ingotBedrockium",
-                                Character.valueOf('Y'), Items.stick, Character.valueOf('Z'), Temp }));
+                        new Object[] { "XYX", "YZY", "XYX", Character.valueOf('X'),
+                                "ingotBedrockium",
+                                Character.valueOf('Y'), Items.stick,
+                                Character.valueOf('Z'), Temp }));
                 GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Creative.getItem(), 4),
-                        new Object[] { "XYX", "YZY", "XYX", Character.valueOf('X'), "ingotUnstable",
-                                Character.valueOf('Y'), Items.stick, Character.valueOf('Z'), Temp }));
+                        new Object[] { "XYX", "YZY", "XYX", Character.valueOf('X'),
+                                "ingotUnstable",
+                                Character.valueOf('Y'), Items.stick,
+                                Character.valueOf('Z'), Temp }));
                 GameRegistry.addRecipe(
-                        new ShapedOreRecipe(Creative, new Object[] { "XYX", "YZY", "XYX", Character.valueOf('X'),
-                                "ingotEnderium", Character.valueOf('Y'), Items.stick, Character.valueOf('Z'), Temp }));
+                        new ShapedOreRecipe(Creative, new Object[] { "XYX", "YZY", "XYX",
+                                Character.valueOf('X'),
+                                "ingotEnderium", Character.valueOf('Y'), Items.stick,
+                                Character.valueOf('Z'), Temp }));
                 GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Creative.getItem(), 4),
-                        new Object[] { "XYX", "YZY", "XYX", Character.valueOf('X'), Items.nether_star,
-                                Character.valueOf('Y'), Items.stick, Character.valueOf('Z'), Temp }));
+                        new Object[] { "XYX", "YZY", "XYX", Character.valueOf('X'),
+                                Items.nether_star,
+                                Character.valueOf('Y'), Items.stick,
+                                Character.valueOf('Z'), Temp }));
             }
         }
-        if (ARGetCrafting("TinkersConstruct", true) && Loader.isModLoaded("TConstruct"))
-        {
-            ItemStack Creative = new ItemStack(GameRegistry.findItem("TConstruct", "creativeModifier"), 1, 0);
+        if (ARGetCrafting("TinkersConstruct", true) && Loader.isModLoaded("TConstruct")) {
+            ItemStack Creative = new ItemStack(GameRegistry.findItem("TConstruct", "creativeModifier"), 1,
+                    0);
             ItemStack ExBush = new ItemStack(GameRegistry.findItem("TConstruct", "ore.berries.two"), 1, 9);
             ItemStack YHeart = new ItemStack(GameRegistry.findItem("TConstruct", "heartCanister"), 1, 3);
             ItemStack YCanister = new ItemStack(GameRegistry.findItem("TConstruct", "heartCanister"), 1, 4);
             ItemStack GHeart = new ItemStack(GameRegistry.findItem("TConstruct", "heartCanister"), 1, 5);
             ItemStack GCanister = new ItemStack(GameRegistry.findItem("TConstruct", "heartCanister"), 1, 6);
-            if (Creative != null)
-            {
+            if (Creative != null) {
                 GameRegistry.addRecipe(new ShapedOreRecipe(Creative, new Object[] { " X ", "XYX", " X ",
-                        Character.valueOf('X'), Items.nether_star, Character.valueOf('Y'), Blocks.diamond_block }));
+                        Character.valueOf('X'), Items.nether_star, Character.valueOf('Y'),
+                        Blocks.diamond_block }));
                 GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Creative.getItem(), 32, 0),
-                        new Object[] { "XXX", "XYX", "XXX", Character.valueOf('X'), Items.ender_pearl,
+                        new Object[] { "XXX", "XYX", "XXX", Character.valueOf('X'),
+                                Items.ender_pearl,
                                 Character.valueOf('Y'), Blocks.diamond_block }));
             }
-            if (ExBush != null)
-            {
+            if (ExBush != null) {
                 GameRegistry.addRecipe(new ShapedOreRecipe(ExBush, new Object[] { "XXX", "XYX", "XXX",
-                        Character.valueOf('X'), Items.experience_bottle, Character.valueOf('Y'), Blocks.sapling }));
+                        Character.valueOf('X'), Items.experience_bottle, Character.valueOf('Y'),
+                        Blocks.sapling }));
             }
-            if (YCanister != null && YCanister != null && GHeart != null && GCanister != null)
-            {
-                GameRegistry.addRecipe(new ShapelessOreRecipe(GHeart, new Object[] { YHeart, Items.ender_pearl }));
+            if (YCanister != null && YCanister != null && GHeart != null && GCanister != null) {
+                GameRegistry.addRecipe(new ShapelessOreRecipe(GHeart,
+                        new Object[] { YHeart, Items.ender_pearl }));
                 GameRegistry.addRecipe(new ShapelessOreRecipe(GCanister,
-                        new Object[] { YCanister, GHeart, Blocks.diamond_block, Items.ender_pearl }));
+                        new Object[] { YCanister, GHeart, Blocks.diamond_block,
+                                Items.ender_pearl }));
             }
         }
         if (Loader.isModLoaded("EnderIO")) {
-            ItemStack EnderSkull = new ItemStack(GameRegistry.findItem("EnderIO", "blockEndermanSkull"), 1, 0);
+            ItemStack EnderSkull = new ItemStack(GameRegistry.findItem("EnderIO", "blockEndermanSkull"), 1,
+                    0);
             GameRegistry.addRecipe(
-                new ShapelessOreRecipe(
-                    new ItemStack(Items.ender_pearl, 16, 0),
-                    new Object[]{"ExchangeIgnition", EnderSkull}));
-            
-            for (int var1 = 0; var1 < 5; ++var1)
-            {
-                GameRegistry.addRecipe(new ShapelessOreRecipe(EnderSkull, new Object[]{"ExchangeIgnition", new ItemStack(Items.skull, 1, var1)}));
+                    new ShapelessOreRecipe(
+                            new ItemStack(Items.ender_pearl, 16, 0),
+                            new Object[] { "ExchangeIgnition", EnderSkull }));
+
+            for (int var1 = 0; var1 < 5; ++var1) {
+                GameRegistry.addRecipe(new ShapelessOreRecipe(EnderSkull, new Object[] {
+                        "ExchangeIgnition", new ItemStack(Items.skull, 1, var1) }));
             }
         }
-        if (ARGetCrafting("Et Futurum", true) && Loader.isModLoaded("etfuturum"))
-        {
-            ItemStack Shard   = new ItemStack(GameRegistry.findItem("etfuturum", "prismarine_shard"), 2, 0);
+        if (ARGetCrafting("Et Futurum", true) && Loader.isModLoaded("etfuturum")) {
+            ItemStack Shard = new ItemStack(GameRegistry.findItem("etfuturum", "prismarine_shard"), 2, 0);
             ItemStack Crystal = new ItemStack(GameRegistry.findItem("etfuturum", "prismarine_crystals"), 2, 0);
-            
-            if(Shard != null)
-            {
+
+            if (Shard != null) {
                 GameRegistry.addRecipe(
-                    new ShapelessOreRecipe(
-                        Shard,
-                        new Object[]{Items.quartz, Items.quartz}));
+                        new ShapelessOreRecipe(
+                                Shard,
+                                new Object[] { Items.quartz, Items.quartz }));
             }
-            if(Crystal != null)
-            {
+            if (Crystal != null) {
                 GameRegistry.addRecipe(
-                    new ShapelessOreRecipe(
-                        Crystal,
-                        new Object[]{Items.quartz, Items.coal}));
+                        new ShapelessOreRecipe(
+                                Crystal,
+                                new Object[] { Items.quartz, Items.coal }));
                 GameRegistry.addRecipe(
-                    new ShapelessOreRecipe(
-                        Items.glowstone_dust,
-                        new Object[]{GameRegistry.findItem("etfuturum", "prismarine_crystals")}));
+                        new ShapelessOreRecipe(
+                                Items.glowstone_dust,
+                                new Object[] { GameRegistry.findItem("etfuturum",
+                                        "prismarine_crystals") }));
+            }
+        }
+        if (Loader.isModLoaded("personalspace")) {
+            ItemStack Portal = new ItemStack(GameRegistry.findItem("personalspace", "personalPortal"));
+
+            if (Portal != null) {
+                GameRegistry.addRecipe(new ShapedOreRecipe(Portal, new Object["XXX", "XYX", "XXX", Character.valueOf('X'), Blocks.bedrock, Character.valueOf('Y'), Blocks.ender_chest]));
+            }
+        }
+        if (Loader.isModLoaded("clayium")) {
+            ItemStack RollingPin = new ItemStack(GameRegistry.findItem("clayium", "itemRawClayCraftingTools"), 1, 0);
+            ItemStack Slicer = new ItemStack(GameRegistry.findItem("clayium", "itemRawClayCraftingTools"), 1, 1);
+            ItemStack Spatula = new ItemStack(GameRegistry.findItem("clayium", "itemRawClayCraftingTools"), 1, 2);
+
+            if (RollingPin != null) {
+                GameRegistry.addRecipe(new ShapedOreRecipe(RollingPin, new Object[" XY", "XXX", "YX ", Character.valueOf('X'), Blocks.clay, Character.valueOf('Y'), Items.clay_ball]));
+            }
+            if (Slicer != null) {
+                GameRegistry.addRecipe(new ShapedOreRecipe(Slicer, new Object["YYY", "YXY", "XXX", Character.valueOf('X'), Blocks.clay, Character.valueOf('Y'), Blocks.clay_ball]));
+            }
+            if (Spatula != null) {
+                GameRegistry.addRecipe(new ShapedOreRecipe(Spatula, new Object["XXY", "XX ", "   ", Character.valueOf('X'), Blocks.clay, Character.valueOf('Y'), Blocks.clay_ball]));
             }
         }
         /*
@@ -509,24 +574,19 @@ public class RecipeAnotherMod
          * e) { System.out.println(AdditionalRecipe.CONSOLE +
          * "Can't Find MineFactory Reloaded."); }
          */
-        try
-        {
+        try {
             BC = Class.forName("buildcraft.BuildCraftCore");
             Object springBlock = BC.getField("springBlock").get(null);
             Block spring = (Block) springBlock;
-            if (ARGetAnother("BuildCraft_Spring", true))
-            {
+            if (ARGetAnother("BuildCraft_Spring", true)) {
                 spring.setHardness(60F);
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             // ARLogger.logger.failLoadingModInfo((String)"BuildCraft");
             // System.out.println(AdditionalRecipe.CONSOLE + "Can't Find
             // BuildCraft.");
         }
-        if ((OreDictionary.getOres("oreTofu").size() > 0) && (OreDictionary.getOres("tofuGem").size() > 0))
-        {
+        if ((OreDictionary.getOres("oreTofu").size() > 0) && (OreDictionary.getOres("tofuGem").size() > 0)) {
             GameRegistry.addRecipe(new ShapelessOreRecipe(
                     new ItemStack(OreDictionary.getOres("tofuGem").get(0).getItem(), 2,
                             OreDictionary.getOres("tofuGem").get(0).getItemDamage()),
@@ -536,18 +596,16 @@ public class RecipeAnotherMod
                             OreDictionary.getOres("tofuGem").get(0).getItemDamage()),
                     0.0f);
         }
-        try
-        {
+        try {
             MoInv = Class.forName("moreinventory.MoreInventoryMod");
             Object WoodContainer = MoInv.getField("StorageBox").get(null);
             ItemStack Diamond = new ItemStack((Item) WoodContainer, 1, 3);
             ItemStack Emerald = new ItemStack((Item) WoodContainer, 3, 10);
             GameRegistry.addRecipe(new ShapedOreRecipe(Emerald,
-                    new Object[] { "XYX", "XZX", "XYX", Character.valueOf('X'), Items.emerald, Character.valueOf('Y'),
+                    new Object[] { "XYX", "XZX", "XYX", Character.valueOf('X'), Items.emerald,
+                            Character.valueOf('Y'),
                             Blocks.stone_slab, Character.valueOf('Z'), Diamond }));
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             // System.out.println(AdditionalRecipe.CONSOLE + "Can't Find
             // MoreInventoryMod.");
         }

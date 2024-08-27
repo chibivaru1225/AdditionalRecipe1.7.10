@@ -43,12 +43,13 @@ import net.minecraftforge.common.util.EnumHelper;
 @Mod(modid = AdditionalRecipe.MODID, name = AdditionalRecipe.MODNAME, version = AdditionalRecipe.VERSION, dependencies = "after:appliedenergistics2;"
         + "after:MineFactoryReloaded;" + "after:ThermalExpansion;" + "after:BuildCraftCore;" + "after:Railcraft;"
         + "after:TConstruct;"
-        + "after:DCsAppleMilk;" + "after:Et Futurum;" + "after:GregTech;" + "required-after:FML")
+        + "after:DCsAppleMilk;" + "after:Et Futurum;" + "after:GregTech;" + "required-after:FML;"
+        + "after:personalspace;" + "after:clayium")
 
 public class AdditionalRecipe {
     public static final String MODID = "additionalrecipe";
     public static final String MODNAME = "AdditionalRecipe";
-    public static final String VERSION = "0.01-18-c";
+    public static final String VERSION = "0.01-19";
 
     public static final String CONSOLE = "[AdditionalRecipe]:";
     public static final String ADDID = " added ID ";
