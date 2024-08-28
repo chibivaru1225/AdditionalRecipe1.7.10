@@ -308,7 +308,8 @@ public class RecipeAnotherMod {
         }
         if (ARGetCrafting("Et Futurum", true) && Loader.isModLoaded("etfuturum")) {
             ItemStack Shard = new ItemStack(GameRegistry.findItem("etfuturum", "prismarine_shard"), 2, 0);
-            ItemStack Crystal = new ItemStack(GameRegistry.findItem("etfuturum", "prismarine_crystals"), 2, 0);
+            ItemStack Crystal = new ItemStack(GameRegistry.findItem("etfuturum", "prismarine_crystals"), 2,
+                    0);
 
             if (Shard != null) {
                 GameRegistry.addRecipe(
@@ -332,7 +333,10 @@ public class RecipeAnotherMod {
             ItemStack Portal = new ItemStack(GameRegistry.findItem("personalspace", "personalPortal"));
 
             if (Portal != null) {
-                GameRegistry.addRecipe(new ShapedOreRecipe(Portal, new Object["XXX", "XYX", "XXX", Character.valueOf('X'), Blocks.bedrock, Character.valueOf('Y'), Blocks.ender_chest]));
+                GameRegistry.addRecipe(new ShapedOreRecipe(Portal,
+                        new Object[] { "XXX", "XYX", "XXX", Character.valueOf('X'),
+                                Blocks.bedrock, Character.valueOf('Y'),
+                                Blocks.ender_chest }));
             }
         }
         if (Loader.isModLoaded("clayium")) {
@@ -341,13 +345,16 @@ public class RecipeAnotherMod {
             ItemStack Spatula = new ItemStack(GameRegistry.findItem("clayium", "itemRawClayCraftingTools"), 1, 2);
 
             if (RollingPin != null) {
-                GameRegistry.addRecipe(new ShapedOreRecipe(RollingPin, new Object[" XY", "XXX", "YX ", Character.valueOf('X'), Blocks.clay, Character.valueOf('Y'), Items.clay_ball]));
+                GameRegistry.addRecipe(new ShapedOreRecipe(RollingPin, new Object[] { " XY", "XXX", "YX ",
+                        Character.valueOf('X'), Blocks.clay, Character.valueOf('Y'), Items.clay_ball }));
             }
             if (Slicer != null) {
-                GameRegistry.addRecipe(new ShapedOreRecipe(Slicer, new Object["YYY", "YXY", "XXX", Character.valueOf('X'), Blocks.clay, Character.valueOf('Y'), Blocks.clay_ball]));
+                GameRegistry.addRecipe(new ShapedOreRecipe(Slicer, new Object[] { "YYY", "YXY", "XXX",
+                        Character.valueOf('X'), Blocks.clay, Character.valueOf('Y'), Items.clay_ball }));
             }
             if (Spatula != null) {
-                GameRegistry.addRecipe(new ShapedOreRecipe(Spatula, new Object["XXY", "XX ", "   ", Character.valueOf('X'), Blocks.clay, Character.valueOf('Y'), Blocks.clay_ball]));
+                GameRegistry.addRecipe(new ShapedOreRecipe(Spatula, new Object[] { "XXY", "XX ", "   ",
+                        Character.valueOf('X'), Blocks.clay, Character.valueOf('Y'), Items.clay_ball }));
             }
         }
         /*
